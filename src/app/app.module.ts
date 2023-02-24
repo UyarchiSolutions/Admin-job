@@ -7,13 +7,14 @@ import { ManageCandidateComponent } from './manage-candidate/manage-candidate.co
 import { ManageEnquiryComponent } from './manage-enquiry/manage-enquiry.component';
 import { ManageFaqComponent } from './manage-faq/manage-faq.component';
 import { ManageJobpostAppliesComponent } from './manage-jobpost-applies/manage-jobpost-applies.component';
-import { ManageJobpostComponent } from './manage-jobpost/manage-jobpost.component';
 import { ManagePlanUsageComponent } from './manage-plan-usage/manage-plan-usage.component';
 import { ManagePlanComponent } from './manage-plan/manage-plan.component';
 import { ManageemployerComponent } from './manageemployer/manageemployer.component';
 import {AddfaqComponent} from './addfaq/addfaq.component';
 import {  HttpClientModule} from '@angular/common/http';
 import { EnquiryPopupComponent } from './enquiry-popup/enquiry-popup.component';
+import { ManageJobPostComponent } from './manage-job-post/manage-job-post.component';
+import { ReportedJobpostComponent } from './reported-jobpost/reported-jobpost.component';
 
 
 @NgModule({
@@ -22,13 +23,15 @@ import { EnquiryPopupComponent } from './enquiry-popup/enquiry-popup.component';
     ManageCandidateComponent,
     ManageEnquiryComponent,
     ManageFaqComponent,
-    ManageJobpostComponent,
+    
     ManageJobpostAppliesComponent,
     ManagePlanComponent,
     ManagePlanUsageComponent,
     ManageemployerComponent,
     AddfaqComponent,
-    EnquiryPopupComponent
+    EnquiryPopupComponent,
+    ManageJobPostComponent,
+    ReportedJobpostComponent
     
   ],
   imports: [

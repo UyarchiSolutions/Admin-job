@@ -4,26 +4,35 @@ import { Router } from '@angular/router';
 import { CommonService } from '../common.service';
 
 @Component({
-  selector: 'app-manage-jobpost',
-  templateUrl: './manage-jobpost.component.html',
-  styleUrls: ['./manage-jobpost.component.css']
+  selector: 'app-reported-jobpost',
+  templateUrl: './reported-jobpost.component.html',
+  styleUrls: ['./reported-jobpost.component.css']
 })
-export class ManageJobpostComponent implements OnInit {
- range = 10;
+export class ReportedJobpostComponent {
+range = 10;
  page =0
   jobList: any;
+  jobdetail: any;
   constructor(private formBuilder:FormBuilder,private router: Router,private common_service: CommonService) { }
 
   ngOnInit(): void {
     this.managejobposts()
-
-    
   }
   managejobposts(){
     this.common_service.managejobpost(this.range,this.page).subscribe((res:any)=>{
       console.log(res);
       this.jobList = res.data
     })
-
+  }
+  deactivate(id:any){
+    this.common_service.deactiveJobpost(id).subscribe((res:any)=>{
+      console.log(res);
+    })
+  }
+  get_post_detail(id:any){
+    this.common_service.get_post_detail(id).subscribe((res:any)=>{
+      console.log(res);
+      this.jobdetail = res.data
+    })
   }
 }
