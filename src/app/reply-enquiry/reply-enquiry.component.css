@@ -1,0 +1,101 @@
+.reply-popup{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.346);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.reply-popup .popup{
+    width: 60vw;
+    height: 80vh;
+    padding: 4vh 0;
+    background-color: #EEEEEE;
+    box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.25);
+border-radius: 10px;
+}
+.reply-popup .popup-container{
+    width: 70%;
+    margin: auto;
+}
+.reply-popup h2{
+    text-align: center;
+    color: #FD841F;
+}
+
+
+.reply-popup .submit-btn{
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+    margin: auto;
+    margin-top: 50px;
+}
+.reply-popup .preview-btn{
+    background-color:white !important;
+    color:#0A2647  !important;
+    font-weight: 500;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);
+}
+.reply-popup .submit-btn button{
+    background-color: #0A2647;
+    color: white;
+    padding: 6px 25px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+.reply-popup .popup-container .form{
+    width: 100%;
+    margin-top: 50px;
+    
+}
+.reply-popup .popup-container .form div{
+    display: flex;
+    margin: 10px 0;
+
+}
+.reply-popup label{
+    width: 30%;
+    font-weight: 500;
+}
+.reply-popup input{
+    width: 70%;
+    padding: 5px;
+    border: none;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);
+border-radius: 5px;
+}
+.reply-popup .answer{
+    display: flex;
+    width: 100%;
+}
+.reply-popup .answer div{
+    display: flex;
+    width: 70%;
+    flex-direction: column;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);
+}
+.reply-popup .answer textarea{
+    min-width: 100% !important;
+    min-height: 150px;
+    padding: 5px;
+    border: none;
+  
+    border-radius: 5px;
+}
+.reply-popup .font-style{
+    display: flex;
+    flex-direction: row !important;
+    margin: 0 !important;
+    background: rgba(0, 0, 0, 0.25);
+    width: 100% !important;
+    padding: 5px 10px;
+}
+.reply-popup .font-style i{
+    margin-right: 15px;
+    cursor: pointer;
+}

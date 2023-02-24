@@ -1,0 +1,97 @@
+.preview-popup{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.404);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.preview-popup .popup{
+    width: 60vw;
+    height: 80vh;
+    padding:0 0 4vh 0;
+    background-color: #EEEEEE;
+    box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.25);
+border-radius: 10px;
+}
+.preview-popup .popup-container{
+    width: 100%;
+    margin: auto;
+}
+.preview-popup h2{
+    text-align: center;
+    color: #FD841F;
+}
+.preview-popup .small{
+    padding: 10px 5px;
+    font-size: 12px;
+    margin: 0 25px;
+    border-bottom: solid gray 1px;
+}
+.preview-popup .content{
+    width: 100%;
+    background-color: white;
+    padding-top: 4vh;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+border-radius: 10px;
+}
+.preview-popup .subject{
+    display: flex;
+    margin-top: 50px;
+    background-color: #E7E9ED;
+    padding: 5px 30px;
+}
+.preview-popup .enquiry{
+    margin: 0 25px;
+    padding: 10px 0;
+    border-bottom: solid gray 1px;
+}
+.preview-popup .enquiry p{
+    margin-left: 30px;
+}
+.preview-popup .subject h5:nth-child(2){
+ margin-left: 20%;
+}
+
+
+
+.preview-popup .submit-btn{
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+    margin: auto;
+    margin-top: 20px;
+}
+.preview-popup .preview-btn{
+    background-color:white !important;
+    color:#0A2647  !important;
+    font-weight: 500;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);
+}
+.preview-popup .submit-btn button{
+    background-color: #0A2647;
+    color: white;
+    padding: 6px 25px !important;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 16px !important;
+}
+
+
+.preview-popup .disclaimer{
+    padding: 10px 0;
+    width: 85%;
+    margin: auto;
+    display: flex;
+}
+.preview-popup .disclaimer span{
+    width: fit-content;
+    white-space: nowrap;
+    margin-right: 5px;
+    font-weight: 500;
+}
