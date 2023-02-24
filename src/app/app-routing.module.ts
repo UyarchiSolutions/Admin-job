@@ -6,6 +6,7 @@ import { EnquiryPopupComponent } from './enquiry-popup/enquiry-popup.component';
 import { EnquiryPreviewComponent } from './enquiry-preview/enquiry-preview.component';
 import { ManageEnquiryComponent } from './manage-enquiry/manage-enquiry.component';
 import { ManageFaqComponent } from './manage-faq/manage-faq.component';
+import { ManageJobpostComponent } from './manage-jobpost/manage-jobpost.component';
 import { ReplyEnquiryComponent } from './reply-enquiry/reply-enquiry.component';
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path:'enqpop',component:EnquiryPopupComponent},
   {path:'enqrew',component:EnquiryPreviewComponent},
   {path:'repenq',component:ReplyEnquiryComponent},
-  {path:'addenq',component:AddEnquiryComponent}
+  {path:'addenq',component:AddEnquiryComponent},
+  {path:'manage-jobpost',component:ManageJobpostComponent}
   
 ];
 
