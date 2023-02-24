@@ -29,4 +29,7 @@ export class CommonService {
     console.log(id)
     return this.http.get(this.baseurl + "/v1/employerdetail/getAllApplied_postjobs_Candidates/" + id +'/' + range + '/' + page);
   }
+  get_all_emp(range:any,page:any){
+    return this.http.get(this.baseurl+'/v1/employerdetail/manage_employer/'+range+'/'+page)
+  }
 }
