@@ -4,6 +4,7 @@ import { AddEnquiryComponent } from './add-enquiry/add-enquiry.component';
 import { AddfaqComponent } from './addfaq/addfaq.component';
 import { EnquiryPopupComponent } from './enquiry-popup/enquiry-popup.component';
 import { EnquiryPreviewComponent } from './enquiry-preview/enquiry-preview.component';
+import { ManageCandidateComponent } from './manage-candidate/manage-candidate.component';
 import { ManageEnquiryComponent } from './manage-enquiry/manage-enquiry.component';
 import { ManageFaqComponent } from './manage-faq/manage-faq.component';
 import { ManageJobPostComponent } from './manage-job-post/manage-job-post.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path:'repenq',component:ReplyEnquiryComponent},
   {path:'addenq',component:AddEnquiryComponent},
   {path:'manage-employer',component:ManageemployerComponent},
+  {path:'manage-candidate',component:ManageCandidateComponent},
   {path:'manage-job',component:ManageJobPostComponent},
   {path:'manage-reportedjob',component:ReportedJobpostComponent}
   

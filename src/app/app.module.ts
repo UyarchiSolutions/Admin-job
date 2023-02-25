@@ -15,6 +15,7 @@ import {  HttpClientModule} from '@angular/common/http';
 import { EnquiryPopupComponent } from './enquiry-popup/enquiry-popup.component';
 import { ManageJobPostComponent } from './manage-job-post/manage-job-post.component';
 import { ReportedJobpostComponent } from './reported-jobpost/reported-jobpost.component';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { ReportedJobpostComponent } from './reported-jobpost/reported-jobpost.co
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    GooglePlaceModule,
 
   ],
   providers: [],

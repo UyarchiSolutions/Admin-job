@@ -168,25 +168,44 @@
 
         <div class="col-10 pe-3">
 
-            <div class="row register-content-row no-padding" *ngIf="Tab == 1">
+            <div class="row register-content-row no-padding" *ngIf="Tab == 1" [formGroup]="jobpostform">
                 <div class="col register-content no-margin-all">
                   <div class="row no-margin filter-bar ">
                     <!-- <div class="filter-bar"> -->
-                      <select style="width: 200px;">
-                        <option>Search By Value</option>
-                        <option>Search By Date</option>
+                      <select style="width: 171px;" (change)="getbyvalue($event)">
+                        <option value="value" selected>Search By Value</option>
+                        <option value="date">Search By Date</option>
                       </select>
-                      <input type="text" placeholder="Search By Company Name/Skill" style="width: 320px;">
-                      <input type="text" placeholder="Location">
-                      <input type="text" placeholder="Salary">
-                     <button class="me-5" style="padding: 10px;"><svg width="25" height="25" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <input type="text" *ngIf="searchval == 'value'" class="form-control" placeholder="Search By Company Name/Skill" formControlName="searchbox" style="width: 320px;" (keyup)="dispalye($event)">
+                            <div class="keylist" style="background: white;" *ngIf="isDisplay">
+                                <ul class="" style="padding-left: 0px;cursor: pointer;list-style: none;" class="">
+                                    <li class="" style="cursor:pointer" *ngFor="let skill of keySkill"
+                                        (click)="checkSkill($event,skill.Skill_Title)">
+                                        <span>{{skill?.Skill_Title}}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                      
+                      <input type="text" *ngIf="searchval == 'value'" placeholder="Location" formControlName="location" ngx-google-places-autocomplete
+                      [options]="options" (onAddressChange)="handleAddressChange($event)">
+                      <select class="sort-by form-control round col-1" formControlName="salary" *ngIf="searchval == 'value'">
+                        <option disabled selected [ngValue]="null">Salary</option>
+                        <option value="0-1">0 to 1 lac</option>
+                        <option value="1-2">1 to 2 lac</option>
+                        <option value="2-4">2 to 4 lac</option>
+                        <option value="4-6">4 to 6 lac</option>
+                        <option value="6-8">6 to 8 lac</option>
+                        <option value="8-9">8 to 9 lac</option>
+                      </select>
+                     <button class="me-5" *ngIf="searchval == 'value'" (click)="get_all()" style="padding: 10px;"><svg width="25" height="25" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M13.2913 0C20.6281 0 26.5827 5.95451 26.5827 13.2913C26.5827 20.6281 20.6281 26.5827 13.2913 26.5827C5.95451 26.5827 0 20.6281 0 13.2913C0 5.95451 5.95451 0 13.2913 0ZM13.2913 23.629C19.0022 23.629 23.629 19.0022 23.629 13.2913C23.629 7.57901 19.0022 2.95363 13.2913 2.95363C7.57901 2.95363 2.95363 7.57901 2.95363 13.2913C2.95363 19.0022 7.57901 23.629 13.2913 23.629ZM25.8221 23.7339L30 27.9103L27.9103 30L23.7339 25.8221L25.8221 23.7339Z" fill="white"/>
                       </svg>
                       </button>
-                      <select class="sort-by form-control round col-1 ms-5">
-                        <option>sort</option>
-                        <option>option1</option>
-                        <option>option1</option>
+                      <select class="sort-by form-control round col-1 ms-5" *ngIf="searchval == 'value'" formControlName="sortBy" (change)="get_all_sort($event)">
+                        <option selected disabled [ngValue]="null">Sort</option>
+                        <option value="true">Active</option>
+                        <option value="false">Inactive</option>
+                        <option value="Expired">Expired</option>
                       </select>
                     <!-- </div> -->
                   </div>
@@ -330,7 +349,7 @@
                                     <path d="M12 18C8.6862 18 6 15.3138 6 12C6 8.6862 8.6862 6 12 6C15.3138 6 18 8.6862 18 12C18 15.3138 15.3138 18 12 18ZM12 16.8C13.273 16.8 14.4939 16.2943 15.3941 15.3941C16.2943 14.4939 16.8 13.273 16.8 12C16.8 10.727 16.2943 9.50606 15.3941 8.60589C14.4939 7.70571 13.273 7.2 12 7.2C10.727 7.2 9.50606 7.70571 8.60589 8.60589C7.70571 9.50606 7.2 10.727 7.2 12C7.2 13.273 7.70571 14.4939 8.60589 15.3941C9.50606 16.2943 10.727 16.8 12 16.8ZM11.4018 14.4L8.856 11.8542L9.7044 11.0058L11.4018 12.7032L14.7954 9.309L15.6444 10.1574L11.4018 14.4Z" fill="#34A853"/>
                                     </svg>
                                 </i>
-                                <i class="active-show"  (click)="change_status_active(data._id,'true')"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <i class="active-show"  (click)="change_status_active(data._id,true)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <rect width="24" height="24" rx="5" fill="white" fill-opacity="0.1"/>
                                     <path d="M12 18C8.6862 18 6 15.3138 6 12C6 8.6862 8.6862 6 12 6C15.3138 6 18 8.6862 18 12C18 15.3138 15.3138 18 12 18ZM12 16.8C13.273 16.8 14.4939 16.2943 15.3941 15.3941C16.2943 14.4939 16.8 13.273 16.8 12C16.8 10.727 16.2943 9.50606 15.3941 8.60589C14.4939 7.70571 13.273 7.2 12 7.2C10.727 7.2 9.50606 7.70571 8.60589 8.60589C7.70571 9.50606 7.2 10.727 7.2 12C7.2 13.273 7.70571 14.4939 8.60589 15.3941C9.50606 16.2943 10.727 16.8 12 16.8ZM11.4018 14.4L8.856 11.8542L9.7044 11.0058L11.4018 12.7032L14.7954 9.309L15.6444 10.1574L11.4018 14.4Z" fill="#34A853"/>
                                     </svg>
@@ -343,14 +362,14 @@
                               <path d="M12 18C8.6862 18 6 15.3138 6 12C6 8.6862 8.6862 6 12 6C15.3138 6 18 8.6862 18 12C18 15.3138 15.3138 18 12 18ZM12 16.8C13.273 16.8 14.4939 16.2943 15.3941 15.3941C16.2943 14.4939 16.8 13.273 16.8 12C16.8 10.727 16.2943 9.50606 15.3941 8.60589C14.4939 7.70571 13.273 7.2 12 7.2C10.727 7.2 9.50606 7.70571 8.60589 8.60589C7.70571 9.50606 7.2 10.727 7.2 12C7.2 13.273 7.70571 14.4939 8.60589 15.3941C9.50606 16.2943 10.727 16.8 12 16.8ZM12 11.1516L13.6968 9.4542L14.5458 10.3032L12.8484 12L14.5458 13.6968L13.6968 14.5458L12 12.8484L10.3032 14.5458L9.4542 13.6968L11.1516 12L9.4542 10.3032L10.3032 9.4542L12 11.1516Z" fill="#0A2647"/>
                               </svg>
                             </i>
-                            <i class="active-show" (click)="change_status(data._id,'false')"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <i class="active-show" (click)="change_status(data._id,false)"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect width="24" height="24" rx="5" fill="white" fill-opacity="0.1"/>
                                 <path d="M12 18C8.6862 18 6 15.3138 6 12C6 8.6862 8.6862 6 12 6C15.3138 6 18 8.6862 18 12C18 15.3138 15.3138 18 12 18ZM12 16.8C13.273 16.8 14.4939 16.2943 15.3941 15.3941C16.2943 14.4939 16.8 13.273 16.8 12C16.8 10.727 16.2943 9.50606 15.3941 8.60589C14.4939 7.70571 13.273 7.2 12 7.2C10.727 7.2 9.50606 7.70571 8.60589 8.60589C7.70571 9.50606 7.2 10.727 7.2 12C7.2 13.273 7.70571 14.4939 8.60589 15.3941C9.50606 16.2943 10.727 16.8 12 16.8ZM12 11.1516L13.6968 9.4542L14.5458 10.3032L12.8484 12L14.5458 13.6968L13.6968 14.5458L12 12.8484L10.3032 14.5458L9.4542 13.6968L11.1516 12L9.4542 10.3032L10.3032 9.4542L12 11.1516Z" fill="#0A2647"/>
                                 </svg>
                                 Inactive
                             </i>
                           </div>
-                          <div class="col-4 debar-cng">
+                          <div class="col-4 debar-cng" (click)="deactivate(data._id)">
                             <i><svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <rect width="24" height="24" rx="5" fill="white" fill-opacity="0.1"/>
                               <path d="M15 8.4H18V9.6H16.8V17.4C16.8 17.5591 16.7368 17.7117 16.6243 17.8243C16.5117 17.9368 16.3591 18 16.2 18H7.8C7.64087 18 7.48826 17.9368 7.37574 17.8243C7.26321 17.7117 7.2 17.5591 7.2 17.4V9.6H6V8.4H9V6.6C9 6.44087 9.06321 6.28826 9.17574 6.17574C9.28826 6.06321 9.44087 6 9.6 6H14.4C14.5591 6 14.7117 6.06321 14.8243 6.17574C14.9368 6.28826 15 6.44087 15 6.6V8.4ZM15.6 9.6H8.4V16.8H15.6V9.6ZM12.8484 13.2L13.9092 14.2608L13.0608 15.1092L12 14.0484L10.9392 15.1092L10.0908 14.2608L11.1516 13.2L10.0908 12.1392L10.9392 11.2908L12 12.3516L13.0608 11.2908L13.9092 12.1392L12.8484 13.2ZM10.2 7.2V8.4H13.8V7.2H10.2Z" fill="#B73E3E"/>

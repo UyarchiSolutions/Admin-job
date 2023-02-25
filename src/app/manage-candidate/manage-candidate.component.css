@@ -244,10 +244,7 @@ padding: 8px 0px;
     background: none;
     border: none;
 }
-.active{
-    background-color: #0A2647;
-    color: white;
-}
+
 .search-field{
     padding: 0 !important;
     margin-bottom: 0;
@@ -285,4 +282,148 @@ padding: 8px 0px;
 }
 .content-card-heading .col i{
     margin-right: 2px;
+}
+.sortby{
+    padding: 6px 12px !important;
+    border: none;
+    border-radius: 5px;
+    background-color: white !important;
+}
+.sortby svg{
+    margin-left: 15px;
+}
+.search-type{
+    -webkit-appearance: menulist;
+    font-size: 14px;
+}
+.active-cng{
+    position: relative;
+    cursor: pointer;
+}
+.active-show{
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 0px 5px 0 0;
+  border-radius: 5px;
+  display: none;
+  font-style: normal !important;
+  font-size: 0.7rem !important;
+  z-index: 10;
+  font-weight: 500;
+}
+.active-cng:hover .active-show{
+    display: block;
+    display: flex;
+}
+
+.debar-cng{
+    position: relative;
+    cursor: pointer;
+}
+.debar-show{
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 0px 5px 0 0;
+  border-radius: 5px;
+  display: none;
+  font-style: normal !important;
+  font-size: 0.7rem !important;
+  
+  font-weight: 500;
+
+}
+.debar-cng:hover .debar-show{
+    display: block;
+    display: flex;
+}
+.filter-bar{
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    padding: 14px 0;
+    justify-content: unset !important;
+}
+
+.filter-bar .location,.filter-bar .experience,.filter-bar .salary{
+    width: 100px !important;
+}
+.filter-bar select,.filter-bar input{
+    padding: 10px ;
+    width: 120px;
+    border: none;
+    border-radius: 5px;
+    margin: 0 5px;
+}
+.filter-bar button{
+    width: fit-content;
+    height: fit-content;
+    padding: 5px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #FD841F;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+}
+.sort-by{
+    background-color: white !important;
+    padding: 10px !important;
+    float: left;
+    width: 100px !important;
+    cursor: pointer;
+}
+.sort-by svg{
+    margin-left: 10px;
+}
+select.round {
+    /* background-image:
+     url(../../assets/image/sort-icon.png); */
+    background-position-x: 70px;
+    background-position-y: 16px;
+    background-size:
+      20px 10px,
+      15px 15px,
+      1.5em 1.5em;
+    background-repeat: no-repeat;
+    padding-right: 10px !important;
+  }
+  .keylist{
+    background: white;
+    position: absolute;
+    left: 761px;
+    width: 235px;
+    top: 70px;
+    border-radius: 5px;
+    color: #000;
+    text-align: left;
+    font-size: 14px;
+}
+.namelist{
+    background: white;
+    position: absolute;
+    left: 410px;
+    width: 221px;
+    top: 70px;
+    border-radius: 5px;
+    color: #000;
+    text-align: left;
+    font-size: 14px;
+}
+.Numlist{
+    background: white;
+    position: absolute;
+    left: 615px;
+    width: 167px;
+    top: 70px;
+    border-radius: 5px;
+    color: #000;
+    text-align: left;
+    font-size: 14px;
 }
