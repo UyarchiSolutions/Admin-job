@@ -180,39 +180,53 @@
 
         </div>
 
-        <div class="col-10 pe-3">
+        <div class="col-10 pe-3" [formGroup]="empform">
 
             <div class="row register-content-row no-padding">
                 <div class="col register-content no-margin-all">
-                    <div class="row no-margin filter-bar ">
+                    <div class="row no-margin filter-bar px-2">
 
                         <!-- <div class="filter-bar"> -->
-                            
-                        <div class=" col ms-4 search-field">
-                            <input type="text" class="form-control" placeholder="Search By Name/Number">
-                        </div>
-
-                    
-
-                        <div class="search-field col">
-                            <input type="text" class="form-control" placeholder="Enter Location">
-                        </div>
-
-                        <div class="search-field col">
-                            <input type="date" class="form-control" >
-                        </div>
-
-                      
-                            <div class="search-field col">
-                                <div class="col-1">
-                                <button type="submit" class="btn btn-brand-orange"><img src="../../assets/image/search.png"
-                                        alt="" class="search-icon"></button>
+                            <input type="text" class="form-control" placeholder="Search By Name" formControlName="name" style="width: 210px;text-transform: capitalize" (keyup)="get_campany_name($event)">
+                            <div class="namelist" style="background: white;" *ngIf="isOpen">
+                                <ul class="" style="padding-left: 0px;cursor: pointer;list-style: none;" class="">
+                                    <li class="" style="cursor:pointer" *ngFor="let name of companyName"
+                                        (click)="checkCompany($event,name.name)">
+                                        <span>{{name?.name}}</span>
+                                    </li>
+                                </ul>
                             </div>
-                        </div>
-                        <div class="search-field col">
+                            <input type="number" class="form-control" placeholder="Search By Phone" formControlName="mobileNumber" style="width: 210px;text-transform: capitalize" (keyup)="get_can_ph($event)">
+                            <div class="Numlist" style="background: white;" *ngIf="isNo">
+                                <ul class="" style="padding-left: 0px;cursor: pointer;list-style: none;" class="">
+                                    <li class="" style="cursor:pointer" *ngFor="let data of canNumber"
+                                        (click)="checkNumber($event,data.mobileNumber)">
+                                        <span>{{data?.mobileNumber}}</span>
+                                    </li>
+                                </ul>
+                            </div>
                             
-                           
-                        </div>
+                            <input type="text" class="form-control" style="width: 210px;" placeholder="Enter Location" formControlName="location" placeholder="Location" ngx-google-places-autocomplete
+                            [options]="options" (onAddressChange)="handleAddressChange($event)">
+
+                       
+                            <select class="form-control" formControlName="industry" style="width: 194px !important;">
+                                <option disabled selected [ngValue]="null">Industry</option>
+                                <option value="{{data.Industry}}" *ngFor="let data of indus_data">{{data.Industry}}</option>
+                              </select>
+
+                       
+                            <button style="padding: 10px;" (click)="get_all()" class="icon" (click)="get_all()"><svg width="25" height="25" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13.2913 0C20.6281 0 26.5827 5.95451 26.5827 13.2913C26.5827 20.6281 20.6281 26.5827 13.2913 26.5827C5.95451 26.5827 0 20.6281 0 13.2913C0 5.95451 5.95451 0 13.2913 0ZM13.2913 23.629C19.0022 23.629 23.629 19.0022 23.629 13.2913C23.629 7.57901 19.0022 2.95363 13.2913 2.95363C7.57901 2.95363 2.95363 7.57901 2.95363 13.2913C2.95363 19.0022 7.57901 23.629 13.2913 23.629ZM25.8221 23.7339L30 27.9103L27.9103 30L23.7339 25.8221L25.8221 23.7339Z" fill="white"/>
+                                </svg>
+                                </button>
+                            <select class="form-control" formControlName="sortBy" (change)="get_all()" style="margin-left: 36px;">
+                                <option disabled selected [ngValue]="null">Sort</option>
+                                <option value="all">All</option>
+                                <option value="Active">Active</option>
+                                <option value="inactive">Inactive</option>
+                                <option value="debarred">Debarred</option>
+                              </select>
                         
                        
 
@@ -280,7 +294,14 @@
                             Location
 
                         </div>
+                        <div class="col">
+                            <i><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10ZM16 12H10H8V10V6C8 5.44772 8.44771 5 9 5C9.55228 5 10 5.44772 10 6L10 10H16C16.5523 10 17 10.4477 17 11C17 11.5523 16.5523 12 16 12Z" fill="white"/>
+                                </svg>
+                                </i>
+                            Activity
 
+                        </div>
                         <div class="col">
                             <i><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0ZM13.1127 3.25461L16.7454 6.88735C16.9096 7.05142 17 7.26969 17 7.50179C17 7.73349 16.9097 7.95165 16.7456 8.11561L14.0508 10.8104C13.8608 11.0004 13.6136 11.0969 13.3162 11.0969C13.2366 11.0969 13.1502 11.0904 13.0521 11.0771L10.6986 10.6989L11.0749 13.038L11.0749 13.0385C11.0998 13.2038 11.1728 13.6884 10.8103 14.0508L8.11545 16.7457C7.95139 16.9097 7.73322 17.0001 7.50133 17.0001C7.26953 17.0001 7.05157 16.9098 6.88741 16.7457L3.25441 13.1124C3.09036 12.9486 2.9999 12.7304 3 12.4983C3 12.2666 3.09026 12.0484 3.25441 11.8845L5.94925 9.18965C6.13915 8.99965 6.38638 8.90323 6.68381 8.90323C6.76337 8.90323 6.84978 8.9097 6.94791 8.92302L9.30139 9.30121L8.92512 6.96205L8.92505 6.96162C8.90015 6.79624 8.82719 6.31166 9.18971 5.94925L11.8845 3.25441C12.0485 3.09036 12.2665 3 12.4985 3C12.7305 3 12.9487 3.09046 13.1127 3.25461ZM9.0436 11.167L6.98278 11.1673L5.33286 12.8172L7.39333 14.8777L9.04324 13.2278L9.0436 11.167ZM13.0919 9.04302L11.0311 9.04339L11.0314 6.98256L12.6813 5.33264L14.7418 7.39311L13.0919 9.04302Z" fill="white"/>
@@ -291,14 +312,9 @@
 
                         </div>
 
-                        <div class="col">
-                            <i><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10ZM16 12H10H8V10V6C8 5.44772 8.44771 5 9 5C9.55228 5 10 5.44772 10 6L10 10H16C16.5523 10 17 10.4477 17 11C17 11.5523 16.5523 12 16 12Z" fill="white"/>
-                                </svg>
-                                </i>
-                            Active Status
+                       
+                      
 
-                        </div>
 
                         <div class="col">
                             <i><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -318,13 +334,13 @@
                     <div class="row content-card no-margin padding10" *ngFor="let data of empList">
                        
 
-                        <div class="col">
-
-                         {{data.name}}
+                        <div class="col name" >
+                            <a [routerLink]="['/employer-detail']"
+                            [queryParams]="{id:data._id}">{{data.name}}</a>
 
                         </div>
 
-                        <div class="col">
+                        <div class="col name">
                             {{data.contactName}}
 
                         </div>
@@ -339,41 +355,79 @@
 
                         </div>
 
-                        <div class="col">
+                        <div class="col name">
                            {{data.location}}
 
                         </div>
-
+                        <div class="col">
+                           {{data.latestdate}}
+   
+   
+                           </div>
 
                         <div class="col">
                           {{data.adminStatus}}
 
-
                         </div>
 
 
-                        <div class="col">
-                          Active Now
- 
- 
-                         </div>
-
                          <div class="col d-flex">
-                            <div class="col-4  d-flex justify-content-center align-items-center">
-                              <i><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8 16C3.5816 16 0 12.4184 0 8C0 3.5816 3.5816 0 8 0C12.4184 0 16 3.5816 16 8C16 12.4184 12.4184 16 8 16ZM8 14.4C9.69739 14.4 11.3253 13.7257 12.5255 12.5255C13.7257 11.3253 14.4 9.69739 14.4 8C14.4 6.30261 13.7257 4.67475 12.5255 3.47452C11.3253 2.27428 9.69739 1.6 8 1.6C6.30261 1.6 4.67475 2.27428 3.47452 3.47452C2.27428 4.67475 1.6 6.30261 1.6 8C1.6 9.69739 2.27428 11.3253 3.47452 12.5255C4.67475 13.7257 6.30261 14.4 8 14.4ZM7.2024 11.2L5.5052 9.5028L3.808 7.8056L4.9392 6.6744L7.2024 8.9376L11.7272 4.412L12.8592 5.5432L7.2024 11.2Z" fill="#0A2647" fill-opacity="0.4"/>
-                                </svg>
-                                
+                            <div class="col-4 active-cng" *ngIf="data.adminStatus != 'debarred' && data.adminStatus == 'Pending'">
+                                <i><svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <rect width="24" height="24" rx="5" fill="white" fill-opacity="0.1"/>
+                                  <path d="M12 18C8.6862 18 6 15.3138 6 12C6 8.6862 8.6862 6 12 6C15.3138 6 18 8.6862 18 12C18 15.3138 15.3138 18 12 18ZM12 16.8C13.273 16.8 14.4939 16.2943 15.3941 15.3941C16.2943 14.4939 16.8 13.273 16.8 12C16.8 10.727 16.2943 9.50606 15.3941 8.60589C14.4939 7.70571 13.273 7.2 12 7.2C10.727 7.2 9.50606 7.70571 8.60589 8.60589C7.70571 9.50606 7.2 10.727 7.2 12C7.2 13.273 7.70571 14.4939 8.60589 15.3941C9.50606 16.2943 10.727 16.8 12 16.8ZM11.4018 14.4L8.856 11.8542L9.7044 11.0058L11.4018 12.7032L14.7954 9.309L15.6444 10.1574L11.4018 14.4Z" fill="#34A853"/>
+                                  </svg>
+                                 
+                                    </i>
+                                    <i class="active-show" (click)="change_status(data._id,'Approved')"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <rect width="24" height="24" rx="5" fill="white" fill-opacity="0.1"/>
+                                      <path d="M12 18C8.6862 18 6 15.3138 6 12C6 8.6862 8.6862 6 12 6C15.3138 6 18 8.6862 18 12C18 15.3138 15.3138 18 12 18ZM12 16.8C13.273 16.8 14.4939 16.2943 15.3941 15.3941C16.2943 14.4939 16.8 13.273 16.8 12C16.8 10.727 16.2943 9.50606 15.3941 8.60589C14.4939 7.70571 13.273 7.2 12 7.2C10.727 7.2 9.50606 7.70571 8.60589 8.60589C7.70571 9.50606 7.2 10.727 7.2 12C7.2 13.273 7.70571 14.4939 8.60589 15.3941C9.50606 16.2943 10.727 16.8 12 16.8ZM11.4018 14.4L8.856 11.8542L9.7044 11.0058L11.4018 12.7032L14.7954 9.309L15.6444 10.1574L11.4018 14.4Z" fill="#34A853"/>
+                                      </svg>
+                                     Approve
+                                        </i>
+                              </div>
+                              <div class="col-4 active-cng" *ngIf="data.adminStatus != 'debarred' && data.adminStatus == 'Approved'">
+                                <i><svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <rect width="24" height="24" rx="5" fill="white" fill-opacity="0.1"/>
+                                  <path d="M12 18C8.6862 18 6 15.3138 6 12C6 8.6862 8.6862 6 12 6C15.3138 6 18 8.6862 18 12C18 15.3138 15.3138 18 12 18ZM12 16.8C13.273 16.8 14.4939 16.2943 15.3941 15.3941C16.2943 14.4939 16.8 13.273 16.8 12C16.8 10.727 16.2943 9.50606 15.3941 8.60589C14.4939 7.70571 13.273 7.2 12 7.2C10.727 7.2 9.50606 7.70571 8.60589 8.60589C7.70571 9.50606 7.2 10.727 7.2 12C7.2 13.273 7.70571 14.4939 8.60589 15.3941C9.50606 16.2943 10.727 16.8 12 16.8ZM11.4018 14.4L8.856 11.8542L9.7044 11.0058L11.4018 12.7032L14.7954 9.309L15.6444 10.1574L11.4018 14.4Z" fill="#34A853"/>
+                                  </svg>
+                                 
+                                    </i>
+                                    <i class="active-show" (click)="change_status(data._id,true)"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <rect width="24" height="24" rx="5" fill="white" fill-opacity="0.1"/>
+                                      <path d="M12 18C8.6862 18 6 15.3138 6 12C6 8.6862 8.6862 6 12 6C15.3138 6 18 8.6862 18 12C18 15.3138 15.3138 18 12 18ZM12 16.8C13.273 16.8 14.4939 16.2943 15.3941 15.3941C16.2943 14.4939 16.8 13.273 16.8 12C16.8 10.727 16.2943 9.50606 15.3941 8.60589C14.4939 7.70571 13.273 7.2 12 7.2C10.727 7.2 9.50606 7.70571 8.60589 8.60589C7.70571 9.50606 7.2 10.727 7.2 12C7.2 13.273 7.70571 14.4939 8.60589 15.3941C9.50606 16.2943 10.727 16.8 12 16.8ZM11.4018 14.4L8.856 11.8542L9.7044 11.0058L11.4018 12.7032L14.7954 9.309L15.6444 10.1574L11.4018 14.4Z" fill="#34A853"/>
+                                      </svg>
+                                     Active
+                                        </i>
+                              </div>
+                              <div class="col-4 active-cng" *ngIf="data.adminStatus != 'debarred' && data.adminStatus == 'Approved'">
+                                  <i><svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="24" height="24" rx="5" fill="white" fill-opacity="0.1"/>
+                                    <path d="M12 18C8.6862 18 6 15.3138 6 12C6 8.6862 8.6862 6 12 6C15.3138 6 18 8.6862 18 12C18 15.3138 15.3138 18 12 18ZM12 16.8C13.273 16.8 14.4939 16.2943 15.3941 15.3941C16.2943 14.4939 16.8 13.273 16.8 12C16.8 10.727 16.2943 9.50606 15.3941 8.60589C14.4939 7.70571 13.273 7.2 12 7.2C10.727 7.2 9.50606 7.70571 8.60589 8.60589C7.70571 9.50606 7.2 10.727 7.2 12C7.2 13.273 7.70571 14.4939 8.60589 15.3941C9.50606 16.2943 10.727 16.8 12 16.8ZM12 11.1516L13.6968 9.4542L14.5458 10.3032L12.8484 12L14.5458 13.6968L13.6968 14.5458L12 12.8484L10.3032 14.5458L9.4542 13.6968L11.1516 12L9.4542 10.3032L10.3032 9.4542L12 11.1516Z" fill="#0A2647"/>
+                                    </svg>
                                   </i>
-                            </div>
-                            <div class="col-4  d-flex justify-content-center align-items-center">
-                              <i><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8 16C3.5816 16 0 12.4184 0 8C0 3.5816 3.5816 0 8 0C12.4184 0 16 3.5816 16 8C16 12.4184 12.4184 16 8 16ZM8 14.4C9.69739 14.4 11.3253 13.7257 12.5255 12.5255C13.7257 11.3253 14.4 9.69739 14.4 8C14.4 6.30261 13.7257 4.67475 12.5255 3.47452C11.3253 2.27428 9.69739 1.6 8 1.6C6.30261 1.6 4.67475 2.27428 3.47452 3.47452C2.27428 4.67475 1.6 6.30261 1.6 8C1.6 9.69739 2.27428 11.3253 3.47452 12.5255C4.67475 13.7257 6.30261 14.4 8 14.4ZM8 6.8688L10.2624 4.6056L11.3944 5.7376L9.1312 8L11.3944 10.2624L10.2624 11.3944L8 9.1312L5.7376 11.3944L4.6056 10.2624L6.8688 8L4.6056 5.7376L5.7376 4.6056L8 6.8688Z" fill="#FF0000" fill-opacity="0.4"/>
-                                </svg>
-                                
+                                  <i class="active-show" (click)="change_status(data._id,false)"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <rect width="24" height="24" rx="5" fill="white" fill-opacity="0.1"/>
+                                      <path d="M12 18C8.6862 18 6 15.3138 6 12C6 8.6862 8.6862 6 12 6C15.3138 6 18 8.6862 18 12C18 15.3138 15.3138 18 12 18ZM12 16.8C13.273 16.8 14.4939 16.2943 15.3941 15.3941C16.2943 14.4939 16.8 13.273 16.8 12C16.8 10.727 16.2943 9.50606 15.3941 8.60589C14.4939 7.70571 13.273 7.2 12 7.2C10.727 7.2 9.50606 7.70571 8.60589 8.60589C7.70571 9.50606 7.2 10.727 7.2 12C7.2 13.273 7.70571 14.4939 8.60589 15.3941C9.50606 16.2943 10.727 16.8 12 16.8ZM12 11.1516L13.6968 9.4542L14.5458 10.3032L12.8484 12L14.5458 13.6968L13.6968 14.5458L12 12.8484L10.3032 14.5458L9.4542 13.6968L11.1516 12L9.4542 10.3032L10.3032 9.4542L12 11.1516Z" fill="#0A2647"/>
+                                      </svg>
+                                      Inactive
                                   </i>
-                            </div>
-                            <div class="col-4  d-flex justify-content-center align-items-center">
+                                </div>
+                                <div class="col-4 debar-cng" (click)="debar_ca(data._id,'debarred')" *ngIf="data.adminStatus != 'debarred'">
+                                    <i><svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <rect width="24" height="24" rx="5" fill="white" fill-opacity="0.1"/>
+                                      <path d="M12.4739 13.5792V14.9322C11.888 14.7251 11.2609 14.6615 10.6453 14.747C10.0297 14.8324 9.44359 15.0642 8.93619 15.4231C8.42879 15.782 8.0149 16.2573 7.72928 16.8093C7.44366 17.3612 7.29466 17.9737 7.29478 18.5952L6 18.5945C5.9998 17.804 6.18057 17.0239 6.52846 16.314C6.87635 15.6042 7.38213 14.9833 8.00705 14.4992C8.63196 14.015 9.35942 13.6803 10.1337 13.5207C10.9079 13.3611 11.7085 13.3816 12.4739 13.5792ZM11.1791 12.7687C9.03302 12.7687 7.29478 11.0304 7.29478 8.88433C7.29478 6.73824 9.03302 5 11.1791 5C13.3252 5 15.0634 6.73824 15.0634 8.88433C15.0634 11.0304 13.3252 12.7687 11.1791 12.7687ZM11.1791 11.4739C12.6098 11.4739 13.7687 10.3151 13.7687 8.88433C13.7687 7.4536 12.6098 6.29478 11.1791 6.29478C9.74838 6.29478 8.58956 7.4536 8.58956 8.88433C8.58956 10.3151 9.74838 11.4739 11.1791 11.4739ZM15.7108 15.7376L17.0839 14.3638L18 15.2799L16.6262 16.653L18 18.0261L17.0839 18.9422L15.7108 17.5684L14.3377 18.9422L13.4217 18.0261L14.7954 16.653L13.4217 15.2799L14.3377 14.3638L15.7108 15.7376Z" fill="#B73E3E"/>
+                                      </svg>
+                                      <i class="debar-show">
+                                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                              <rect width="24" height="24" rx="5" fill="white" fill-opacity="0.1"/>
+                                              <path d="M12.4739 13.5792V14.9322C11.888 14.7251 11.2609 14.6615 10.6453 14.747C10.0297 14.8324 9.44359 15.0642 8.93619 15.4231C8.42879 15.782 8.0149 16.2573 7.72928 16.8093C7.44366 17.3612 7.29466 17.9737 7.29478 18.5952L6 18.5945C5.9998 17.804 6.18057 17.0239 6.52846 16.314C6.87635 15.6042 7.38213 14.9833 8.00705 14.4992C8.63196 14.015 9.35942 13.6803 10.1337 13.5207C10.9079 13.3611 11.7085 13.3816 12.4739 13.5792ZM11.1791 12.7687C9.03302 12.7687 7.29478 11.0304 7.29478 8.88433C7.29478 6.73824 9.03302 5 11.1791 5C13.3252 5 15.0634 6.73824 15.0634 8.88433C15.0634 11.0304 13.3252 12.7687 11.1791 12.7687ZM11.1791 11.4739C12.6098 11.4739 13.7687 10.3151 13.7687 8.88433C13.7687 7.4536 12.6098 6.29478 11.1791 6.29478C9.74838 6.29478 8.58956 7.4536 8.58956 8.88433C8.58956 10.3151 9.74838 11.4739 11.1791 11.4739ZM15.7108 15.7376L17.0839 14.3638L18 15.2799L16.6262 16.653L18 18.0261L17.0839 18.9422L15.7108 17.5684L14.3377 18.9422L13.4217 18.0261L14.7954 16.653L13.4217 15.2799L14.3377 14.3638L15.7108 15.7376Z" fill="#B73E3E"/>
+                                              </svg>  Debarred
+                                            </i>
+                                      
+                                        </i>
+                                  </div>
+                            <div class="col-4 debar-cng">
                                 <i><svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <rect width="30" height="30" rx="5" fill="white" fill-opacity="0.1"/>
                                     <path d="M15.8143 10.4089L19.5911 14.1866L10.7768 23H7V19.2223L15.8143 10.408V10.4089ZM17.0732 9.14997L18.9616 7.26068C19.1286 7.09377 19.355 7 19.5911 7C19.8272 7 20.0536 7.09377 20.2206 7.26068L22.7393 9.77943C22.9062 9.94639 23 10.1728 23 10.4089C23 10.645 22.9062 10.8714 22.7393 11.0384L20.85 12.9268L17.0732 9.14997Z" fill="#0A2647"/>
@@ -381,6 +435,7 @@
                                     
                                     </i>
                               </div>
+
    
    
                            </div>

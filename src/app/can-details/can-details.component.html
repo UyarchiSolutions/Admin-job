@@ -1,0 +1,437 @@
+<div class="container-fluid register">
+    <div class="row">
+        <div class="col-2 ad-image">
+            <img src="../../assets/image/ad.png" alt="">
+        </div>
+        <div class="col-8  login-main">
+            <div class="row ">
+                <div class="col  hero-col">
+                    <img src="../../assets/image/hero.png" alt="" class="hero-image">
+                </div>
+            </div>
+            <div class="row register-content-row ">
+                <div class="col register-content">
+                    <div class="row no-margin">
+                        <div class="col-2" routerLink="/manage-candidate" style="cursor: pointer;">
+                            <span class="arrow">&lt;</span> 
+                        </div>
+                        <div class="col">
+
+                        </div>
+
+                        <div class="col-2 pre-next-page">
+                            <img src="../../assets/image/prepage.png" alt="">
+
+                            <img src="../../assets/image/nextpage.png" alt="">
+                        </div>
+                    </div>
+                    <div class="row custom-row">
+
+                        <div class="card custom-card job-card border-remove">
+                            <div class="card-body card-main-content">
+
+                                <div class="heading-main-content-small">
+                                    <img src="../../assets/image/profile.png" alt="">
+
+                                </div>
+                                <div class="heading-main-content">
+
+                                    <div class="card-action-heading">
+                                        {{candidate_data?.name}}
+                                    </div>
+
+                                    <div> <span class="icon-custom width-custom"><i
+                                                class='fas fa-archive'></i></span>{{candidate_data?.email}}</div>
+
+                                    <div> <span class="icon-custom width-custom"><i
+                                                class='fas fa-archive'></i></span>{{candidate_data?.mobileNumber}}</div>
+
+
+                                    <div>
+                                        <div class="content-box" (click)="change_status(candidate_data._id,false)">
+                                          <button class="de"> <i><svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="24" height="24" rx="5" fill="white" fill-opacity="0.1"/>
+                                            <path d="M12 18C8.6862 18 6 15.3138 6 12C6 8.6862 8.6862 6 12 6C15.3138 6 18 8.6862 18 12C18 15.3138 15.3138 18 12 18ZM12 16.8C13.273 16.8 14.4939 16.2943 15.3941 15.3941C16.2943 14.4939 16.8 13.273 16.8 12C16.8 10.727 16.2943 9.50606 15.3941 8.60589C14.4939 7.70571 13.273 7.2 12 7.2C10.727 7.2 9.50606 7.70571 8.60589 8.60589C7.70571 9.50606 7.2 10.727 7.2 12C7.2 13.273 7.70571 14.4939 8.60589 15.3941C9.50606 16.2943 10.727 16.8 12 16.8ZM12 11.1516L13.6968 9.4542L14.5458 10.3032L12.8484 12L14.5458 13.6968L13.6968 14.5458L12 12.8484L10.3032 14.5458L9.4542 13.6968L11.1516 12L9.4542 10.3032L10.3032 9.4542L12 11.1516Z" fill="#0A2647"/>
+                                            </svg>
+                                          </i>Inactivate</button>
+                                        </div>
+                                    </div>
+                                   
+
+                                </div>
+                              
+                                <div class="heading-main-content">
+
+                                    <div> <span class="icon-custom width-custom"><i
+                                                class='fas fa-archive'></i></span>{{candidate_data?.workStatus}}</div>
+
+                                    <div> <span class="icon-custom width-custom"><i
+                                                class='fas fa-archive'></i></span>View Resume</div>
+
+
+                                    <div> <span class="icon-custom width-custom"><i
+                                                class='fas fa-archive'></i></span>{{candidate_data?.locationCurrent}}
+                                    </div>
+
+                                    <div>
+                                        <div class="content-box" (click)="debar_ca(candidate_data._id,'debarred')">
+                                            <button class="de"><i class="debar-show">
+                                                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                      <rect width="24" height="24" rx="5" fill="white" fill-opacity="0.1"/>
+                                                      <path d="M12.4739 13.5792V14.9322C11.888 14.7251 11.2609 14.6615 10.6453 14.747C10.0297 14.8324 9.44359 15.0642 8.93619 15.4231C8.42879 15.782 8.0149 16.2573 7.72928 16.8093C7.44366 17.3612 7.29466 17.9737 7.29478 18.5952L6 18.5945C5.9998 17.804 6.18057 17.0239 6.52846 16.314C6.87635 15.6042 7.38213 14.9833 8.00705 14.4992C8.63196 14.015 9.35942 13.6803 10.1337 13.5207C10.9079 13.3611 11.7085 13.3816 12.4739 13.5792ZM11.1791 12.7687C9.03302 12.7687 7.29478 11.0304 7.29478 8.88433C7.29478 6.73824 9.03302 5 11.1791 5C13.3252 5 15.0634 6.73824 15.0634 8.88433C15.0634 11.0304 13.3252 12.7687 11.1791 12.7687ZM11.1791 11.4739C12.6098 11.4739 13.7687 10.3151 13.7687 8.88433C13.7687 7.4536 12.6098 6.29478 11.1791 6.29478C9.74838 6.29478 8.58956 7.4536 8.58956 8.88433C8.58956 10.3151 9.74838 11.4739 11.1791 11.4739ZM15.7108 15.7376L17.0839 14.3638L18 15.2799L16.6262 16.653L18 18.0261L17.0839 18.9422L15.7108 17.5684L14.3377 18.9422L13.4217 18.0261L14.7954 16.653L13.4217 15.2799L14.3377 14.3638L15.7108 15.7376Z" fill="#B73E3E"/>
+                                                      </svg>
+                                                    </i>Debarred</button>
+                                        </div>
+                                    </div>
+                                  
+                                </div>
+                                <!-- <div class="heading-icons heading-main-content-small">
+
+                                    <div class="heading-icons-alignment">
+                                        <div> <span class="icon-custom width-custom"><i class="ms-5"><svg width="20"
+                                            height="20" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                              d="M15 24.5439L5.73031 30L7.80032 19.0437L0 11.4594L10.5498 10.1437L15 0L19.4502 10.1437L30 11.4594L22.1997 19.0437L24.2697 30L15 24.5439ZM15 21.3765L20.5818 24.6614L19.3345 18.0652L24.0305 13.4978L17.6785 12.7059L15 6.59895L12.3215 12.7073L5.96951 13.4978L10.6655 18.0652L9.41821 24.6614L15 21.3765Z"
+                                              fill="#8493A3" />
+                                          </svg>
+                                        </i></span></div>
+
+                                        <div> <span class="icon-custom width-custom"><i
+                                                    class='fas fa-archive'></i></span></div>
+                                    </div>
+
+
+
+                                    <div class="heading-active">Active Today</div>
+
+
+                                </div> -->
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row action-row-padding">
+                        <div class="col">
+                            <div class="register-form">
+                                <div class="single-row">
+                                    <label for="">Key Skill :</label>
+                                    <div class="content-box">
+                                        <div>
+                                            <span *ngFor="let ski of candidate_data.keyskill">{{ski}}</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="single-row" *ngIf="candidate_data.workStatus == 'Experience'">
+                                    <label for="">Salary Range :</label>
+                                    <div class="content-box">
+                                       {{candidate_data.currentctc}}
+                                    </div>
+                                </div>
+                                <div class="single-row" *ngIf="candidate_data.workStatus == 'Fresher'">
+                                    <label for="">Salary Range :</label>
+                                    <div class="content-box">
+                                       {{candidate_data.expectedctc}}
+                                    </div>
+                                </div>
+
+                                <div class="single-row" >
+                                    <label for="">Experience :</label>
+                                    <div class="content-box">
+                                        <div>
+                                            {{candidate_data.experienceYear}} Year
+                                        </div>
+                                        <div>
+                                            {{candidate_data.experienceMonth}} Month
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="single-row">
+                                    <label for="">Native Address :</label>
+                                    <div class="content-box">
+                                        {{candidate_data.locationNative}}
+                                    </div>
+                                </div>
+                                <div class="single-row">
+                                    <label for="">Current Address :</label>
+                                    <div class="content-box">
+                                        {{candidate_data.locationCurrent}}
+                                    </div>
+                                </div>
+
+                                <div class="single-row">
+                                    <label for="">Notice Period :</label>
+                                    <div class="content-box">
+                                        {{candidate_data.noticeperiod}}
+
+                                    </div>
+                                </div>
+
+                                <div class="single-row">
+                                    <label for="">Current Skill Set :</label>
+                                    <div class="content-box">
+                                        <span *ngFor="let ski of candidate_data.currentSkill">{{ski}}</span>
+                                    </div>
+                                </div>
+
+                                <div class="single-row">
+                                    <label for="">Preferred Skill Set :</label>
+                                    <div class="content-box">
+                                        <span *ngFor="let ski of candidate_data.preferredSkill">{{ski}}</span>
+                                    </div>
+                                </div>
+
+                                <div class="single-row">
+                                    <label for="">Gender</label>
+                                    <div class="content-box">
+                                        {{candidate_data.gender}}
+                                    </div>
+                                </div>
+
+                                <div class="single-row">
+                                    <label for="">Marital Status :</label>
+                                    <div class="content-box">
+                                        {{candidate_data.maritalStatus}}
+                                    </div>
+                                </div>
+                                <div *ngIf="candidate_data.drQualification" class="mt-5">
+                                    <div class="single-row eduction-skills" >
+                                        <label for="" style="font-weight: 600 !important;" >Doctrate:</label>
+                                        <div class="content-box">
+                                        </div>
+                                    </div>
+    
+    
+    
+                                    <div class="single-row">
+                                        <label for="">Qualification :</label>
+                                        <div class="content-box">
+                                            {{candidate_data.drQualification}}
+                                        </div>
+                                    </div>
+    
+    
+                                    <div class="single-row">
+                                        <label for="">University :</label>
+                                        <div class="content-box">
+                                            {{candidate_data.drUniversity}}
+                                        </div>
+                                    </div>
+    
+    
+                                    <div class="single-row">
+                                        <label for="">Specification :</label>
+                                        <div class="content-box">
+                                            {{candidate_data.drSpecialization}}
+                                        </div>
+                                    </div>
+    
+    
+                                    <div class="single-row">
+                                        <label for="">Course :</label>
+                                        <div class="content-box">
+                                            {{candidate_data.drCourse}}
+                                        </div>
+                                    </div>
+    
+    
+                                    <div class="single-row">
+                                        <label for="">Grading System :</label>
+                                        <div class="content-box">
+                                            {{candidate_data.drGradingSystem}}
+                                        </div>
+                                    </div>
+    
+    
+                                    <div class="single-row">
+                                        <label for="">Marks :</label>
+                                        <div class="content-box">
+                                            {{candidate_data.drMarks}}
+                                        </div>
+                                    </div>
+    
+    
+                                    <div class="single-row">
+                                        <label for="">Course Type :</label>
+                                        <div class="content-box">
+                                            {{candidate_data.drCourseType}}
+                                        </div>
+                                    </div>
+    
+    
+                                    <div class="single-row">
+                                        <label for="">Passed Out Year :</label>
+                                        <div class="content-box">
+                                            {{candidate_data.drCourseDurationFrom}} -  {{candidate_data.drCourseDurationTo}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="candidate_data.pgQualification" class="mt-5">
+                                    <div class="single-row eduction-skills">
+                                        <label for="" style="font-weight: 600 !important;">PG:</label>
+                                        <div class="content-box">
+                                        </div>
+                                    </div>
+    
+    
+    
+                                    <div class="single-row">
+                                        <label for="">Qualification :</label>
+                                        <div class="content-box">
+                                            {{candidate_data.pgQualification}}
+                                        </div>
+                                    </div>
+    
+    
+                                    <div class="single-row">
+                                        <label for="">University :</label>
+                                        <div class="content-box">
+                                            {{candidate_data.pgUniversity}}
+                                        </div>
+                                    </div>
+    
+    
+                                    <div class="single-row">
+                                        <label for="">Specification :</label>
+                                        <div class="content-box">
+                                            {{candidate_data.pgSpecialization}}
+                                        </div>
+                                    </div>
+    
+    
+                                    <div class="single-row">
+                                        <label for="">Course :</label>
+                                        <div class="content-box">
+                                            {{candidate_data.pgCourse}}
+                                        </div>
+                                    </div>
+    
+    
+                                    <div class="single-row">
+                                        <label for="">Grading System :</label>
+                                        <div class="content-box">
+                                            {{candidate_data.pgGradingSystem}}
+                                        </div>
+                                    </div>
+    
+    
+                                    <div class="single-row">
+                                        <label for="">Marks :</label>
+                                        <div class="content-box">
+                                            {{candidate_data.pgMarks}}
+                                        </div>
+                                    </div>
+    
+    
+                                    <div class="single-row">
+                                        <label for="">Course Type :</label>
+                                        <div class="content-box">
+                                            {{candidate_data.pgCourseType}}
+                                        </div>
+                                    </div>
+    
+    
+                                    <div class="single-row">
+                                        <label for="">Passed Out Year :</label>
+                                        <div class="content-box">
+                                            {{candidate_data.pgCourseDurationFrom}} -  {{candidate_data.pgCourseDurationTo}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="candidate_data.ugQualification" class="mt-5">
+                                    <div class="single-row eduction-skills">
+                                        <label for="" style="font-weight: 600 !important;">UG:</label>
+                                        <div class="content-box">
+                                        </div>
+                                    </div>
+    
+    
+    
+                                    <div class="single-row">
+                                        <label for="">Qualification :</label>
+                                        <div class="content-box">
+                                            {{candidate_data.ugQualification}}
+                                        </div>
+                                    </div>
+    
+    
+                                    <div class="single-row">
+                                        <label for="">University :</label>
+                                        <div class="content-box">
+                                            {{candidate_data.ugUniversity}}
+                                        </div>
+                                    </div>
+    
+    
+                                    <div class="single-row">
+                                        <label for="">Specification :</label>
+                                        <div class="content-box">
+                                            {{candidate_data.ugSpecialization}}
+                                        </div>
+                                    </div>
+    
+    
+                                    <div class="single-row">
+                                        <label for="">Course :</label>
+                                        <div class="content-box">
+                                            {{candidate_data.ugCourse}}
+                                        </div>
+                                    </div>
+    
+    
+                                    <div class="single-row">
+                                        <label for="">Grading System :</label>
+                                        <div class="content-box">
+                                            {{candidate_data.ugGradingSystem}}
+                                        </div>
+                                    </div>
+    
+    
+                                    <div class="single-row">
+                                        <label for="">Marks :</label>
+                                        <div class="content-box">
+                                            {{candidate_data.ugMarks}}
+                                        </div>
+                                    </div>
+    
+    
+                                    <div class="single-row">
+                                        <label for="">Course Type :</label>
+                                        <div class="content-box">
+                                            {{candidate_data.ugCourseType}}
+                                        </div>
+                                    </div>
+    
+    
+                                    <div class="single-row">
+                                        <label for="">Passed Out Year :</label>
+                                        <div class="content-box">
+                                            {{candidate_data.ugCourseDurationFrom}} -  {{candidate_data.ugCourseDurationTo}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-2 ad-image">
+            <img src="../../assets/image/ad.png" alt="">
+        </div>
+    </div>
+    <!-- Modal -->
+</div>
+
+
+
+
+
+
+

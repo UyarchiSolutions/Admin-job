@@ -378,7 +378,7 @@ border-radius: 5px;
 .single-row{
     align-items: normal;
     justify-content: flex-start;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .single-row label{
@@ -429,6 +429,47 @@ h5{
 .single-row .content-box button{
     padding: 8px 66px;
     font-weight: 500;
+}
+.name{
+    width:120px;
+    height: 2em; 
+    line-height: 1em; 
+    font-weight: 400;
+    text-overflow: ellipsis;
+    margin-bottom: 12px;
+    cursor: pointer;
+    word-break: break-all;
+    overflow:hidden;
+    white-space: nowrap;
+}
+.name:hover{
+    overflow: visible; 
+    white-space: normal;
+    height:auto;  /* just added this line */
+}
+.debar-cng{
+    position: relative;
+    cursor: pointer;
+}
+.debar-show{
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 0px 5px 0 0;
+  border-radius: 5px;
+  display: none;
+  font-style: normal !important;
+  font-size: 0.7rem !important;
+  
+  font-weight: 500;
+
+}
+.debar-cng:hover .debar-show{
+    display: block;
+    display: flex;
 }
 
 

@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddEnquiryComponent } from './add-enquiry/add-enquiry.component';
 import { AddfaqComponent } from './addfaq/addfaq.component';
+import { CanDetailsComponent } from './can-details/can-details.component';
+import { EmpViewComponent } from './emp-view/emp-view.component';
 import { EnquiryPopupComponent } from './enquiry-popup/enquiry-popup.component';
 import { EnquiryPreviewComponent } from './enquiry-preview/enquiry-preview.component';
 import { ManageCandidateComponent } from './manage-candidate/manage-candidate.component';
@@ -23,7 +25,9 @@ const routes: Routes = [
   {path:'manage-employer',component:ManageemployerComponent},
   {path:'manage-candidate',component:ManageCandidateComponent},
   {path:'manage-job',component:ManageJobPostComponent},
-  {path:'manage-reportedjob',component:ReportedJobpostComponent}
+  {path:'manage-reportedjob',component:ReportedJobpostComponent},
+  {path:'can-details',component:CanDetailsComponent},
+  {path:'employer-detail',component:EmpViewComponent}
   
 ];
 

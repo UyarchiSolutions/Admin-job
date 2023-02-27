@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { __values } from 'tslib';
 import { CommonService } from '../common.service';
-
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 @Component({
   selector: 'app-manage-candidate',
   templateUrl: './manage-candidate.component.html',
@@ -13,7 +13,8 @@ import { CommonService } from '../common.service';
 export class ManageCandidateComponent implements OnInit {
   canList: any;
   range = 20;
-  page =0
+  page =0;
+  searchval: any='value';
     canform:any = this.fb.group({
    
     date1:new FormControl(null),
@@ -35,9 +36,13 @@ export class ManageCandidateComponent implements OnInit {
   isOpen: boolean=false;
   isNo: boolean = false;
   canNumber: any;
+  colorTheme = "theme-default"
+  bsConfig: Partial<BsDatepickerConfig>;
   constructor( private commonservice: CommonService,
     private fb: FormBuilder,
-    private router: Router) { }
+    private router: Router) { 
+      this.bsConfig = Object.assign({}, { containerClass: this.colorTheme, useUtc: true });
+    }
 
   ngOnInit(): void {
     this.get_all()
@@ -155,4 +160,7 @@ export class ManageCandidateComponent implements OnInit {
     this.canform.get('mobilenumber')?.setValue(num);
     this.isNo = false
   }
+  getbyvalue(e:any){
+    this.searchval = e.target.value
+ }
 }

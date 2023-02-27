@@ -16,13 +16,20 @@ export class ManageJobPostComponent implements OnInit {
   active:any;
   Tab = 1;
   applied_data: any;
+  isOpen =false
+  from: any;
+  from1: any;
+  to: any;
+  to1: any;
   jobpostform:any = this.fb.group({
-    search:new FormControl([]),
-    searchbox:new FormControl(null),
-    date:new FormControl(null),
+    name:new FormControl(null),
     location:new FormControl(null),
-    salary: new FormControl(null),
     sortBy:new FormControl(null),
+    skill:new FormControl([]),
+    searchbox:new FormControl(null),
+    date1:new FormControl(null),
+    date2:new FormControl(null),
+    salary: new FormControl(null),
     range:new FormControl(20),
     page:new FormControl(0)
   })
@@ -31,6 +38,8 @@ export class ManageJobPostComponent implements OnInit {
   latitude: any;
   longtitude: any;
   searchval: any='value';
+  companyName: any;
+  jobdetail: any;
 constructor(  private commonservice: CommonService,
   private fb: FormBuilder,
   private router: Router){
@@ -45,23 +54,27 @@ constructor(  private commonservice: CommonService,
     });
   }
   get_all_sort(e:any){
-    console.log(e.target.value)
-    let sorvar = e.target.value
-    if(e.target.value == 'true'){
-      let val = Boolean(sorvar);
-      console.log(typeof(val),val);
-      this.jobpostform.get('sortBy').setValue(val);
-    }
-    if(e.target.value == 'false'){
-      let val1 = Boolean(sorvar);
-      console.log(typeof(val1),val1);
-      this.jobpostform.get('sortBy').setValue(val1);
-    }
+    
     this.commonservice.get_all_jobs(this.jobpostform.value).subscribe((res: any) => {
       console.log(res.user);
       this.jobList = res.data
     });
 
+  }
+  get_campany_name(value:any){
+    if (value.target.value) {
+      this.isOpen = true;
+    } else {
+      this.isOpen = false;
+    }
+    this.commonservice.getCompanyName(value.target.value).subscribe((res: any) => {
+      this.companyName = res
+    });
+  }
+  checkCompany(event: any, name: any){
+    console.log("xdfgxdfg",name)
+    this.jobpostform.get('name')?.setValue(name);
+    this.isOpen = false
   }
   change_status(id: any,activebtn:boolean) {
     var data={
@@ -104,7 +117,7 @@ constructor(  private commonservice: CommonService,
     }
     console.log(value);
 
-    this.jobpostform.get('search')?.setValue(value);
+    this.jobpostform.get('skill')?.setValue(value);
     console.log('fgvfdg', this.jobpostform.get('search')?.value);
   }
   getKeyskills(value: any) {
@@ -115,14 +128,14 @@ constructor(  private commonservice: CommonService,
   }
   checkSkill(event: any, skill: any) {
     console.log('checkSkill', skill);
-    let index: any = this.jobpostform.get('search')?.value;
+    let index: any = this.jobpostform.get('skill')?.value;
     console.log(index);
-    console.log(this.jobpostform.get('search')?.value);
+    console.log(this.jobpostform.get('skill')?.value);
     if (index.length != 0) {
       let value = index.splice([index.length - 1], 1);
       index.push(skill);
-      this.jobpostform.get('search')?.setValue(index);
-      console.log(this.jobpostform.get('search')?.value);
+      this.jobpostform.get('skill')?.setValue(index);
+      console.log(this.jobpostform.get('skill')?.value);
       let search: any = index.toString() + ',';
       this.jobpostform.get('searchbox')?.setValue(search);
       this.isDisplay = false;
@@ -134,7 +147,11 @@ constructor(  private commonservice: CommonService,
     console.log(address.geometry.location.lng());
     this.latitude = address.geometry.location.lat();
     this.longtitude = address.geometry.location.lng();
-   
+    let addr = address.formatted_address
+    let getadd = addr.split(',')
+    this.jobpostform.patchValue({
+      location:getadd[0]
+    })
   }
   options: any = {
     componentRestrictions: { country: 'IN' },
@@ -145,6 +162,22 @@ constructor(  private commonservice: CommonService,
   deactivate(id:any){
     this.commonservice.deactiveJobpost(id).subscribe((res:any)=>{
       console.log(res);
+    })
+  }
+  changeSalary(from:any, to:any){
+    let num1 = from /100000
+    let num2 = to /100000
+    return num1 + ' to ' + num2 + ' lacs'
+  }
+  job_details(id:any) {
+    this.commonservice.get_job_detail(id).subscribe((res:any)=>{
+      console.log(res)
+      this.jobdetail = res.user[0]
+      this.from = this.jobdetail.salaryRangeFrom
+      console.log(this.from)
+      this.from1 = this.from / 100000
+      this.to = this.jobdetail.salaryRangeTo
+      this.to1 = this.to / 100000
     })
   }
 }

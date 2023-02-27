@@ -427,3 +427,20 @@ select.round {
     text-align: left;
     font-size: 14px;
 }
+.name{
+    width:120px;
+    height: 2em; 
+    line-height: 1em; 
+    font-weight: 400;
+    text-overflow: ellipsis;
+    margin-bottom: 12px;
+    cursor: pointer;
+    word-break: break-all;
+    overflow:hidden;
+    white-space: nowrap;
+}
+.name:hover{
+    overflow: visible; 
+    white-space: normal;
+    height:auto;  /* just added this line */
+}

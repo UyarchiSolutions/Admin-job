@@ -210,16 +210,18 @@
 
             <div class="row register-content-row no-padding">
                 <div class="col register-content no-margin-all">
-                    <div class="row no-margin filter-bar ">
+                    <div class="row no-margin filter-bar">
 
                         <!-- <div class="filter-bar"> -->
                    
-                          <select style="width: 200px;">
+                          <select style="width: 200px;" (change)="getbyvalue($event)">
                             <option value="value">Search By Value</option>
                             <option value="date">Search By Date</option>
                           </select>
-                        
-                          <input type="text" placeholder="Search By Name" formControlName="name" style="width: 165px;text-transform: capitalize;" (keyup)="get_can_name($event)">
+                          <input type="date" *ngIf="searchval == 'date'" placeholder="Search By Start date" formControlName="date1" style="width: 200px">
+                          <input type="date" *ngIf="searchval == 'date'" placeholder="Search By End date" formControlName="date2" style="width: 200px">
+
+                          <input type="text" *ngIf="searchval == 'value'" placeholder="Search By Name" formControlName="name" style="width: 165px;text-transform: capitalize;" (keyup)="get_can_name($event)">
                           <div class="namelist" style="background: white;" *ngIf="isOpen">
                             <ul class="" style="padding-left: 0px;cursor: pointer;list-style: none;" class="">
                                 <li class="" style="cursor:pointer" *ngFor="let name of canName"
@@ -228,7 +230,7 @@
                                 </li>
                             </ul>
                         </div>
-                          <input type="text" placeholder="Search By Phone" style="width: 165px;" formControlName="mobilenumber" (keyup)="get_can_ph($event)">
+                          <input type="number" *ngIf="searchval == 'value'" placeholder="Search By Phone" style="width: 165px;" formControlName="mobilenumber" (keyup)="get_can_ph($event)">
                           <div class="Numlist" style="background: white;" *ngIf="isNo">
                             <ul class="" style="padding-left: 0px;cursor: pointer;list-style: none;" class="">
                                 <li class="" style="cursor:pointer" *ngFor="let data of canNumber"
@@ -237,7 +239,7 @@
                                 </li>
                             </ul>
                         </div>
-                          <input type="text" class="form-control" placeholder="Search by Skill" formControlName="searchbox" style="width: 177px;" (keyup)="dispalye($event)">
+                          <input type="text" *ngIf="searchval == 'value'" class="form-control" placeholder="Search by Skill" formControlName="searchbox" style="width: 177px;" (keyup)="dispalye($event)">
                           <div class="keylist" style="background: white;" *ngIf="isDisplay">
                               <ul class="" style="padding-left: 0px;cursor: pointer;list-style: none;" class="">
                                   <li class="" style="cursor:pointer" *ngFor="let skill of keySkill"
@@ -247,7 +249,7 @@
                               </ul>
                           </div>
 
-                          <input type="text" placeholder="Location" style="width: 175px !important" formControlName="location" placeholder="Location" ngx-google-places-autocomplete
+                          <input type="text" *ngIf="searchval == 'value'" placeholder="Location" style="width: 175px !important" formControlName="location" placeholder="Location" ngx-google-places-autocomplete
                           [options]="options" (onAddressChange)="handleAddressChange($event)">
 
                          <button style="padding: 10px;" (click)="get_all()"><svg width="25" height="25" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -263,7 +265,7 @@
                             <option value="inactive">Inactive</option>
                             <option value="debarred">Debarred</option>
                           </select>
-                         
+                          
 
 
                         <!-- </div> -->
@@ -361,23 +363,26 @@
 
                     
              
-                    <div class="row content-card no-margin padding10" *ngFor="let data of canList">
+                    <div class="row content-card no-margin padding10" *ngFor="let data of canList" style="cursor:pointer">
                       
 
                         <div class="col">
-                            {{data.name}}
+                            <a [routerLink]="['/can-details']"
+                            [queryParams]="{id:data._id}">{{data.name}}</a>
 
                         </div>
 
                         <div class="col-2">
-                            {{data.mobileNumber}}
+                            <a [routerLink]="['/can-details']"
+                            [queryParams]="{id:data._id}">{{data.mobileNumber}}</a>
 
                         </div>
 
                    
 
                         <div class="col">
-                           {{get_location(data.location)}}
+                            <a [routerLink]="['/can-details']"
+                            [queryParams]="{id:data._id}">{{get_location(data.location)}}</a>
 
                         </div>
 
@@ -385,11 +390,13 @@
 
                         <div class="col">
 
-                           {{data.date}}
+                            <a [routerLink]="['/can-details']"
+                            [queryParams]="{id:data._id}">{{data.date}}</a>
   
                           </div>
                         <div class="col">
-                       {{data.latestdate}}
+                            <a [routerLink]="['/can-details']"
+                            [queryParams]="{id:data._id}">{{data.latestdate}}</a>
 
 
                         </div>
@@ -403,7 +410,7 @@
                          </div>
 
                          <div class="col d-flex">
-                            <div class="col-4 active-cng" *ngIf="data.active == false">
+                            <div class="col-4 active-cng" *ngIf="data.active == false && data.adminStatus != 'debarred'">
                               <i><svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect width="24" height="24" rx="5" fill="white" fill-opacity="0.1"/>
                                 <path d="M12 18C8.6862 18 6 15.3138 6 12C6 8.6862 8.6862 6 12 6C15.3138 6 18 8.6862 18 12C18 15.3138 15.3138 18 12 18ZM12 16.8C13.273 16.8 14.4939 16.2943 15.3941 15.3941C16.2943 14.4939 16.8 13.273 16.8 12C16.8 10.727 16.2943 9.50606 15.3941 8.60589C14.4939 7.70571 13.273 7.2 12 7.2C10.727 7.2 9.50606 7.70571 8.60589 8.60589C7.70571 9.50606 7.2 10.727 7.2 12C7.2 13.273 7.70571 14.4939 8.60589 15.3941C9.50606 16.2943 10.727 16.8 12 16.8ZM11.4018 14.4L8.856 11.8542L9.7044 11.0058L11.4018 12.7032L14.7954 9.309L15.6444 10.1574L11.4018 14.4Z" fill="#34A853"/>
@@ -417,7 +424,7 @@
                                    Active
                                       </i>
                             </div>
-                            <div class="col-4 active-cng" *ngIf="data.active == true">
+                            <div class="col-4 active-cng" *ngIf="data.active == true && data.adminStatus != 'debarred'">
                                 <i><svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                   <rect width="24" height="24" rx="5" fill="white" fill-opacity="0.1"/>
                                   <path d="M12 18C8.6862 18 6 15.3138 6 12C6 8.6862 8.6862 6 12 6C15.3138 6 18 8.6862 18 12C18 15.3138 15.3138 18 12 18ZM12 16.8C13.273 16.8 14.4939 16.2943 15.3941 15.3941C16.2943 14.4939 16.8 13.273 16.8 12C16.8 10.727 16.2943 9.50606 15.3941 8.60589C14.4939 7.70571 13.273 7.2 12 7.2C10.727 7.2 9.50606 7.70571 8.60589 8.60589C7.70571 9.50606 7.2 10.727 7.2 12C7.2 13.273 7.70571 14.4939 8.60589 15.3941C9.50606 16.2943 10.727 16.8 12 16.8ZM12 11.1516L13.6968 9.4542L14.5458 10.3032L12.8484 12L14.5458 13.6968L13.6968 14.5458L12 12.8484L10.3032 14.5458L9.4542 13.6968L11.1516 12L9.4542 10.3032L10.3032 9.4542L12 11.1516Z" fill="#0A2647"/>
@@ -430,7 +437,7 @@
                                     Inactive
                                 </i>
                               </div>
-                            <div class="col-4 debar-cng" (click)="debar_ca(data._id,'debarred')" *ngIf="data.adminStatus != 'debarred'">
+                            <!-- <div class="col-4 debar-cng" (click)="debar_ca(data._id,'debarred')" *ngIf="data.adminStatus != 'debarred'">
                               <i><svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect width="24" height="24" rx="5" fill="white" fill-opacity="0.1"/>
                                 <path d="M12.4739 13.5792V14.9322C11.888 14.7251 11.2609 14.6615 10.6453 14.747C10.0297 14.8324 9.44359 15.0642 8.93619 15.4231C8.42879 15.782 8.0149 16.2573 7.72928 16.8093C7.44366 17.3612 7.29466 17.9737 7.29478 18.5952L6 18.5945C5.9998 17.804 6.18057 17.0239 6.52846 16.314C6.87635 15.6042 7.38213 14.9833 8.00705 14.4992C8.63196 14.015 9.35942 13.6803 10.1337 13.5207C10.9079 13.3611 11.7085 13.3816 12.4739 13.5792ZM11.1791 12.7687C9.03302 12.7687 7.29478 11.0304 7.29478 8.88433C7.29478 6.73824 9.03302 5 11.1791 5C13.3252 5 15.0634 6.73824 15.0634 8.88433C15.0634 11.0304 13.3252 12.7687 11.1791 12.7687ZM11.1791 11.4739C12.6098 11.4739 13.7687 10.3151 13.7687 8.88433C13.7687 7.4536 12.6098 6.29478 11.1791 6.29478C9.74838 6.29478 8.58956 7.4536 8.58956 8.88433C8.58956 10.3151 9.74838 11.4739 11.1791 11.4739ZM15.7108 15.7376L17.0839 14.3638L18 15.2799L16.6262 16.653L18 18.0261L17.0839 18.9422L15.7108 17.5684L14.3377 18.9422L13.4217 18.0261L14.7954 16.653L13.4217 15.2799L14.3377 14.3638L15.7108 15.7376Z" fill="#B73E3E"/>
@@ -443,7 +450,7 @@
                                       </i>
                                 
                                   </i>
-                            </div>
+                            </div> -->
                             <div class="col-4 text-danger" *ngIf="data.adminStatus == 'debarred'">
                                {{data.adminStatus}}
                               </div>

@@ -16,7 +16,9 @@ import { EnquiryPopupComponent } from './enquiry-popup/enquiry-popup.component';
 import { ManageJobPostComponent } from './manage-job-post/manage-job-post.component';
 import { ReportedJobpostComponent } from './reported-jobpost/reported-jobpost.component';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
-
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { CanDetailsComponent } from './can-details/can-details.component';
+import { EmpViewComponent } from './emp-view/emp-view.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
     AddfaqComponent,
     EnquiryPopupComponent,
     ManageJobPostComponent,
-    ReportedJobpostComponent
+    ReportedJobpostComponent,
+    CanDetailsComponent,
+    EmpViewComponent
     
   ],
   imports: [
@@ -42,6 +46,7 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
     FormsModule,
     HttpClientModule,
     GooglePlaceModule,
+    BsDatepickerModule.forRoot(),
 
   ],
   providers: [],
