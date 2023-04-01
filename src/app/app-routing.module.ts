@@ -23,12 +23,11 @@ const routes: Routes = [
   {path:'repenq',component:ReplyEnquiryComponent},
   {path:'addenq',component:AddEnquiryComponent},
   {path:'manage-employer',component:ManageemployerComponent},
-  {path:'manage-candidate',component:ManageCandidateComponent},
+  {path:'',component:ManageCandidateComponent},
   {path:'manage-job',component:ManageJobPostComponent},
   {path:'manage-reportedjob',component:ReportedJobpostComponent},
   {path:'can-details',component:CanDetailsComponent},
   {path:'employer-detail',component:EmpViewComponent}
-  
 ];
 
 @NgModule({
