@@ -22,6 +22,7 @@ export class CommonService {
   get_all_jobs(data:any){
   return this.http.post(this.baseurl+'/v1/employerdetail/get_admin_side_all_post_jobs_details',data)
   }
+ 
   change_status(id:any,data:any){
     return this.http.put(this.baseurl+'/v1/employerdetail/update_active_deactive/' + id,data)
   }
@@ -70,4 +71,19 @@ export class CommonService {
   get_emp_detail(id:any){
     return this.http.get(this.baseurl+'/v1/employerdetail/getEmployerRegister/' + id)
   }
+
+  delete_emp_jobpost(id:any){
+    return this.http.delete(this.baseurl+`/v1/employerdetail/deleteEmpDetails/${id}`)
+  }
+  getallApplies(){
+    return this.http.get(this.baseurl+'/v1/employerdetail/get_admin_side_all_post_jobs_details')
+
+  }
+
+  employerDetailspatch(id:any){
+    return this.http.get(this.baseurl+`/v1/employerRegistration/getEmployerById/${id}`)
+
+  }
+
+
 }

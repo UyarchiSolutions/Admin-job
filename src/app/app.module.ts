@@ -19,6 +19,10 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { CanDetailsComponent } from './can-details/can-details.component';
 import { EmpViewComponent } from './emp-view/emp-view.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { DuplicateCandidateComponent } from './duplicate-candidate/duplicate-candidate.component';
+import { PlanapprovalComponent } from './planapproval/planapproval.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,7 @@ import { EmpViewComponent } from './emp-view/emp-view.component';
     ManageCandidateComponent,
     ManageEnquiryComponent,
     ManageFaqComponent,
-    
+    RegisterComponent,
     ManageJobpostAppliesComponent,
     ManagePlanComponent,
     ManagePlanUsageComponent,
@@ -36,7 +40,12 @@ import { EmpViewComponent } from './emp-view/emp-view.component';
     ManageJobPostComponent,
     ReportedJobpostComponent,
     CanDetailsComponent,
-    EmpViewComponent
+    EmpViewComponent,
+    SidebarComponent,
+    DuplicateCandidateComponent,
+    PlanapprovalComponent,
+    ManagePlanComponent,
+
     
   ],
   imports: [

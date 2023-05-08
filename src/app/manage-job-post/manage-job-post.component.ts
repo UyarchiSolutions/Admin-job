@@ -49,10 +49,18 @@ constructor(  private commonservice: CommonService,
   }
   get_all(){
     this.commonservice.get_all_jobs(this.jobpostform.value).subscribe((res: any) => {
-      console.log(res.user);
+      console.log(res);
       this.jobList = res.data
     });
   }
+
+getApplies(){
+  this.commonservice.getallApplies().subscribe((res: any) => {
+    console.log(res);
+    this.jobList = res.data
+  });
+}
+
   get_all_sort(e:any){
     
     this.commonservice.get_all_jobs(this.jobpostform.value).subscribe((res: any) => {
@@ -94,13 +102,16 @@ constructor(  private commonservice: CommonService,
         this.get_all()
       });
   }
-  get_applied_can(id:any){
+  get_applied_can(data:any,id:any){
+    if(data.appliedcount){
+
     this.Tab = 2
 
     this.commonservice.view_post(id, this.range, this.page).subscribe((res: any) => {
       this.applied_data = res.data;
       console.log(this.applied_data);
     });
+  }
   }
   dispalye(data: any) {
     console.log('lusu');
@@ -172,7 +183,8 @@ constructor(  private commonservice: CommonService,
   job_details(id:any) {
     this.commonservice.get_job_detail(id).subscribe((res:any)=>{
       console.log(res)
-      this.jobdetail = res.user[0]
+      this.jobdetail = res
+      console.log(this.jobdetail)
       this.from = this.jobdetail.salaryRangeFrom
       console.log(this.from)
       this.from1 = this.from / 100000
@@ -180,4 +192,36 @@ constructor(  private commonservice: CommonService,
       this.to1 = this.to / 100000
     })
   }
+
+deletejobPost(id:any){
+console.log(id)
+this.commonservice.delete_emp_jobpost(id).subscribe((res:any)=>{
+  console.log(res)
+  this.get_all()
+})
+}
+showProfilePopup=false
+profiledata:any
+canresume:any
+viewresume=false
+
+showProfile(data:any){
+  console.log(data)
+  this.profiledata=data.candidateData
+  this.showProfilePopup=true
+  this.canresume=data.candidateData.resume
+  console.log(this.canresume)
+}
+closePopup(){
+  this.showProfilePopup=false
+}
+showResume(){
+  this.viewresume=true
+}
+
+
+
+
+
+
 }

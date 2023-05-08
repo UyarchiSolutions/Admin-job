@@ -113,4 +113,16 @@ export class ManageemployerComponent implements OnInit {
       this.get_all()
     });
   }
+
+
+  editEmpProfile(data:any){
+
+
+this.router.navigate(['/employerRegister'],{queryParams:{tab:data}})
+  }
+
+
+
+
+
 }
