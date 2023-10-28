@@ -23,6 +23,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { DuplicateCandidateComponent } from './duplicate-candidate/duplicate-candidate.component';
 import { PlanapprovalComponent } from './planapproval/planapproval.component';
 import { RegisterComponent } from './register/register.component';
+import { ManageStreamPlanComponent } from './manage-stream-plan/manage-stream-plan.component';
+import { CreateStreamPlanComponent } from './create-stream-plan/create-stream-plan.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import { RegisterComponent } from './register/register.component';
     DuplicateCandidateComponent,
     PlanapprovalComponent,
     ManagePlanComponent,
+    ManageStreamPlanComponent,
+    CreateStreamPlanComponent,
 
     
   ],

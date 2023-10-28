@@ -20,34 +20,38 @@ import { PlanapprovalComponent } from './planapproval/planapproval.component';
 import { ManagePlanUsageComponent } from './manage-plan-usage/manage-plan-usage.component';
 import { DuplicateCandidateComponent } from './duplicate-candidate/duplicate-candidate.component';
 import { RegisterComponent } from './register/register.component';
+import { ManageStreamPlanComponent } from './manage-stream-plan/manage-stream-plan.component';
+import { CreateStreamPlanComponent } from './create-stream-plan/create-stream-plan.component';
 
 const routes: Routes = [
-  {path:"sidebar",component:SidebarComponent},
-  {path:'',component:ManageCandidateComponent},
-  {path:"duplicate-candidate",component:DuplicateCandidateComponent},
-  {path:'manage-employer',component:ManageemployerComponent},
-  {path:'manage-job',component:ManageJobPostComponent},
-{path:"manage-job-applies",component:ManageJobpostAppliesComponent},
-{path:'manage-reportedjob',component:ReportedJobpostComponent},
-{path:"manage-plan",component:ManagePlanComponent},
-{path:"plan-approval",component:PlanapprovalComponent},
-{path:"manage-plan-usage",component:ManagePlanUsageComponent},
-{path:'manageEnquiry',component:ManageEnquiryComponent},
-  {path:'manageFaq',component:ManageFaqComponent},
-{path:"employerRegister",component:RegisterComponent},
+  { path: 'sidebar', component: SidebarComponent },
+  { path: '', component: ManageCandidateComponent },
+  { path: 'duplicate-candidate', component: DuplicateCandidateComponent },
+  { path: 'manage-employer', component: ManageemployerComponent },
+  { path: 'manage-job', component: ManageJobPostComponent },
+  { path: 'manage-job-applies', component: ManageJobpostAppliesComponent },
+  { path: 'manage-reportedjob', component: ReportedJobpostComponent },
+  { path: 'manage-plan', component: ManagePlanComponent },
+  { path: 'plan-approval', component: PlanapprovalComponent },
+  { path: 'manage-plan-usage', component: ManagePlanUsageComponent },
+  { path: 'manageEnquiry', component: ManageEnquiryComponent },
+  { path: 'manageFaq', component: ManageFaqComponent },
+  { path: 'employerRegister', component: RegisterComponent },
 
-  {path:'addFaq',component:AddfaqComponent},
-  {path:'enqpop',component:EnquiryPopupComponent},
-  {path:'enqrew',component:EnquiryPreviewComponent},
-  {path:'repenq',component:ReplyEnquiryComponent},
-  {path:'addenq',component:AddEnquiryComponent},
+  { path: 'addFaq', component: AddfaqComponent },
+  { path: 'enqpop', component: EnquiryPopupComponent },
+  { path: 'enqrew', component: EnquiryPreviewComponent },
+  { path: 'repenq', component: ReplyEnquiryComponent },
+  { path: 'addenq', component: AddEnquiryComponent },
 
-  {path:'can-details',component:CanDetailsComponent},
-  {path:'employer-detail',component:EmpViewComponent}
+  { path: 'can-details', component: CanDetailsComponent },
+  { path: 'employer-detail', component: EmpViewComponent },
+  { path: 'manage-stream-plan', component: ManageStreamPlanComponent },
+  { path: 'stream-plan', component: CreateStreamPlanComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
