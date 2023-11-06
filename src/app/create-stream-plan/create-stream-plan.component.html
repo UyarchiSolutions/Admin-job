@@ -12,10 +12,10 @@
                     <div class="rad">
                         <p>User Type:</p>
                         <input type="radio" id="Cand" name="userType" value="Candidate" style="margin-left: 60px;"
-                            formControlName="userType">
+                            (change)="userChange($event)" formControlName="userType">
                         <label for="Cand" style="padding-left: 5px;">Candidate</label>
                         <input type="radio" id="Emp" name="userType" value="Employer" style="margin-left: 50px;"
-                            formControlName="userType">
+                            (change)="userChange($event)" formControlName="userType">
                         <label for="Emp" style="padding-left: 5px;">Employer</label>
                     </div>
                     <div class="err">
@@ -181,7 +181,7 @@
                         <p *ngIf="submitted && planform.get('RaiseHands')?.invalid">Select Raise Hands Controller !</p>
                     </div>
                     <!-- completed Stream -->
-                    <div class="rad"> 
+                    <div class="rad">
                         <p>Completed Stream:</p>
                         <input type="radio" id="csyes" name="completedStream" value="Yes" style="margin-left: 60px;"
                             formControlName="completedStream" (change)="completedStreamControl($event)">
@@ -193,7 +193,7 @@
                     <div class="err">
                         <p *ngIf="submitted && planform.get('completedStream')?.invalid">Select Completed Stream !</p>
                     </div>
-                    <div  *ngIf="completedStream == 'Yes' ">
+                    <div *ngIf="completedStream == 'Yes' ">
                         <p>Stream Validity :</p>
                         <input type="tel" placeholder="Enter Stream Validity"
                             onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57"
@@ -212,10 +212,10 @@
                         </select>
                     </div>
 
-                    <div class="err"  *ngIf="completedStream == 'Yes' ">
+                    <div class="err" *ngIf="completedStream == 'Yes' ">
                         <p *ngIf="submitted && planform.get('streamvalidity')?.invalid">Enter streamvalidity</p>
                     </div>
-                    <div class="err"  *ngIf="completedStream == 'Yes' ">
+                    <div class="err" *ngIf="completedStream == 'Yes' ">
                         <p *ngIf="submitted && planform.get('DurationType')?.invalid">Select Duration Type</p>
                     </div>
                     <div class="rad">
@@ -231,13 +231,49 @@
                         <p *ngIf="submitted && planform.get('transaction')?.invalid">Select Transaction </p>
                     </div>
 
-                    <div>
+                    <div *ngIf="usertype == 'Candidate' ">
+                        <p>No of Jobs Applies:</p>
+                        <input type="radio" id="lim" name="limit" value="Limited" style="margin-left: 60px;"
+                            (change)="LimitChange($event)" formControlName="limited">
+                        <label for="lim" style="padding-left: 5px;">Limited</label>
+                        <input type="radio" id="unlimit" name="limit" value="Unlimited" style="margin-left: 50px;"
+                            (change)="LimitChange($event)" formControlName="limited">
+                        <label for="unlimit" style="padding-left: 5px;">Unlimited</label>
+                    </div>
+                    <div class="err" *ngIf="usertype == 'Candidate' ">
+                        <p *ngIf="submitted && planform.get('Candidate_Contact_reveal')?.invalid">Enter Jobs Applies
+                            Limtation</p>
+                    </div>
+                    <div *ngIf="usertype == 'Candidate' && limit =='Limited'  ">
+                        <p>No of Jobs Applies:</p>
+                        <input type="tel" placeholder="Enter Cand Contact Reveal"
+                            onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57"
+                            formControlName="Candidate_Contact_reveal" />
+                    </div>
+                    <div class="err" *ngIf="usertype == 'Candidate' && limit =='Limited'  ">
+                        <p *ngIf="submitted && planform.get('Candidate_Contact_reveal')?.invalid">Enter Jobs Applies</p>
+                    </div>
+
+                    <div *ngIf="usertype == 'Employer' ">
+                        <p>No of Cand Contact Reveal </p>
+                        <input type="radio" id="limcand" name="limitcan" value="Limited" style="margin-left: 60px;"
+                            (change)="LimitChange($event)" formControlName="limited">
+                        <label for="limcand" style="padding-left: 5px;">Limited</label>
+                        <input type="radio" id="unlimitcand" name="limitcan" value="Unlimited"
+                            style="margin-left: 50px;" (change)="LimitChange($event)" formControlName="limited">
+                        <label for="unlimitcand" style="padding-left: 5px;">Unlimited</label>
+                    </div>
+                    <div class="err" *ngIf="usertype == 'Employer' ">
+                        <p *ngIf="submitted && planform.get('Candidate_Contact_reveal')?.invalid">Select Contact Reveals
+                            Limitation</p>
+                    </div>
+                    <div *ngIf="usertype == 'Employer' && limit == 'Limited' ">
                         <p>No of Cand Contact Reveal:</p>
                         <input type="tel" placeholder="Enter Cand Contact Reveal"
                             onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57"
                             formControlName="Candidate_Contact_reveal" />
                     </div>
-                    <div class="err">
+                    <div class="err" *ngIf="usertype == 'Employer' && limit == 'Limited' ">
                         <p *ngIf="submitted && planform.get('Candidate_Contact_reveal')?.invalid">Enter Candidate
                             Contact Reveal</p>
                     </div>

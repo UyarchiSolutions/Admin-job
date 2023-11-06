@@ -47,6 +47,7 @@ export class CreateStreamPlanComponent implements OnInit {
     Teaser: new FormControl('', Validators.required),
     Special_Notification: new FormControl('', Validators.required),
     Service_Charges: new FormControl('', Validators.required),
+    limited: new FormControl('', Validators.required),
     // TimeType: new FormControl('', Validators.required),
   });
 
@@ -58,6 +59,20 @@ export class CreateStreamPlanComponent implements OnInit {
       this.planform.get('raisehandcontrol')?.setErrors(null);
     }
   }
+
+  usertype: any;
+  userChange(e: any) {
+    this.usertype = e.target.value;
+  }
+
+  limit: any;
+  LimitChange(E: any) {
+    this.limit = E.target.value;
+    if (this.limit == 'Unlimited') {
+      this.planform.get('Candidate_Contact_reveal')?.setErrors(null);
+    }
+  }
+
   completedStream: any = null;
   completedStreamControl(e: any) {
     let val = e.target.value;
