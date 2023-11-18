@@ -58,14 +58,17 @@
                     <div class="rad">
                         <p>No Of Host Per Stream:</p>
                         <input type="radio" id="1host" name="no_of_host" value="1" style="margin-left: 0px;"
-                            formControlName="no_of_host">
+                            formControlName="no_of_host" [checked]="usertype == 'Candidate' "
+                            [readOnly]="usertype == 'Candidate'">
                         <label for="1host" style="padding-left: 5px;">Single Host</label>
                         <input type="radio" id="2host" name="no_of_host" value="2" style="margin-left: 50px;"
-                            formControlName="no_of_host">
-                        <label for="2host" style="padding-left: 5px;">Double Host</label>
+                            formControlName="no_of_host" *ngIf="usertype != 'Candidate'">
+                        <label for="2host" style="padding-left: 5px;" *ngIf="usertype != 'Candidate'">Double
+                            Host</label>
                         <input type="radio" id="3host" name="no_of_host" value="3" style="margin-left: 50px;"
-                            formControlName="no_of_host">
-                        <label for="3host" style="padding-left: 5px;">Triple Host</label>
+                            formControlName="no_of_host" *ngIf="usertype != 'Candidate'">
+                        <label for="3host" style="padding-left: 5px;" *ngIf="usertype != 'Candidate'">Triple
+                            Host</label>
                     </div>
                     <div class="err">
                         <p *ngIf="submitted && planform.get('no_of_host')?.invalid">Select Plan Mode !</p>
@@ -75,7 +78,8 @@
                         <p>No Of Stream:</p>
                         <input type="tel" placeholder="Enter No Of Stream"
                             onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57"
-                            formControlName="numberofStream" />
+                            formControlName="numberofStream" [value]=" usertype == 'Candidate'?1:'' "
+                            [readOnly]="usertype == 'Candidate' " />
                     </div>
                     <div class="err">
                         <p *ngIf="submitted && planform.get('numberofStream')?.invalid">Enter No Of Stream !</p>
@@ -148,7 +152,7 @@
                         <p>No Of Post Per Stream:</p>
                         <input type="tel" placeholder="No Of Post Per Stream"
                             onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57"
-                            formControlName="PostCount" />
+                            formControlName="PostCount" readonly />
                     </div>
                     <div class="err">
                         <p *ngIf="submitted && planform.get('PostCount')?.invalid">Enter Post Count !</p>
@@ -173,9 +177,17 @@
                         <input type="radio" id="rhcyes" name="raisehandcontrol" value="Admin" style="margin-left: 60px;"
                             formControlName="raisehandcontrol">
                         <label for="rhcyes" style="padding-left: 5px;">Admin</label>
-                        <input type="radio" id="rhcno" name="raisehandcontrol" value="Seller" style="margin-left: 35px;"
-                            formControlName="raisehandcontrol">
-                        <label for="rhcno" style="padding-left: 5px;">Seller</label>
+                        <input type="radio" id="rhcno" name="raisehandcontrol" value="Candidate"
+                            style="margin-left: 35px;" formControlName="raisehandcontrol"
+                            *ngIf=" usertype == 'Candidate' ">
+                        <label for="rhcno" style="padding-left: 5px;"
+                            *ngIf=" usertype == 'Candidate' ">Candidate</label>
+
+                            <input type="radio" id="rhcno" name="raisehandcontrol" value="Candidate"
+                            style="margin-left: 35px;" formControlName="raisehandcontrol"
+                            *ngIf=" usertype == 'Employer' ">
+                        <label for="rhcno" style="padding-left: 5px;"
+                            *ngIf=" usertype == 'Employer' ">Employer</label>
                     </div>
                     <div class="err" *ngIf="raisehandVal == 'Yes' ">
                         <p *ngIf="submitted && planform.get('RaiseHands')?.invalid">Select Raise Hands Controller !</p>

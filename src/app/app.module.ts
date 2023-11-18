@@ -25,6 +25,10 @@ import { PlanapprovalComponent } from './planapproval/planapproval.component';
 import { RegisterComponent } from './register/register.component';
 import { ManageStreamPlanComponent } from './manage-stream-plan/manage-stream-plan.component';
 import { CreateStreamPlanComponent } from './create-stream-plan/create-stream-plan.component';
+import { PlanApprovalComponent } from './plan-approval/plan-approval.component';
+import { ClimbEventCandidatesComponent } from './climb-event-candidates/climb-event-candidates.component';
+import { EventSlotComponent } from './event-slot/event-slot.component';
+import { EventSlotCandComponent } from './event-slot-cand/event-slot-cand.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +53,10 @@ import { CreateStreamPlanComponent } from './create-stream-plan/create-stream-pl
     ManagePlanComponent,
     ManageStreamPlanComponent,
     CreateStreamPlanComponent,
+    PlanApprovalComponent,
+    ClimbEventCandidatesComponent,
+    EventSlotComponent,
+    EventSlotCandComponent,
 
     
   ],

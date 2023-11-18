@@ -139,8 +139,36 @@ export class CommonService {
     return this.http.post(this.baseurl + '/v1/plan', data);
   }
 
-  getPlanes(){
-    return this.http.get(this.baseurl +"/v1/plan/all")
+  getPlanes() {
+    return this.http.get(this.baseurl + '/v1/plan/all');
   }
 
+  getPlanesForApproval() {
+    return this.http.get(this.baseurl + '/v1/plan/getPurchasedPlan/Admin');
+  }
+
+  updatePurchasedPlan(id: any, data: any) {
+    return this.http.put(
+      this.baseurl + '/v1/plan/update/Purchased/Planes/' + id,
+      data
+    );
+  }
+
+  getClicmEvent() {
+    return this.http.get(
+      this.baseurl + '/v1/climbevent/getAllRegistered/Candidate'
+    );
+  }
+
+  getSlots() {
+    return this.http.get(
+      this.baseurl + '/v1/climbevent/getSlotDetails/WithCandidate'
+    );
+  }
+
+  getCandidate_BySlot(date: any, time: any) {
+    return this.http.get(
+      this.baseurl + `/v1/climbevent/getCandidateBySlot/${date}/${time}`
+    );
+  }
 }
