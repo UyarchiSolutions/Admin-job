@@ -1,0 +1,26 @@
+<div class="page-container">
+    <div class="page-header">
+        <h3>Climb Login</h3>
+    </div>
+    <div class="body-container">
+        <div class="title"></div>
+        <div class="form-container" [formGroup]="loginForm">
+            <div>
+                <p>User Name:</p>
+                <input type="text" placeholder="Enter User Name" formControlName="name"
+                    [class.err]="loginForm.get('name')?.invalid && submitted" />
+            </div>
+            <div>
+                <p>Password:</p>
+                <input type="text" placeholder="Enter Valid Password" formControlName="password"
+                    [class.err]="loginForm.get('password')?.invalid && submitted" name="password" />
+            </div>
+            <div *ngIf="serError !=null ">
+                <p style="color: red;padding-left: 135px;">{{serError}}</p>
+            </div>
+        </div>
+        <div class="login-btn">
+            <button (click)="login()">Login</button>
+        </div>
+    </div>
+</div>

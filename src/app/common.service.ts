@@ -171,4 +171,8 @@ export class CommonService {
       this.baseurl + `/v1/climbevent/getCandidateBySlot/${date}/${time}`
     );
   }
+
+  adminLogin(data: any) {
+    return this.http.post(this.baseurl + '/v1/auth/login', data);
+  }
 }

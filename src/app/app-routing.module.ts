@@ -26,36 +26,48 @@ import { PlanApprovalComponent } from './plan-approval/plan-approval.component';
 import { ClimbEventCandidatesComponent } from './climb-event-candidates/climb-event-candidates.component';
 import { EventSlotComponent } from './event-slot/event-slot.component';
 import { EventSlotCandComponent } from './event-slot-cand/event-slot-cand.component';
+import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: 'sidebar', component: SidebarComponent },
-  { path: '', component: ManageCandidateComponent },
-  { path: 'duplicate-candidate', component: DuplicateCandidateComponent },
-  { path: 'manage-employer', component: ManageemployerComponent },
-  { path: 'manage-job', component: ManageJobPostComponent },
-  { path: 'manage-job-applies', component: ManageJobpostAppliesComponent },
-  { path: 'manage-reportedjob', component: ReportedJobpostComponent },
-  { path: 'manage-plan', component: ManagePlanComponent },
-  { path: 'plan-approval', component: PlanapprovalComponent },
-  { path: 'manage-plan-usage', component: ManagePlanUsageComponent },
-  { path: 'manageEnquiry', component: ManageEnquiryComponent },
-  { path: 'manageFaq', component: ManageFaqComponent },
-  { path: 'employerRegister', component: RegisterComponent },
+  { path: '', component: LoginComponent },
+  {
+    path: '',
+    component: DashboardComponent,
+    children: [
+      { path: 'sidebar', component: SidebarComponent },
+      { path: 'home', component: ManageCandidateComponent },
+      { path: 'duplicate-candidate', component: DuplicateCandidateComponent },
+      { path: 'manage-employer', component: ManageemployerComponent },
+      { path: 'manage-job', component: ManageJobPostComponent },
+      { path: 'manage-job-applies', component: ManageJobpostAppliesComponent },
+      { path: 'manage-reportedjob', component: ReportedJobpostComponent },
+      { path: 'manage-plan', component: ManagePlanComponent },
+      { path: 'plan-approval', component: PlanapprovalComponent },
+      { path: 'manage-plan-usage', component: ManagePlanUsageComponent },
+      { path: 'manageEnquiry', component: ManageEnquiryComponent },
+      { path: 'manageFaq', component: ManageFaqComponent },
+      { path: 'employerRegister', component: RegisterComponent },
 
-  { path: 'addFaq', component: AddfaqComponent },
-  { path: 'enqpop', component: EnquiryPopupComponent },
-  { path: 'enqrew', component: EnquiryPreviewComponent },
-  { path: 'repenq', component: ReplyEnquiryComponent },
-  { path: 'addenq', component: AddEnquiryComponent },
+      { path: 'addFaq', component: AddfaqComponent },
+      { path: 'enqpop', component: EnquiryPopupComponent },
+      { path: 'enqrew', component: EnquiryPreviewComponent },
+      { path: 'repenq', component: ReplyEnquiryComponent },
+      { path: 'addenq', component: AddEnquiryComponent },
 
-  { path: 'can-details', component: CanDetailsComponent },
-  { path: 'employer-detail', component: EmpViewComponent },
-  { path: 'manage-stream-plan', component: ManageStreamPlanComponent },
-  { path: 'stream-plan', component: CreateStreamPlanComponent },
-  { path: 'stream-plan-approval', component: PlanApprovalComponent },
-  { path: 'climb-event-candidate', component: ClimbEventCandidatesComponent },
-  { path: 'event-slot', component: EventSlotComponent },
-  { path: 'event-slot-cand', component: EventSlotCandComponent },
+      { path: 'can-details', component: CanDetailsComponent },
+      { path: 'employer-detail', component: EmpViewComponent },
+      { path: 'manage-stream-plan', component: ManageStreamPlanComponent },
+      { path: 'stream-plan', component: CreateStreamPlanComponent },
+      { path: 'stream-plan-approval', component: PlanApprovalComponent },
+      {
+        path: 'climb-event-candidate',
+        component: ClimbEventCandidatesComponent,
+      },
+      { path: 'event-slot', component: EventSlotComponent },
+      { path: 'event-slot-cand', component: EventSlotCandComponent },
+    ],
+  },
 ];
 
 @NgModule({

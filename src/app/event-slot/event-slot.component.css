@@ -79,3 +79,10 @@ table tbody td {
   text-decoration: underline;
   cursor: pointer;
 }
+
+.download {
+  width: 50px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+}

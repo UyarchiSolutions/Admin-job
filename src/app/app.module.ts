@@ -10,8 +10,8 @@ import { ManageJobpostAppliesComponent } from './manage-jobpost-applies/manage-j
 import { ManagePlanUsageComponent } from './manage-plan-usage/manage-plan-usage.component';
 import { ManagePlanComponent } from './manage-plan/manage-plan.component';
 import { ManageemployerComponent } from './manageemployer/manageemployer.component';
-import {AddfaqComponent} from './addfaq/addfaq.component';
-import {  HttpClientModule} from '@angular/common/http';
+import { AddfaqComponent } from './addfaq/addfaq.component';
+import { HttpClientModule } from '@angular/common/http';
 import { EnquiryPopupComponent } from './enquiry-popup/enquiry-popup.component';
 import { ManageJobPostComponent } from './manage-job-post/manage-job-post.component';
 import { ReportedJobpostComponent } from './reported-jobpost/reported-jobpost.component';
@@ -29,6 +29,8 @@ import { PlanApprovalComponent } from './plan-approval/plan-approval.component';
 import { ClimbEventCandidatesComponent } from './climb-event-candidates/climb-event-candidates.component';
 import { EventSlotComponent } from './event-slot/event-slot.component';
 import { EventSlotCandComponent } from './event-slot-cand/event-slot-cand.component';
+import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -57,8 +59,8 @@ import { EventSlotCandComponent } from './event-slot-cand/event-slot-cand.compon
     ClimbEventCandidatesComponent,
     EventSlotComponent,
     EventSlotCandComponent,
-
-    
+    LoginComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,9 +70,8 @@ import { EventSlotCandComponent } from './event-slot-cand/event-slot-cand.compon
     HttpClientModule,
     GooglePlaceModule,
     BsDatepickerModule.forRoot(),
-
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
