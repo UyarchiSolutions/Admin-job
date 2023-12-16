@@ -1,0 +1,33 @@
+<div class="page-container">
+    <div class="page-body">
+        <div class="page-title">
+            <div class="choose-image" *ngIf="fileName == null ">
+                <label for="image" style="display: flex; align-items: center; justify-content: center;"> <span
+                        style="padding-right: 5px;"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M1 14.5V16.75C1 17.3467 1.23705 17.919 1.65901 18.341C2.08097 18.7629 2.65326 19 3.25 19H16.75C17.3467 19 17.919 18.7629 18.341 18.341C18.7629 17.919 19 17.3467 19 16.75V14.5M5.5 5.5L10 1M10 1L14.5 5.5M10 1V14.5"
+                                stroke="#1877F2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </span> Select File</label>
+                <input style="display: none" id="image" type="file" (change)="fileUpload($event)" />
+            </div>
+            <div class="file" *ngIf="fileName != null ">
+                <p>{{fileName}} <span style="color: #0a2647; cursor: pointer;" (click)="removeFile()">X</span> </p>
+            </div>
+            <div class="upload" *ngIf="fileName != null">
+                <button (click)="getDatas()">Upload</button>
+            </div>
+
+            <div class="loading" *ngIf="load">
+                <p>Loading.....</p>
+            </div>
+            <div class="matched-download" *ngIf="matchedData.length>0">
+                Exists Data <button (click)="downloadClickMatched()">Download</button>
+            </div>
+            <div class="Unmatched-download"   *ngIf="UnMatchedData.length>0">
+               Fresh Data <button (click)="downloadClickUnMatched()">Download</button>
+            </div>
+        </div>
+    </div>
+</div>

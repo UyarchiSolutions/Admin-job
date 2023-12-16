@@ -31,12 +31,19 @@
 
                             <ul class="dropdown-menu">
                                 <!-- <li [routerLink]=""><a class="dropdown-item" href="#" routerLink="">Candidate</a></li> -->
-                                <li [routerLink]="['/climb-event-candidate']"><a class="dropdown-item" href="#" routerLink="">by Registration</a></li>
-                                <li [routerLink]="['/event-slot']"><a class="dropdown-item" href="#" routerLink="">by Slot</a></li>
-
-<!-- 
-                                <li [routerLink]="['/duplicate-candidate']"><a class="dropdown-item">Duplicate
-                                        Candidate</a></li> -->
+                                <li><a [routerLink]="['/admin/climb-event-candidate']" class="dropdown-item"
+                                        routerLink="">by
+                                        Registration</a></li>
+                                <li><a [routerLink]="['/admin/event-slot']" class="dropdown-item" routerLink="">by
+                                        Slot</a></li>
+                                <li><a [routerLink]="['/admin/event-attended']" class="dropdown-item" routerLink="">by
+                                        Attended</a></li>
+                                <li><a [routerLink]="['/admin/test-users']" class="dropdown-item" routerLink="">
+                                        Test New Users</a></li>
+                                <li><a [routerLink]="['/admin/file-download']" class="dropdown-item" routerLink="">
+                                        Cand File Download</a></li>
+                                <!-- 
+                                <li [routerLink]="['/duplicate-candidate']"><a class="dropdown-item">DuplicateCandidate</a></li> -->
 
                             </ul>
                         </div>

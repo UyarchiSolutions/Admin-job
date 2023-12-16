@@ -64,7 +64,7 @@ table tbody td {
   color: #0a2647;
   height: 30px;
   /* display: flex;
-    justify-content: space-between; */
+      justify-content: space-between; */
 }
 
 .active {
@@ -101,59 +101,23 @@ table tbody td {
   background-color: #0a2647;
   border-radius: 4px;
 }
-
-.popup-2 {
-  height: 100%;
-  z-index: 100000000000000;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
+.view-btn {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-family: "Poppins";
+}
+.download {
+  margin-left: 35px;
   display: flex;
-  align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  overflow: auto;
+  align-items: center;
 }
 
-.popup-container-2 {
-  z-index: 1;
-  background-color: #e7e9ed !important;
-  min-width: 50%;
-  max-width: 50%;
-  height: 600px;
-  overflow: auto;
-  border-radius: 25px;
-}
-
-.popup-container-2::-webkit-scrollbar {
-  display: none;
-}
-
-.popup-close-2 {
-  height: 100%;
-  width: 100%;
-  top: 0;
-  position: fixed;
-  z-index: 0.5;
-}
-
-.content-title p {
-  padding-top: 19px;
-  text-align: center;
-  font-size: 30px;
-  color: orangered;
-}
-
-.user-data {
-  width: 70%;
-  margin: auto;
-}
-
-.user-data .Fields {
-  display: flex;
-}
-
-.user-data .Fields label {
-  width: 30%;
+.download button {
+  border: none;
+  background: white;
+  border-radius: 4px;
+  color: #0a2647;
+  height: 35px;
 }

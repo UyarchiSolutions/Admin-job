@@ -28,11 +28,15 @@ import { EventSlotComponent } from './event-slot/event-slot.component';
 import { EventSlotCandComponent } from './event-slot-cand/event-slot-cand.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AttendedComponent } from './attended/attended.component';
+import { AttendedViewComponent } from './attended-view/attended-view.component';
+import { TestNewUsersComponent } from './test-new-users/test-new-users.component';
+import { FileDownloadComponent } from './file-download/file-download.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   {
-    path: '',
+    path: 'admin',
     component: DashboardComponent,
     children: [
       { path: 'sidebar', component: SidebarComponent },
@@ -66,6 +70,10 @@ const routes: Routes = [
       },
       { path: 'event-slot', component: EventSlotComponent },
       { path: 'event-slot-cand', component: EventSlotCandComponent },
+      { path: 'event-attended', component: AttendedComponent },
+      { path: 'event-attended-view', component: AttendedViewComponent },
+      { path: 'test-users', component: TestNewUsersComponent },
+      { path: 'file-download', component: FileDownloadComponent },
     ],
   },
 ];

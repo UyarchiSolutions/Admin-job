@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   loggedIn() {
     let token = localStorage.getItem('admintoken');
     if (token) {
-      this.route.navigateByUrl('/home');
+      this.route.navigateByUrl('/admin/home');
     }
   }
 
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       this.api.adminLogin(this.loginForm.value).subscribe(
         (e: any) => {
           localStorage.setItem('admintoken', e.tokens.access.token);
-          this.route.navigateByUrl('/home');
+          this.route.navigateByUrl('/admin/home');
         },
         (err: any) => {
           this.serError = err.error.message;

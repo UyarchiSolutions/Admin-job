@@ -64,7 +64,7 @@ table tbody td {
   color: #0a2647;
   height: 30px;
   /* display: flex;
-    justify-content: space-between; */
+      justify-content: space-between; */
 }
 
 .active {
@@ -75,6 +75,46 @@ table tbody td {
   color: #34a853;
   height: 30px;
 }
+.filters {
+  padding-left: 30px;
+  display: flex;
+}
+
+.filters input {
+  width: 450px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ffff;
+  padding-left: 10px;
+  font-family: "Poppins";
+}
+.filters input:focus-visible {
+  outline: none;
+}
+
+.filters button {
+  height: 40px;
+  border: none;
+  margin-left: -10px;
+  width: 50px;
+  background-color: #0a2647;
+  border-radius: 4px;
+}
+.view-btn {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-family: "Poppins";
+}
+.act-btn {
+  /* width: 50px; */
+  width: 60px;
+  border: none;
+  background: white;
+  border-radius: 3px;
+}
+
 .filters {
   padding-left: 30px;
   display: flex;
@@ -156,4 +196,51 @@ table tbody td {
 
 .user-data .Fields label {
   width: 30%;
+}
+.status-filter {
+  margin-left: 20px;
+}
+
+.status-filter select {
+  width: 100px;
+  height: 35px;
+  background: white;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.totalTest p {
+  border: dotted;
+  margin-top: 20px;
+  margin-left: 27px;
+  padding: 5px;
+  height: 35px;
+  color: white;
+}
+
+.totalTest p span {
+  color: #0a2647;
+  font-weight: 700;
+}
+.download {
+  margin-left: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.download button {
+  border: none;
+  background: white;
+  border-radius: 4px;
+  color: #0a2647;
+  height: 35px;
+}
+
+.length {
+  padding-top: 22px;
+  padding-left: 37px;
+  font-size: 20px;
+  font-weight: 700;
 }

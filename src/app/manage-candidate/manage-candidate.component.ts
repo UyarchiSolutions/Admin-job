@@ -49,7 +49,7 @@ export class ManageCandidateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.LoggedOut();
+    // this.LoggedOut();
     this.get_all();
   }
 

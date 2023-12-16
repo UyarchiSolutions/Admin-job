@@ -7,6 +7,7 @@ import { Env } from './environment.dev';
 })
 export class CommonService {
   baseurl = Env.baseAPi;
+  baseurl2 = Env.baseApi2;
   constructor(private http: HttpClient) {}
 
   managejobpost(range: any, page: any) {
@@ -154,9 +155,9 @@ export class CommonService {
     );
   }
 
-  getClicmEvent() {
+  getClicmEvent(key: any) {
     return this.http.get(
-      this.baseurl + '/v1/climbevent/getAllRegistered/Candidate'
+      this.baseurl + `/v1/climbevent/getAllRegistered/Candidate?key=${key}`
     );
   }
 
@@ -174,5 +175,33 @@ export class CommonService {
 
   adminLogin(data: any) {
     return this.http.post(this.baseurl + '/v1/auth/login', data);
+  }
+
+  getTotalSlots(key: any) {
+    return this.http.get(this.baseurl2 + '/v1/climb/slots/details?key=' + key);
+  }
+
+  attendedDetails(date: any, time: any, attended: any, key: any) {
+    return this.http.get(
+      this.baseurl2 +
+        `/v1/climb/getCandidateBySlot/${date}/${time}/${attended}?key=${key}`
+    );
+  }
+
+  getTestUsers(key: any, action: any) {
+    return this.http.get(
+      this.baseurl + `/v1/climbevent/getTestUsers?key=${key}&action=${action}`
+    );
+  }
+
+  updateTestUsers(id: any, data: any) {
+    return this.http.put(
+      this.baseurl + '/v1/climbevent/update/Status/' + id,
+      data
+    );
+  }
+
+  uploadAndGetDatas(data: any) {
+    return this.http.post(this.baseurl + '/v1/agriEvent/ExcelDatas', data);
   }
 }

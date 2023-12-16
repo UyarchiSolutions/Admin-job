@@ -31,6 +31,11 @@ import { EventSlotComponent } from './event-slot/event-slot.component';
 import { EventSlotCandComponent } from './event-slot-cand/event-slot-cand.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AttendedComponent } from './attended/attended.component';
+import { AttendedViewComponent, Ischeckedpipe } from './attended-view/attended-view.component';
+import { TestNewUsersComponent } from './test-new-users/test-new-users.component';
+import { CommonModule } from '@angular/common';
+import { FileDownloadComponent } from './file-download/file-download.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +66,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     EventSlotCandComponent,
     LoginComponent,
     DashboardComponent,
+    AttendedComponent,
+    AttendedViewComponent,
+    TestNewUsersComponent,
+    Ischeckedpipe,
+    FileDownloadComponent
   ],
   imports: [
     BrowserModule,
@@ -69,6 +79,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     FormsModule,
     HttpClientModule,
     GooglePlaceModule,
+    CommonModule,
     BsDatepickerModule.forRoot(),
   ],
   providers: [],

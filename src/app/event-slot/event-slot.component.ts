@@ -22,18 +22,20 @@ export class EventSlotComponent implements OnInit {
   }
 
   candRoute(date: any, time: any) {
-    this.route.navigateByUrl(`/event-slot-cand?time=${time}&date=${date}`);
+    this.route.navigateByUrl(
+      `/admin/event-slot-cand?time=${time}&date=${date}`
+    );
   }
 
   datas: any[] = [];
-  // candList
-  downloadClick(data: any,date:any,time:any) {
+  
+  downloadClick(data: any, date: any, time: any) {
     this.datas = data;
-    let name = `${date}&${time}`
+    let name = `${date}&${time}`;
     this.downloadExcel(name);
   }
 
-  downloadExcel(name:any): void {
+  downloadExcel(name: any): void {
     const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.datas);
     const workbook: XLSX.WorkBook = {
       Sheets: { datas: worksheet },
