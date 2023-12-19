@@ -39,12 +39,12 @@ export class FileDownloadComponent implements OnInit {
   }
 
   downloadClickMatched() {
-    let name = 'MatchedDatas';
+    let name = 'Exist_Datas';
     this.downloadExcelMatched(name);
   }
 
   downloadClickUnMatched() {
-    let name = ' Un MatchedDatas';
+    let name = 'Fresh_Datas';
     this.downloadExcelUnMatched(name);
   }
 

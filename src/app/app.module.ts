@@ -36,6 +36,8 @@ import { AttendedViewComponent, Ischeckedpipe } from './attended-view/attended-v
 import { TestNewUsersComponent } from './test-new-users/test-new-users.component';
 import { CommonModule } from '@angular/common';
 import { FileDownloadComponent } from './file-download/file-download.component';
+import { AgriCandidateComponent } from './agri-candidate/agri-candidate.component';
+import { NewTestCandComponent } from './new-test-cand/new-test-cand.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +72,9 @@ import { FileDownloadComponent } from './file-download/file-download.component';
     AttendedViewComponent,
     TestNewUsersComponent,
     Ischeckedpipe,
-    FileDownloadComponent
+    FileDownloadComponent,
+    AgriCandidateComponent,
+    NewTestCandComponent
   ],
   imports: [
     BrowserModule,

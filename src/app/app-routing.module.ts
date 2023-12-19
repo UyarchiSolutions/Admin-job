@@ -32,6 +32,8 @@ import { AttendedComponent } from './attended/attended.component';
 import { AttendedViewComponent } from './attended-view/attended-view.component';
 import { TestNewUsersComponent } from './test-new-users/test-new-users.component';
 import { FileDownloadComponent } from './file-download/file-download.component';
+import { AgriCandidateComponent } from './agri-candidate/agri-candidate.component';
+import { NewTestCandComponent } from './new-test-cand/new-test-cand.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -74,6 +76,8 @@ const routes: Routes = [
       { path: 'event-attended-view', component: AttendedViewComponent },
       { path: 'test-users', component: TestNewUsersComponent },
       { path: 'file-download', component: FileDownloadComponent },
+      { path: 'agri-cand', component: AgriCandidateComponent },
+      { path: 'new-test-cand', component: NewTestCandComponent },
     ],
   },
 ];

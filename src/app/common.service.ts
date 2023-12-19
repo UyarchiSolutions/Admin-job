@@ -193,6 +193,11 @@ export class CommonService {
       this.baseurl + `/v1/climbevent/getTestUsers?key=${key}&action=${action}`
     );
   }
+  getTestUsersNew(key: any, action: any) {
+    return this.http.get(
+      this.baseurl + `/v1/climbevent/getTestUsers/New?key=${key}&action=${action}`
+    );
+  }
 
   updateTestUsers(id: any, data: any) {
     return this.http.put(
