@@ -38,6 +38,7 @@ import { CommonModule } from '@angular/common';
 import { FileDownloadComponent } from './file-download/file-download.component';
 import { AgriCandidateComponent } from './agri-candidate/agri-candidate.component';
 import { NewTestCandComponent } from './new-test-cand/new-test-cand.component';
+import { AgriCandVolunteerComponent } from './agri-cand-volunteer/agri-cand-volunteer.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { NewTestCandComponent } from './new-test-cand/new-test-cand.component';
     Ischeckedpipe,
     FileDownloadComponent,
     AgriCandidateComponent,
-    NewTestCandComponent
+    NewTestCandComponent,
+    AgriCandVolunteerComponent
   ],
   imports: [
     BrowserModule,

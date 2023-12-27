@@ -195,7 +195,8 @@ export class CommonService {
   }
   getTestUsersNew(key: any, action: any) {
     return this.http.get(
-      this.baseurl + `/v1/climbevent/getTestUsers/New?key=${key}&action=${action}`
+      this.baseurl +
+        `/v1/climbevent/getTestUsers/New?key=${key}&action=${action}`
     );
   }
 
@@ -208,5 +209,20 @@ export class CommonService {
 
   uploadAndGetDatas(data: any) {
     return this.http.post(this.baseurl + '/v1/agriEvent/ExcelDatas', data);
+  }
+
+  getAgriCand() {
+    return this.http.get(this.baseurl + '/v1/agriEvent/agri/cand');
+  }
+  // getIntrested/ByCand_Role/:id/:role
+
+  getVolunteerbyIntrest(id: any, role: any) {
+    return this.http.get(
+      this.baseurl + `/v1/agriEvent/getIntrested/ByCand_Role/${id}/${role}`
+    );
+  }
+
+  adminApprove(data: any) {
+    return this.http.post(this.baseurl + '/v1/agriEvent/AdminApprove', data);
   }
 }
