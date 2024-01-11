@@ -18,6 +18,7 @@ export class AgriCandVolunteerComponent implements OnInit {
   count: any;
   candId: any;
   clearCand: any = false;
+  Role: any;
   getVolunteer() {
     let id;
     let role;
@@ -25,6 +26,7 @@ export class AgriCandVolunteerComponent implements OnInit {
       id = e.id;
       this.candId = id;
       role = e.role;
+      this.Role = e.role;
     });
     this.api.getVolunteerbyIntrest(id, role).subscribe((a: any) => {
       this.volunteer = a.value;
@@ -37,6 +39,7 @@ export class AgriCandVolunteerComponent implements OnInit {
       slotId: slotId,
       volunteerId: volunteerId,
       intrestId: intrestId,
+      Role: this.Role,
     };
     this.api.adminApprove(data).subscribe((e: any) => {
       console.log('approveSubmit', e);
@@ -56,13 +59,17 @@ export class AgriCandVolunteerComponent implements OnInit {
     this.api.getAgriCandidate(this.candId).subscribe((e: any) => {
       this.candiDates = e;
       console.log(this.candiDates);
-      this.clearCand = e.clear ? e.clear : false;
+      if (this.Role != 'HR') {
+        this.clearCand = e.clear ? e.clear : false;
+      } else {
+        this.clearCand = e.hrClear ? e.hrClear : false;
+      }
     });
   }
 
   clear() {
-    this.api.clearCand(this.candId).subscribe((e: any) => {
-      console.log(e);
+    this.api.clearCand(this.candId, this.Role).subscribe((e: any) => {
+      this.getcand();
     });
   }
 }

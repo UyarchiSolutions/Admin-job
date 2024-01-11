@@ -233,7 +233,7 @@ export class CommonService {
   getAgriCandidate(id: any) {
     return this.http.get(this.baseurl + '/v1/agriEvent/getCandidate/' + id);
   }
-  clearCand(id: any) {
-    return this.http.get(this.baseurl + '/v1/agriEvent/clearCandidates/' + id);
+  clearCand(id: any,role:any) {
+    return this.http.get(this.baseurl + `/v1/agriEvent/clearCandidates/${id}/${role}`);
   }
 }
