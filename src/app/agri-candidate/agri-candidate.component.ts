@@ -22,6 +22,27 @@ export class AgriCandidateComponent implements OnInit {
   }
 
   volunteer(id: any, role: any) {
-    this.route.navigateByUrl(`/admin/agri-cand-volunteer?id=${id}&role=${role}`);
+    this.route.navigateByUrl(
+      `/admin/agri-cand-volunteer?id=${id}&role=${role}`
+    );
+  }
+
+  // agri-cand-volunteer-view
+
+  ApprovedVolunteer(id: any) {
+    console.log(id);
+    this.route.navigateByUrl(`/admin/agri-cand-volunteer-view?id=${id}`);
+  }
+
+  chooseId: any;
+  copy_success: any = false;
+  copy_now_new(id: any) {
+    this.copy_success = true;
+    this.chooseId = id;
+    navigator.clipboard.writeText('https://candidate.erai.cloud/demo/' + id);
+    console.log(this.copy_success && id == this.chooseId);
+    setTimeout(() => {
+      this.copy_success = false;
+    }, 1000);
   }
 }

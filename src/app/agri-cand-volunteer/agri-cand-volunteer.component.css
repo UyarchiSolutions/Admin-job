@@ -252,3 +252,40 @@ table tbody td {
   border-radius: 5px;
   color: green;
 }
+.undo-btn {
+  background-color: #ffff;
+  border: none;
+  padding: 6px;
+  border-radius: 5px;
+  color: #0a2647;
+  font-weight: 600;
+}
+.clear {
+  display: flex;
+  justify-content: end;
+}
+.clear button {
+  margin-right: 65px;
+  width: 99px;
+  border: none;
+  margin-top: 10px;
+  border-radius: 5px;
+  background-color: #0a2647;
+  color: #ffff;
+  height: 30px;
+}
+.cleardisable {
+  display: flex;
+  justify-content: end;
+}
+
+.cleardisable button{
+  margin-right: 65px;
+  width: 99px;
+  border: none;
+  margin-top: 10px;
+  border-radius: 5px;
+  background-color: #e7e9ed;
+  color: black;
+  height: 30px;
+}

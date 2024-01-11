@@ -35,6 +35,7 @@ import { FileDownloadComponent } from './file-download/file-download.component';
 import { AgriCandidateComponent } from './agri-candidate/agri-candidate.component';
 import { NewTestCandComponent } from './new-test-cand/new-test-cand.component';
 import { AgriCandVolunteerComponent } from './agri-cand-volunteer/agri-cand-volunteer.component';
+import { AgriCandVolunteerViewComponent } from './agri-cand-volunteer-view/agri-cand-volunteer-view.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -80,6 +81,8 @@ const routes: Routes = [
       { path: 'new-test-cand', component: NewTestCandComponent },
       { path: 'agri-cand', component: AgriCandidateComponent },
       { path: 'agri-cand-volunteer', component: AgriCandVolunteerComponent },
+      { path: 'agri-cand-volunteer-view', component: AgriCandVolunteerViewComponent },
+
 
     ],
   },

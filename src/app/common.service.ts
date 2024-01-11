@@ -225,4 +225,15 @@ export class CommonService {
   adminApprove(data: any) {
     return this.http.post(this.baseurl + '/v1/agriEvent/AdminApprove', data);
   }
+
+  UndoApproval(id: any) {
+    return this.http.get(this.baseurl + '/v1/agriEvent/Undo/' + id);
+  }
+
+  getAgriCandidate(id: any) {
+    return this.http.get(this.baseurl + '/v1/agriEvent/getCandidate/' + id);
+  }
+  clearCand(id: any) {
+    return this.http.get(this.baseurl + '/v1/agriEvent/clearCandidates/' + id);
+  }
 }
