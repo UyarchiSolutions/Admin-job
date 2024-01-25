@@ -233,7 +233,25 @@ export class CommonService {
   getAgriCandidate(id: any) {
     return this.http.get(this.baseurl + '/v1/agriEvent/getCandidate/' + id);
   }
-  clearCand(id: any,role:any) {
-    return this.http.get(this.baseurl + `/v1/agriEvent/clearCandidates/${id}/${role}`);
+  clearCand(id: any, role: any) {
+    return this.http.get(
+      this.baseurl + `/v1/agriEvent/clearCandidates/${id}/${role}`
+    );
   }
+  getWorkshopCandidate(user: any, gender: any,coursetime:any) {
+    return this.http.get(this.baseurl + `/v1/climbevent/getWorkShopCand?user=${user}&gender=${gender}&coursetime=${coursetime}`)
+  }
+  getSlotsWorkshop(){
+    return this.http.get(this.baseurl + `/v1/climbevent/getInternSlots`)
+  }
+  getWorkshopCandById(id:any){
+    return this.http.get(this.baseurl + `/v1/climbevent/getWorkshop/Slot/${id}`)
+  }
+  getCandidatesDetails(){
+    return this.http.get(this.baseurl + "/v1/agriEvent/getCandidatesReport")
+  }
+  getStreamsByCand(id:any){
+    return this.http.get(this.baseurl +'/v1/agriEvent/getStreamDetailsByCand/'+id)
+  }
+  loader:any = false
 }

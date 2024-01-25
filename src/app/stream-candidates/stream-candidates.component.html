@@ -1,0 +1,45 @@
+<div class="page-container">
+    <div class="page-body">
+        <div class="page-title">
+            <div class="filters" style="display: flex;justify-content: center;width: 97%; ">
+                <!-- <h3 style="color: #ffff;"> Manage Candidates </h3> -->
+            </div>
+        </div>
+        <div class="table-content">
+            <table>
+                <thead>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Date & Time</th>
+                    <th>Stream Status</th>
+                    <th>Action</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let stream of Stream">
+                        <td>{{stream.Name}}</td>
+                        <td>{{stream.Type}}</td>
+                        <td>{{stream.start|date:"dd-MM-YYYY hh:mm a"}} - {{stream.endTime|date:"hh:mm a"}}</td>
+                        <td>{{stream.streamStatus}}</td>
+                        <td>
+                            <button class="view-btn-video" (click)="singleView(stream)">View</button>
+                            <button class="down-btn-video" style="margin-left: 10px;"
+                                (click)="downloadVideo('https://streamingupload.s3.ap-south-1.amazonaws.com/'+stream.videoURL)">Download</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<div class="popup-2" *ngIf="popup">
+    <div class="popup-close-2" (click)="popupClose()"></div>
+    <div class="popup-container-2">
+        <div class="close"></div>
+        <div class="video-view">
+            <video width="700" height="500" [src]=" 'https://streamingupload.s3.ap-south-1.amazonaws.com/'+singleData.videoURL" autoplay></video>
+        </div>
+    </div>
+
+</div>

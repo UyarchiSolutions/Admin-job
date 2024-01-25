@@ -42,8 +42,8 @@
                                         Test New Users</a></li>
                                 <li><a [routerLink]="['/admin/file-download']" class="dropdown-item" routerLink="">
                                         Cand File Download</a></li>
-                                        <li><a [routerLink]="['/admin/new-test-cand']" class="dropdown-item" routerLink="">
-                                            New Test Cand</a></li>
+                                <li><a [routerLink]="['/admin/new-test-cand']" class="dropdown-item" routerLink="">
+                                        New Test Cand</a></li>
                                 <!-- 
                                 <li [routerLink]="['/duplicate-candidate']"><a class="dropdown-item">DuplicateCandidate</a></li> -->
 
@@ -68,8 +68,37 @@
 
                             <ul class="dropdown-menu">
                                 <!-- <li [routerLink]=""><a class="dropdown-item" href="#" routerLink="">Candidate</a></li> -->
-                                <li><a [routerLink]="['/admin/agri-cand']" class="dropdown-item"
-                                        routerLink="">Candidate </a></li>
+                                <li><a [routerLink]="['/admin/agri-cand']" class="dropdown-item" routerLink="">Interview Allocation </a></li>
+                                <li><a [routerLink]="['/admin/manage-agri-cand']" class="dropdown-item" routerLink="">Manage Candidates </a></li>
+                            </ul>
+                        </div>
+
+                    </li>
+
+                    <li class="refine-content">
+
+                        <div class="dropdown">
+                            <a class="btn  dropdown-toggle dropdown-active" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="sidebar-icons">
+                                    <svg width="16" height="16" viewBox="0 0 20 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M13.5555 5.84893C13.5555 7.62773 12.0358 9.19787 9.99999 9.19787C7.96419 9.19787 6.44444 7.62773 6.44444 5.84893C6.44444 4.07014 7.96419 2.5 9.99999 2.5C12.0358 2.5 13.5555 4.07014 13.5555 5.84893ZM12.1076 10.7995C14.1307 10.0002 15.5555 8.08479 15.5555 5.84893C15.5555 2.8948 13.0682 0.5 9.99999 0.5C6.93174 0.5 4.44444 2.8948 4.44444 5.84893C4.44444 8.08479 5.86924 10.0002 7.89235 10.7995C3.38161 11.4019 0 14.0336 0 19.0873C0 23.807 2.94936 23.6398 7.01337 23.4093C7.95652 23.3558 8.95971 23.2989 10 23.2989C11.0403 23.2989 12.0435 23.3558 12.9866 23.4093C17.0506 23.6398 20 23.807 20 19.0873C20 14.0336 16.6184 11.4019 12.1076 10.7995ZM18 19.0873C18 20.3225 17.7562 20.8112 17.6204 20.9902C17.5189 21.1242 17.3222 21.2963 16.7165 21.4054C16.0626 21.5232 15.1947 21.5208 13.9917 21.4611C13.7232 21.4477 13.4385 21.4315 13.1411 21.4147L13.141 21.4147L13.1409 21.4146C12.1874 21.3605 11.1028 21.2989 10 21.2989C8.89719 21.2989 7.81256 21.3605 6.8591 21.4146L6.85902 21.4147L6.8589 21.4147C6.56144 21.4315 6.27676 21.4477 6.00827 21.4611C4.80532 21.5208 3.93736 21.5232 3.28354 21.4054C2.67784 21.2963 2.48112 21.1242 2.37957 20.9902C2.24385 20.8112 2 20.3225 2 19.0873C2 16.7578 2.86349 15.2594 4.1411 14.2858C5.49452 13.2546 7.51816 12.6641 10 12.6641C12.4818 12.6641 14.5055 13.2546 15.8589 14.2858C17.1365 15.2594 18 16.7578 18 19.0873Z"
+                                            fill="black" />
+                                    </svg>
+                                </i>EnterWorkShop
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- <li [routerLink]=""><a class="dropdown-item" href="#" routerLink="">Candidate</a></li> -->
+                                <li>
+                                    <a [routerLink]="['/admin/workshop-cand']" class="dropdown-item"
+                                        routerLink="">Candidate</a>
+                                </li>
+                                <li>
+                                    <a [routerLink]="['/admin/slot-workshop']" class="dropdown-item"
+                                        routerLink="">By Slot</a>
+                                </li>
                             </ul>
                         </div>
 

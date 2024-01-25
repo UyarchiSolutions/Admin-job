@@ -1,0 +1,23 @@
+<div class="page-container">
+    <div class="page-body">
+        <div class="page-title">
+            <div class="filters" style="display: flex;justify-content: center;width: 97%; ">
+                <h3 style="color: #ffff;"> Workshop Slot </h3>
+            </div>
+        </div>
+        <div class="table-content">
+            <table>
+                <thead>
+                    <th>Slots</th>
+                    <th>Booked Candidates</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of Slots">
+                        <td>{{data.date}} & {{data.slot}} </td>
+                        <td> <p (click)="slotRedirect(data._id)">{{data.cand}}</p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

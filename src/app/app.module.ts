@@ -40,6 +40,11 @@ import { AgriCandidateComponent } from './agri-candidate/agri-candidate.componen
 import { NewTestCandComponent } from './new-test-cand/new-test-cand.component';
 import { AgriCandVolunteerComponent } from './agri-cand-volunteer/agri-cand-volunteer.component';
 import { AgriCandVolunteerViewComponent } from './agri-cand-volunteer-view/agri-cand-volunteer-view.component';
+import { WorkshopCandComponent } from './workshop-cand/workshop-cand.component';
+import { SlotWorkshopComponent } from './slot-workshop/slot-workshop.component';
+import { WorkshopBookedCandComponent } from './workshop-booked-cand/workshop-booked-cand.component';
+import { ManageAgriCandidateComponent } from './manage-agri-candidate/manage-agri-candidate.component';
+import { StreamCandidatesComponent } from './stream-candidates/stream-candidates.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +83,12 @@ import { AgriCandVolunteerViewComponent } from './agri-cand-volunteer-view/agri-
     AgriCandidateComponent,
     NewTestCandComponent,
     AgriCandVolunteerComponent,
-    AgriCandVolunteerViewComponent
+    AgriCandVolunteerViewComponent,
+    WorkshopCandComponent,
+    SlotWorkshopComponent,
+    WorkshopBookedCandComponent,
+    ManageAgriCandidateComponent,
+    StreamCandidatesComponent
   ],
   imports: [
     BrowserModule,

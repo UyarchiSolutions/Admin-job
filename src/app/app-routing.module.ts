@@ -36,6 +36,11 @@ import { AgriCandidateComponent } from './agri-candidate/agri-candidate.componen
 import { NewTestCandComponent } from './new-test-cand/new-test-cand.component';
 import { AgriCandVolunteerComponent } from './agri-cand-volunteer/agri-cand-volunteer.component';
 import { AgriCandVolunteerViewComponent } from './agri-cand-volunteer-view/agri-cand-volunteer-view.component';
+import { WorkshopCandComponent } from './workshop-cand/workshop-cand.component';
+import { SlotWorkshopComponent } from './slot-workshop/slot-workshop.component';
+import { WorkshopBookedCandComponent } from './workshop-booked-cand/workshop-booked-cand.component';
+import { ManageAgriCandidateComponent } from './manage-agri-candidate/manage-agri-candidate.component';
+import { StreamCandidatesComponent } from './stream-candidates/stream-candidates.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -82,6 +87,11 @@ const routes: Routes = [
       { path: 'agri-cand', component: AgriCandidateComponent },
       { path: 'agri-cand-volunteer', component: AgriCandVolunteerComponent },
       { path: 'agri-cand-volunteer-view', component: AgriCandVolunteerViewComponent },
+      {path:'workshop-cand',component: WorkshopCandComponent},
+      {path:'slot-workshop',component:SlotWorkshopComponent},
+      {path:'workshop-booked-cand',component:WorkshopBookedCandComponent},
+      {path:'manage-agri-cand',component:ManageAgriCandidateComponent},
+      {path:'agri-stream-candidate',component:StreamCandidatesComponent}
 
 
     ],
