@@ -17,7 +17,7 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let data of Cand">
-                        <td>{{data.name}}</td>
+                        <td style="text-decoration: underline; cursor: pointer;" (click)="singleView(data)">{{data.name}}</td>
                         <td>
                             <p>{{data.mobile}}</p>
                         </td>
@@ -30,10 +30,61 @@
                         <td>
                             <p>{{data.active?'Active':'In-Active'}}</p>
                         </td>
-                        <td><button>active</button></td>
+                        <td>
+                            <button *ngIf="data.active"  class="inactive-btn">In active</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
+    </div>
+</div>
+
+<div class="popup-2" *ngIf="popup">
+    <div class="popup-close-2" (click)="popupClose()"></div>
+    <div class="popup-container-2">
+        <div class="close"></div>
+        <div class="content-title">
+            <p>{{singleData.name?singleData.name:'Network Error Contact Developer'}}</p>
+        </div>
+        <div class="user-data">
+            <div class="Fields">
+                <label> Mobile Number :</label>
+                <p> {{singleData.mobile}} </p>
+            </div>
+            <div class="Fields">
+                <label> E-mail :</label>
+                <p> {{singleData.mail}} </p>
+            </div>
+            <div class="Fields">
+                <label> Male :</label>
+                <p> {{singleData.gender?singleData.gender:"--"}} </p>
+            </div>
+            <div class="Fields">
+                <label> DOB :</label>
+                <p> {{singleData.dob?singleData.dob:"--"}} </p>
+            </div>
+            <div class="Fields">
+                <label> Skills :</label>
+                <p>{{singleData.skills?singleData.skills:"--"}}</p>
+            </div>
+            <div class="Fields">
+                <label>Location :</label>
+                <p> {{singleData.location?singleData.location:"--"}} </p>
+            </div>
+            <div class="Fields">
+                <label> Education Name :</label>
+                <p>{{singleData.Education?singleData.Education:'--'}}</p>
+            </div>
+            <div class="Fields">
+                <label>Affiliateduniversity:</label>
+                <p> {{singleData.affiliateduniversity?singleData.affiliateduniversity:"--"}} </p>
+            </div>
+            <div class="Fields">
+                <label>Institution :</label>
+                <p>{{singleData.Instituitionname?singleData.Instituitionname:"--"}}</p>
+            </div>
+        </div>
+
     </div>
 </div>

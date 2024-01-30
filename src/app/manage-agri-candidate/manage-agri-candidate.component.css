@@ -283,3 +283,10 @@
       border-radius: 5px;
       padding-left: 10px;
   }
+
+  .inactive-btn{
+    border: none;
+    background-color: #0a2647;
+    color: #ffff;
+    border-radius: 5px
+  }

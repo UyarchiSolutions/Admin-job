@@ -44,4 +44,16 @@ export class WorkshopCandComponent implements OnInit {
   clear(){
     this.filterForm.reset()
   }
+  popup: any = false;
+  singleData: any = {};
+
+  singleView(data: any) {
+    this.singleData = data;
+    this.popup = true;
+    console.log(this.singleData);
+  }
+
+  popupClose() {
+    this.popup = false;
+  }
 }
