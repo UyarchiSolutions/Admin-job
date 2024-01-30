@@ -50,7 +50,6 @@ export class WorkshopCandComponent implements OnInit {
   singleView(data: any) {
     this.singleData = data;
     this.popup = true;
-    console.log(this.singleData);
   }
 
   popupClose() {
