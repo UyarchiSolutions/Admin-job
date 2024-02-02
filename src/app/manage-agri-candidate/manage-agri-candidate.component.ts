@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from '../common.service';
 import { Router } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-manage-agri-candidate',
@@ -8,14 +9,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./manage-agri-candidate.component.css'],
 })
 export class ManageAgriCandidateComponent implements OnInit {
-  constructor(private api: CommonService, private route: Router) {}
+  constructor(private api: CommonService, private route: Router) { }
   ngOnInit(): void {
     this.getCandidates();
   }
 
   Cand: any = [];
   getCandidates() {
-    this.api.getCandidatesDetails().subscribe((e: any) => {
+    this.api.getCandidatesDetails(this.filterForms.get('name')?.value, this.filterForms.get('location')?.value).subscribe((e: any) => {
       this.Cand = e;
       console.log(this.Cand);
     });
@@ -37,4 +38,23 @@ export class ManageAgriCandidateComponent implements OnInit {
   popupClose() {
     this.popup = false;
   }
+
+  active_Inactive(id: any) {
+    this.api.active_inactive(id).subscribe((e: any) => {
+      console.log(e)
+      this.getCandidates()
+    })
+  }
+
+  filterForms  = new FormGroup({
+    name: new FormControl(''),
+    location : new FormControl(''),
+    rating: new FormControl('')
+  })
+
+  filter(){
+    console.log(this.filterForms.value)
+    this.getCandidates()
+  }
+
 }

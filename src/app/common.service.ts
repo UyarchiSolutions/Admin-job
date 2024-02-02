@@ -247,11 +247,14 @@ export class CommonService {
   getWorkshopCandById(id:any){
     return this.http.get(this.baseurl + `/v1/climbevent/getWorkshop/Slot/${id}`)
   }
-  getCandidatesDetails(){
-    return this.http.get(this.baseurl + "/v1/agriEvent/getCandidatesReport")
+  getCandidatesDetails(name:any, location:any){
+    return this.http.get(this.baseurl + `/v1/agriEvent/getCandidatesReport?cand=${name}&location=${location} `)
   }
   getStreamsByCand(id:any){
     return this.http.get(this.baseurl +'/v1/agriEvent/getStreamDetailsByCand/'+id)
+  }
+  active_inactive(id:any){
+    return this.http.get(this.baseurl+'/v1/agriEvent/active/Inactive/candidate/'+id)
   }
   loader:any = false
 }

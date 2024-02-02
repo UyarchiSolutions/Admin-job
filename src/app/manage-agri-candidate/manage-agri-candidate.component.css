@@ -15,9 +15,6 @@
   .page-body {
     margin-top: 10px;
   }
-  .btn {
-    margin-left: 90%;
-  }
   
   .btn button {
     display: flex;
@@ -99,7 +96,7 @@
     height: 40px;
     border: none;
     margin-left: 10px;
-    width: 120px;
+    width: 190px;
     background-color: #0a2647;
     border-radius: 4px;
     color: #ffff;
@@ -289,4 +286,18 @@
     background-color: #0a2647;
     color: #ffff;
     border-radius: 5px
+  }
+  .active-btn{
+    border: none;
+    background-color: #ffff;
+    color: green;
+    border-radius: 5px;
+    width: 80px;
+  }
+  .filter-btn>button{
+    width: 120px;
+  }
+  .dropdown>button{
+    background-color: white;
+    color: #0a2647;
   }
