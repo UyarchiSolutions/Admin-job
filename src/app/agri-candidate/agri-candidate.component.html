@@ -26,8 +26,8 @@
                     <tr *ngFor="let can of cand">
                         <td>{{can.name}}</td>
                         <td> {{can.createdAt|date:"dd-MM-YYYY"}} </td>
-                        <td (click)="volunteer(can._id, 'HR')">{{can.HRIntrest}}</td>
-                        <td (click)="volunteer(can._id, 'Tech')">{{can.TechIntrest}}</td>
+                        <td (click)="volunteer(can._id, 'HR')">0/{{can.HRIntrest}}</td>
+                        <td (click)="volunteer(can._id, 'Tech')">0/{{can.TechIntrest}}</td>
                         <td>{{can.status}}</td>
                         <td class="btns">
                             <!-- <button class="clear-btn" (click)="ApprovedVolunteer(can._id)">View</button> -->

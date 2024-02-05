@@ -96,7 +96,7 @@ import { StreamCandidatesComponent } from './stream-candidates/stream-candidates
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    GooglePlaceModule,
+    // GooglePlaceModule,
     CommonModule,
     BsDatepickerModule.forRoot(),
   ],
