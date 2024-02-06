@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./agri-candidate.component.css'],
 })
 export class AgriCandidateComponent implements OnInit {
-  constructor(private api: CommonService, private route: Router) {}
+  constructor(private api: CommonService, private route: Router) { }
   ngOnInit(): void {
     this.getCand();
   }
@@ -44,5 +44,14 @@ export class AgriCandidateComponent implements OnInit {
     setTimeout(() => {
       this.copy_success = false;
     }, 1000);
+  }
+
+  clear_cand(item: any) {
+    this.api.clearCand(item._id, "HR").subscribe((res: any) => {
+      // console.log(res);
+      item.status = res.status;
+      item.clear = res.clear;
+      item.hrClear = res.hrClear;
+    });
   }
 }

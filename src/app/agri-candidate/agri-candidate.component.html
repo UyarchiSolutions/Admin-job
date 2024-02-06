@@ -16,18 +16,20 @@
             <table>
                 <thead>
                     <th>Name</th>
-                    <th>Data & Time</th>
-                    <th>Interested HR</th>
-                    <th>Interested Tech</th>
+                    <th>HR</th>
+                    <th>HR Data & Time</th>
+                    <th>Tech</th>
+                    <th>HR Data & Time</th>
                     <th>status</th>
                     <th style="width: 180px; text-align: center;">action</th>
                 </thead>
                 <tbody>
                     <tr *ngFor="let can of cand">
                         <td>{{can.name}}</td>
-                        <td> {{can.createdAt|date:"dd-MM-YYYY"}} </td>
-                        <td (click)="volunteer(can._id, 'HR')">0/{{can.HRIntrest}}</td>
-                        <td (click)="volunteer(can._id, 'Tech')">0/{{can.TechIntrest}}</td>
+                        <td style="cursor: pointer;" (click)="volunteer(can._id, 'HR')">{{can.approved_HR}}/{{can.HRIntrest}}</td>
+                        <td> {{can.HR_DateTime|date:"dd-MM-YYYY hh:mm a"}} </td>
+                        <td style="cursor: pointer;"  (click)="volunteer(can._id, 'Tech')">{{can.approved_TECH}}/{{can.TechIntrest}}</td>
+                        <td> {{can.Tech_DateTime|date:"dd-MM-YYYY  hh:mm a"}} </td>
                         <td>{{can.status}}</td>
                         <td class="btns">
                             <!-- <button class="clear-btn" (click)="ApprovedVolunteer(can._id)">View</button> -->
@@ -50,6 +52,8 @@
                                         fill="#0A2647" />
                                 </svg> {{ copy_success && can.techId == chooseId ? "Copied" : "Tech" }}
                             </button>
+                            <button class="btn btn-sm clear-button" *ngIf="can.status =='Approved'"
+                                (click)="clear_cand(can)">Clear</button>
                         </td>
                     </tr>
                 </tbody>

@@ -51,49 +51,49 @@ export class RegisterComponent implements OnInit {
 
   });
   myObject: any
-  registereddata=false
-  registerType:any
+  registereddata = false
+  registerType: any
   ngOnInit(): void {
 
     this.aroute.queryParams.subscribe((res: any) => {
       console.log(res.tab, "iddddddddddddd")
       this.commonservice.employerDetailspatch(res.tab).subscribe((res: any) => {
         console.log(res, "askjdfhkasjfdh");
-        if(res){
-          this.registereddata=true
+        if (res) {
+          this.registereddata = true
         }
 
-        this.registerType=res.registrationType
+        this.registerType = res.registrationType
         // this.imageSrc= this.baseUrl+res.logo
         // console.log(this.baseUrl+res.choosefile)
         // console.log(res.choosefile)
-        
+
 
 
         this.RegisterForm.patchValue({
-          name:res.name,
-          email:res.email,
-          registrationType:res.registrationType,
-          industryType:res.industryType,
-          companyType:res.companyType,
-          companyWebsite:res.companyWebsite,
-          password:res.password,
-          contactName:res.contactName,
-          mobileNumber:res.mobileNumber,
-          companyDescription:res.companyDescription,
-          companyAddress:res.companyAddress,
-          pincode:res.pincode,
-          location:res.location,
-          postedBy:res.postedBy,
-          logo:res.logo,
-          choosefile:res.choosefile
-          
+          name: res.name,
+          email: res.email,
+          registrationType: res.registrationType,
+          industryType: res.industryType,
+          companyType: res.companyType,
+          companyWebsite: res.companyWebsite,
+          password: res.password,
+          contactName: res.contactName,
+          mobileNumber: res.mobileNumber,
+          companyDescription: res.companyDescription,
+          companyAddress: res.companyAddress,
+          pincode: res.pincode,
+          location: res.location,
+          postedBy: res.postedBy,
+          logo: res.logo,
+          choosefile: res.choosefile
+
 
         })
         console.log(this.RegisterForm.value)
 
 
-        
+
       });
 
 
@@ -172,7 +172,7 @@ export class RegisterComponent implements OnInit {
     this.selectedFile = ''
   }
 
-  baseUrl='https://livebroadcast.click/'
+  baseUrl = 'https://livebroadcast.click/'
 
   addresume(file: any) {
     this.file = null;

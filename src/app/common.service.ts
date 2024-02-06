@@ -238,6 +238,7 @@ export class CommonService {
       this.baseurl + `/v1/agriEvent/clearCandidates/${id}/${role}`
     );
   }
+  
   getWorkshopCandidate(user: any, gender: any,coursetime:any) {
     return this.http.get(this.baseurl + `/v1/climbevent/getWorkShopCand?user=${user}&gender=${gender}&coursetime=${coursetime}`)
   }

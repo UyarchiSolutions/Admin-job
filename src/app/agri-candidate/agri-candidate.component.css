@@ -15,8 +15,18 @@
 .page-body {
   margin-top: 10px;
 }
-.btn {
-  margin-left: 90%;
+.btns {
+  /* margin-left: 90%; */
+  /* text-align: right; */
+  display: flex;
+    justify-content: center!important;
+}
+.btns button{
+  margin: 0 5px;
+}
+.clear-button{
+  background-color: #0a2647;
+  color: white;
 }
 
 .btn button {
