@@ -45,6 +45,8 @@ import { SlotWorkshopComponent } from './slot-workshop/slot-workshop.component';
 import { WorkshopBookedCandComponent } from './workshop-booked-cand/workshop-booked-cand.component';
 import { ManageAgriCandidateComponent } from './manage-agri-candidate/manage-agri-candidate.component';
 import { StreamCandidatesComponent } from './stream-candidates/stream-candidates.component';
+import { HrRatingComponent } from './hr-rating/hr-rating.component';
+import { TechRatingComponent } from './tech-rating/tech-rating.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +90,9 @@ import { StreamCandidatesComponent } from './stream-candidates/stream-candidates
     SlotWorkshopComponent,
     WorkshopBookedCandComponent,
     ManageAgriCandidateComponent,
-    StreamCandidatesComponent
+    StreamCandidatesComponent,
+    HrRatingComponent,
+    TechRatingComponent
   ],
   imports: [
     BrowserModule,

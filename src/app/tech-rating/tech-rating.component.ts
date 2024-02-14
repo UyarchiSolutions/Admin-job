@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-manage-agri-candidate',
-  templateUrl: './manage-agri-candidate.component.html',
-  styleUrls: ['./manage-agri-candidate.component.css'],
+  selector: 'app-tech-rating',
+  templateUrl: './tech-rating.component.html',
+  styleUrls: ['./tech-rating.component.css']
 })
-export class ManageAgriCandidateComponent implements OnInit {
+export class TechRatingComponent implements OnInit{
   constructor(private api: CommonService, private route: Router) { }
   ngOnInit(): void {
     this.getCandidates();
@@ -55,5 +55,4 @@ export class ManageAgriCandidateComponent implements OnInit {
     console.log(this.filterForms.value)
     this.getCandidates()
   }
-
 }

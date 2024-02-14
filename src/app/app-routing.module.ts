@@ -41,6 +41,8 @@ import { SlotWorkshopComponent } from './slot-workshop/slot-workshop.component';
 import { WorkshopBookedCandComponent } from './workshop-booked-cand/workshop-booked-cand.component';
 import { ManageAgriCandidateComponent } from './manage-agri-candidate/manage-agri-candidate.component';
 import { StreamCandidatesComponent } from './stream-candidates/stream-candidates.component';
+import { HrRatingComponent } from './hr-rating/hr-rating.component'; 
+import { TechRatingComponent } from './tech-rating/tech-rating.component'; 
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -91,8 +93,9 @@ const routes: Routes = [
       {path:'slot-workshop',component:SlotWorkshopComponent},
       {path:'workshop-booked-cand',component:WorkshopBookedCandComponent},
       {path:'manage-agri-cand',component:ManageAgriCandidateComponent},
-      {path:'agri-stream-candidate',component:StreamCandidatesComponent}
-
+      {path:'agri-stream-candidate',component:StreamCandidatesComponent},
+      { path: 'hr-rating', component: HrRatingComponent },
+      { path: 'tech-rating', component: TechRatingComponent },
 
     ],
   },

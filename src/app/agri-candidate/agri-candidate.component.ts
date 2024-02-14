@@ -15,12 +15,20 @@ export class AgriCandidateComponent implements OnInit {
   }
 
   cand: any;
+  candidate: any;
   getCand() {
     this.api.getAgriCand(this.filter.value).subscribe((e: any) => {
       this.cand = e.value;
-      this.next=e.next;
+      this.next = e.next;
       console.log(this.cand);
     });
+  }
+
+  getCandDetails(cand: any) {
+    this.api.getAgriCandidate(cand._id).subscribe((e: any) => {
+      this.candidate = e;
+      console.log(e, 66666);
+    })
   }
 
   volunteer(id: any, role: any) {
@@ -88,4 +96,17 @@ export class AgriCandidateComponent implements OnInit {
     this.getCand();
 
   }
+
+  popup: any = false;
+  //singleData: any = {};
+  singleView(data: any) {
+    //this.singleData = data;
+    this.getCandDetails(data);
+    this.popup = true;
+    //console.log(this.singleData);
+  }
+  popupClose() {
+    this.popup = false;
+  }
+
 }
