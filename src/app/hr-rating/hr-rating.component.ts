@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-manage-agri-candidate',
-  templateUrl: './manage-agri-candidate.component.html',
-  styleUrls: ['./manage-agri-candidate.component.css'],
+  selector: 'app-hr-rating',
+  templateUrl: './hr-rating.component.html',
+  styleUrls: ['./hr-rating.component.css']
 })
-export class ManageAgriCandidateComponent implements OnInit {
+export class HrRatingComponent implements OnInit{
   constructor(private api: CommonService, private route: Router) { }
   ngOnInit(): void {
     this.getCandidates();

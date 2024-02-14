@@ -7,8 +7,8 @@
 
                 <select name="" id="" formControlName="gender">
                     <option [value]="null" selected disabled>Select</option>
-                    <option [value]=" 'male' ">Male</option>
-                    <option [value]="'female'">Fe-male</option>
+                    <option [value]=" 'Male' ">Male</option>
+                    <option [value]="'Female'">Female</option>
                 </select>
                 <label for="">Course Time :</label>
 
@@ -61,11 +61,11 @@
                 <p> {{singleData.mobileNumber}} </p>
             </div>
             <div class="Fields">
-                <label> E-mail :</label>
+                <label> E-mail:</label>
                 <p> {{singleData.mail}} </p>
             </div>
             <div class="Fields">
-                <label> Male :</label>
+                <label> Gender:</label>
                 <p> {{singleData.gender}} </p>
             </div>
             <div class="Fields">
@@ -95,6 +95,10 @@
             <div class="Fields">
                 <label>Year Of Passing :</label>
                 <p>{{singleData.year_of_passedout?singleData.year_of_passedout:"--"}}</p>
+            </div>
+            <div class="Fields">
+                <label>Employment:</label>
+                <p>{{singleData.do_you_work?singleData.do_you_work:"--"}}</p>
             </div>
         </div>
 

@@ -17,15 +17,15 @@
                 <thead>
                     <th>Name</th>
                     <th>HR</th>
-                    <th>HR Data & Time</th>
+                    <th>HR Date & Time</th>
                     <th>Tech</th>
-                    <th>HR Data & Time</th>
-                    <th>status</th>
-                    <th style="width: 180px; text-align: center;">action</th>
+                    <th>Tech Date & Time</th>
+                    <th>Status</th>
+                    <th style="width: 180px; text-align: center;">Action</th>
                 </thead>
                 <tbody>
                     <tr *ngFor="let can of cand">
-                        <td>{{can.name}}</td>
+                        <td ><a (click)="singleView(can)" style="text-decoration: underline; cursor: pointer;">{{can.name}}</a></td>
                         <td style="cursor: pointer;" (click)="volunteer(can._id, 'HR')">{{can.approved_HR}}/{{can.HRIntrest}}</td>
                         <td> {{can.HR_DateTime|date:"dd-MM-YYYY hh:mm a"}} </td>
                         <td style="cursor: pointer;"  (click)="volunteer(can._id, 'Tech')">{{can.approved_TECH}}/{{can.TechIntrest}}</td>
@@ -59,5 +59,62 @@
                 </tbody>
             </table>
         </div>
+    </div>
+</div>
+
+<div class="popup-2" *ngIf="popup">
+    <div class="popup-close-2" (click)="popupClose()"></div>
+    <div class="popup-container-2">
+        <div class="close"></div>
+        <div class="content-title">
+            <p>{{candidate.name?candidate.name:'Network Error Contact Developer'}}</p>
+        </div>
+        <div class="user-data">
+            <div class="Fields">
+                <label> Mobile Number :</label>
+                <p> {{candidate.mobile}} </p>
+            </div>
+            <div class="Fields">
+                <label> E-mail :</label>
+                <p> {{candidate.mail}} </p>
+            </div>
+            <div class="Fields">
+                <label> Gender:</label>
+                <p> {{candidate.gender?candidate.gender:"--"}} </p>
+            </div>
+            <div class="Fields">
+                <label> DOB :</label>
+                <p> {{candidate.dob?candidate.dob:"--"}} </p>
+            </div>
+            <div class="Fields">
+                <label> Skills :</label>
+                <p>{{candidate.skills?candidate.skills:"--"}}</p>
+            </div>
+            <div class="Fields">
+                <label>Location :</label>
+                <p> {{candidate.location?candidate.location:"--"}} </p>
+            </div>
+            <div class="Fields">
+                <label> Education Name :</label>
+                <p>{{candidate.Education?candidate.Education:'--'}}</p>
+            </div>
+            <div class="Fields">
+                <label>Affiliated University:</label>
+                <p> {{candidate.affiliateduniversity?candidate.affiliateduniversity:"--"}} </p>
+            </div>
+            <div class="Fields">
+                <label>Institution :</label>
+                <p>{{candidate.Instituitionname?candidate.Instituitionname:"--"}}</p>
+            </div>
+            <!-- <div class="Fields">
+                <label>Hr Ratings :</label>
+                <p>{{candidate.hrRating?candidate.hrRating/5:"--"}}/5</p>
+            </div> 
+            <div class="Fields">
+                <label>Tech Rating :</label>
+                <p>{{candidate.techRating?candidate.techRating/5:"--"}}/5</p>
+            </div> -->
+        </div>
+
     </div>
 </div>
