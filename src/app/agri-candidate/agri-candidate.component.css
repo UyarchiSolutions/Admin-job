@@ -8,23 +8,28 @@
   min-height: 80px;
   border-radius: 5px;
 }
+
 .page-container {
   width: 100%;
   margin: auto !important;
 }
+
 .page-body {
   margin-top: 10px;
 }
+
 .btns {
   /* margin-left: 90%; */
   /* text-align: right; */
   display: flex;
-    justify-content: center!important;
+  justify-content: center !important;
 }
-.btns button{
+
+.btns button {
   margin: 0 5px;
 }
-.clear-button{
+
+.clear-button {
   background-color: #0a2647;
   color: white;
 }
@@ -42,15 +47,18 @@
   border-radius: 5px;
   justify-content: space-evenly;
 }
+
 .table-content {
   width: 100%;
   margin: auto;
 }
+
 .table-content table {
   width: 83%;
   margin: auto;
   border-collapse: collapse;
 }
+
 table thead th {
   background-color: #0a2647;
   color: #ffff;
@@ -85,9 +93,33 @@ table tbody td {
   color: #34a853;
   height: 30px;
 }
+
 .filters {
   padding-left: 30px;
   display: flex;
+  justify-content: flex-end;
+}
+
+.filters button {
+  margin: 0 10px;
+  background-color: white;
+  min-width: 140px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px 8px 15px;
+}
+
+.filters a {
+  cursor: pointer;
+}
+
+.filters a.active {
+  background: #0d6efd;
+  color: white;
+  width: 100%;
+  height: 100%;
 }
 
 .filters input {
@@ -99,24 +131,19 @@ table tbody td {
   padding-left: 10px;
   font-family: "Poppins";
 }
+
 .filters input:focus-visible {
   outline: none;
 }
 
-.filters button {
-  height: 40px;
-  border: none;
-  margin-left: -10px;
-  width: 50px;
-  background-color: #0a2647;
-  border-radius: 4px;
-}
+
 .view-btn {
   background-color: #ffffff;
   border: none;
   border-radius: 5px;
   font-family: "Poppins";
 }
+
 .act-btn {
   /* width: 50px; */
   width: 60px;
@@ -128,6 +155,9 @@ table tbody td {
 .filters {
   padding-left: 30px;
   display: flex;
+  width: 100%;
+  align-items: center;
+
 }
 
 .filters input {
@@ -138,18 +168,11 @@ table tbody td {
   background-color: #ffff;
   padding-left: 10px;
   font-family: "Poppins";
-}
-.filters input:focus-visible {
-  outline: none;
+  margin-right: 10px;
 }
 
-.filters button {
-  height: 40px;
-  border: none;
-  margin-left: -10px;
-  width: 50px;
-  background-color: #0a2647;
-  border-radius: 4px;
+.filters input:focus-visible {
+  outline: none;
 }
 
 .popup-2 {
@@ -207,6 +230,7 @@ table tbody td {
 .user-data .Fields label {
   width: 30%;
 }
+
 .status-filter {
   margin-left: 20px;
 }
@@ -233,6 +257,7 @@ table tbody td {
   color: #0a2647;
   font-weight: 700;
 }
+
 .download {
   margin-left: 35px;
   display: flex;
@@ -262,6 +287,7 @@ table tbody td {
   color: #ffff;
   border-radius: 4px;
 }
+
 .link-btn {
   min-width: 75px;
   background-color: #ffff;
@@ -270,8 +296,31 @@ table tbody td {
   border: none;
   border-radius: 5px;
 }
+
 .btns {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.pageination-logo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 120px;
+  margin: auto;
+  margin-top: 23px;
+}
+.pageination-logo img{
+  margin-top: 5px;
+}
+.pageination-number{
+  padding: 9px 19px;
+  background: white;
+  box-shadow: 0 0 6px 1px #d1cfcf;
+  border-radius: 50%;
+
+}
+.disabled_button{
+  opacity: 0.5;
 }

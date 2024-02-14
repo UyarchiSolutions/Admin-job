@@ -8,7 +8,7 @@ import { Env } from './environment.dev';
 export class CommonService {
   baseurl = Env.baseAPi;
   baseurl2 = Env.baseApi2;
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   managejobpost(range: any, page: any) {
     return this.http.get(
@@ -38,12 +38,12 @@ export class CommonService {
     console.log(id);
     return this.http.get(
       this.baseurl +
-        '/v1/employerdetail/getAllApplied_postjobs_Candidates/' +
-        id +
-        '/' +
-        range +
-        '/' +
-        page
+      '/v1/employerdetail/getAllApplied_postjobs_Candidates/' +
+      id +
+      '/' +
+      range +
+      '/' +
+      page
     );
   }
   get_all_emp(data: any) {
@@ -71,16 +71,16 @@ export class CommonService {
   update_status_can(id: any, data: any) {
     return this.http.put(
       this.baseurl +
-        '/v1/candidateDetail/updateByIdCandidateRegistration/' +
-        id,
+      '/v1/candidateDetail/updateByIdCandidateRegistration/' +
+      id,
       data
     );
   }
   update_status_emp(id: any, data: any) {
     return this.http.put(
       this.baseurl +
-        '/v1/employerRegistration/updateByIdEmployerRegistration/' +
-        id,
+      '/v1/employerRegistration/updateByIdEmployerRegistration/' +
+      id,
       data
     );
   }
@@ -184,7 +184,7 @@ export class CommonService {
   attendedDetails(date: any, time: any, attended: any, key: any) {
     return this.http.get(
       this.baseurl2 +
-        `/v1/climb/getCandidateBySlot/${date}/${time}/${attended}?key=${key}`
+      `/v1/climb/getCandidateBySlot/${date}/${time}/${attended}?key=${key}`
     );
   }
 
@@ -196,7 +196,7 @@ export class CommonService {
   getTestUsersNew(key: any, action: any) {
     return this.http.get(
       this.baseurl +
-        `/v1/climbevent/getTestUsers/New?key=${key}&action=${action}`
+      `/v1/climbevent/getTestUsers/New?key=${key}&action=${action}`
     );
   }
 
@@ -211,8 +211,9 @@ export class CommonService {
     return this.http.post(this.baseurl + '/v1/agriEvent/ExcelDatas', data);
   }
 
-  getAgriCand() {
-    return this.http.get(this.baseurl + '/v1/agriEvent/agri/cand');
+  getAgriCand(filter: any) {
+    let search = new URLSearchParams(filter).toString();
+    return this.http.get(this.baseurl + '/v1/agriEvent/agri/cand?' + search);
   }
   // getIntrested/ByCand_Role/:id/:role
 
@@ -238,24 +239,24 @@ export class CommonService {
       this.baseurl + `/v1/agriEvent/clearCandidates/${id}/${role}`
     );
   }
-  
-  getWorkshopCandidate(user: any, gender: any,coursetime:any) {
+
+  getWorkshopCandidate(user: any, gender: any, coursetime: any) {
     return this.http.get(this.baseurl + `/v1/climbevent/getWorkShopCand?user=${user}&gender=${gender}&coursetime=${coursetime}`)
   }
-  getSlotsWorkshop(){
+  getSlotsWorkshop() {
     return this.http.get(this.baseurl + `/v1/climbevent/getInternSlots`)
   }
-  getWorkshopCandById(id:any){
+  getWorkshopCandById(id: any) {
     return this.http.get(this.baseurl + `/v1/climbevent/getWorkshop/Slot/${id}`)
   }
-  getCandidatesDetails(name:any, location:any){
+  getCandidatesDetails(name: any, location: any) {
     return this.http.get(this.baseurl + `/v1/agriEvent/getCandidatesReport?cand=${name}&location=${location} `)
   }
-  getStreamsByCand(id:any){
-    return this.http.get(this.baseurl +'/v1/agriEvent/getStreamDetailsByCand/'+id)
+  getStreamsByCand(id: any) {
+    return this.http.get(this.baseurl + '/v1/agriEvent/getStreamDetailsByCand/' + id)
   }
-  active_inactive(id:any){
-    return this.http.get(this.baseurl+'/v1/agriEvent/active/Inactive/candidate/'+id)
+  active_inactive(id: any) {
+    return this.http.get(this.baseurl + '/v1/agriEvent/active/Inactive/candidate/' + id)
   }
-  loader:any = false
+  loader: any = false
 }

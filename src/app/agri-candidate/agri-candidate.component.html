@@ -1,16 +1,52 @@
 <div class="page-container">
     <div class="page-body">
         <div class="page-title">
-            <div class="filters">
-                <!-- <input type="text" placeholder="Enter Mobile / Email" formControlName="key">
-                <button (click)="getAllEvents()">
+            <form class="filters" [formGroup]="filter">
+                <input type="text" placeholder="Enter Mobile / Name" formControlName="search" (keyup)="search_now()">
+                <!-- <button (click)="getAllEvents()">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
                             d="M14.9682 8.98408C14.9682 12.289 12.289 14.9682 8.98408 14.9682C5.67916 14.9682 3 12.289 3 8.98408C3 5.67916 5.67916 3 8.98408 3C12.289 3 14.9682 5.67916 14.9682 8.98408ZM17.9682 8.98408C17.9682 13.9458 13.9458 17.9682 8.98408 17.9682C4.02231 17.9682 0 13.9458 0 8.98408C0 4.02231 4.02231 0 8.98408 0C13.9458 0 17.9682 4.02231 17.9682 8.98408ZM18.1497 16.0323C17.565 15.4475 16.6169 15.4475 16.0321 16.0323C15.4474 16.617 15.4474 17.5651 16.0321 18.1498L17.4438 19.5615C18.0286 20.1463 18.9767 20.1463 19.5614 19.5615C20.1462 18.9768 20.1462 18.0287 19.5614 17.444L18.1497 16.0323Z"
                             fill="#FFFF" />
                     </svg>
                 </button> -->
-            </div>
+                <div class="dropdown">
+
+                    <button type="button" class="btn" data-bs-toggle="dropdown">
+                        Sort
+                        <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M20.4 0V14.1176H24L19.2 20L14.4 14.1176H18V0H20.4ZM10.8 16.4706V18.8235H0V16.4706H10.8ZM13.2 8.23529V10.5882H0V8.23529H13.2ZM13.2 0V2.35294H0V0H13.2Z"
+                                fill="#0A2647" />
+                        </svg>
+
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" [ngClass]="filter.get('status').value =='all'?'active':''"
+                                (click)="filter_status('all')">All</a></li>
+                        <li><a class="dropdown-item" [ngClass]="filter.get('status').value =='Active'?'active':''"
+                                (click)="filter_status('Active')">Active</a></li>
+                        <li><a class="dropdown-item" [ngClass]="filter.get('status').value =='Slot Chosen'?'active':''"
+                                (click)="filter_status('Slot Chosen')">Slot Chosen</a></li>
+                        <li><a class="dropdown-item"
+                                [ngClass]="filter.get('status').value =='Waiting For Approval'?'active':''"
+                                (click)="filter_status('Waiting For Approval')">Waiting For
+                                Approval</a></li>
+                        <li><a class="dropdown-item" [ngClass]="filter.get('status').value =='Approved'?'active':''"
+                                (click)="filter_status('Approved')">Approved</a></li>
+                        <li><a class="dropdown-item" [ngClass]="filter.get('status').value =='Cleared'?'active':''"
+                                (click)="filter_status('Cleared')">Cleared</a></li>
+                        <li><a class="dropdown-item" [ngClass]="filter.get('status').value =='Link Shared'?'active':''"
+                                (click)="filter_status('Link Shared')">Link Shared</a></li>
+                        <li><a class="dropdown-item" [ngClass]="filter.get('status').value =='Completed'?'active':''"
+                                (click)="filter_status('Completed')">Completed</a></li>
+                        <li><a class="dropdown-item" [ngClass]="filter.get('status').value =='Rating Complete'?'active':''"
+                                (click)="filter_status('Rating Complete')">Rating Complete</a></li>
+
+                        
+                    </ul>
+                </div>
+            </form>
         </div>
         <div class="table-content">
             <table>
@@ -21,18 +57,26 @@
                     <th>Tech</th>
                     <th>HR Data & Time</th>
                     <th>status</th>
+                    <th>Link</th>
                     <th style="width: 180px; text-align: center;">action</th>
                 </thead>
                 <tbody>
                     <tr *ngFor="let can of cand">
                         <td>{{can.name}}</td>
-                        <td style="cursor: pointer;" (click)="volunteer(can._id, 'HR')">{{can.approved_HR}}/{{can.HRIntrest}}</td>
+                        <td style="cursor: pointer;" (click)="volunteer(can._id, 'HR')">
+                            {{can.approved_HR}}/{{can.HRIntrest}}</td>
                         <td> {{can.HR_DateTime|date:"dd-MM-YYYY hh:mm a"}} </td>
-                        <td style="cursor: pointer;"  (click)="volunteer(can._id, 'Tech')">{{can.approved_TECH}}/{{can.TechIntrest}}</td>
-                        <td> {{can.Tech_DateTime|date:"dd-MM-YYYY  hh:mm a"}} </td>
+                        <td style="cursor: pointer;" (click)="volunteer(can._id, 'Tech')">
+                            {{can.approved_TECH}}/{{can.TechIntrest}}</td>
+                        <td> {{can.Tech_DateTime|date:"dd-MM-YYYY hh:mm a"}} </td>
                         <td>{{can.status}}</td>
+                        <td>
+                            <a *ngIf="can.status!='Active' && can.status!='Slot Chosen' &&  can.status!= 'Waiting For Approval' && can.status !='Approved'"
+                                [routerLink]="['/admin/agri-stream-candidate']" [queryParams]="{id:can._id}">
+                                View
+                            </a>
+                        </td>
                         <td class="btns">
-                            <!-- <button class="clear-btn" (click)="ApprovedVolunteer(can._id)">View</button> -->
                             <button class="link-btn" *ngIf="can.hrClear ==true && can.hrId !=null "
                                 (click)="copy_now_new(can.hrId)">
                                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
@@ -58,6 +102,16 @@
                     </tr>
                 </tbody>
             </table>
+
+            <div class="pagination">
+                <div class="pageination-logo">
+                    <img src="../../assets/image/left-arrow.png" alt="" style="margin-top:5px;cursor: pointer;"
+                        class="p-left" (click)="page!=0?pagination(0):''" [ngClass]="page==0?'disabled_button':''">
+                    <div class="pageination-number">{{page+1}}</div>
+                    <img src="../../assets/image/right-arrow.png" style="margin-top:5px;cursor: pointer;" alt=""
+                        class="p-right" (click)="next?pagination(1):''" [ngClass]="!next?'disabled_button':''">
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -8,21 +8,27 @@
         <div class="table-content">
             <table>
                 <thead>
-                    <th>Name</th>
-                    <th>Type</th>
+                    <th>Stream Name</th>
                     <th>Date & Time</th>
+                    <th>Link Status</th>
                     <th>Stream Status</th>
+                    <th>Rating Status</th>
+                    <th>Rating</th>
                     <th>Action</th>
                 </thead>
                 <tbody>
                     <tr *ngFor="let stream of Stream">
-                        <td>{{stream.Name}}</td>
-                        <td>{{stream.Type}}</td>
+                        <td>{{stream.Type}} Stream</td>
                         <td>{{stream.start|date:"dd-MM-YYYY hh:mm a"}} - {{stream.endTime|date:"hh:mm a"}}</td>
+                        <td>{{stream.linkstatus}}</td>
                         <td>{{stream.streamStatus}}</td>
+                        <td>{{stream.rating}}</td>
+                        <td>{{stream.streamStatus =='Completed'?stream.retingCount+'/2':'--'}}</td>
                         <td>
-                            <button class="view-btn-video" (click)="singleView(stream)">View</button>
-                            <button class="down-btn-video" style="margin-left: 10px;"
+                            <button *ngIf="stream.streamStatus=='Completed'" class="view-btn-video"
+                                (click)="singleView(stream)">View</button>
+                            <button *ngIf="stream.streamStatus=='Completed'" class="down-btn-video"
+                                style="margin-left: 10px;"
                                 (click)="downloadVideo('https://streamingupload.s3.ap-south-1.amazonaws.com/'+stream.videoURL)">Download</button>
                         </td>
                     </tr>
@@ -38,7 +44,8 @@
     <div class="popup-container-2">
         <div class="close"></div>
         <div class="video-view">
-            <video width="700" height="500" [src]=" 'https://streamingupload.s3.ap-south-1.amazonaws.com/'+singleData.videoURL" autoplay></video>
+            <video width="700" height="500"
+                [src]=" 'https://streamingupload.s3.ap-south-1.amazonaws.com/'+singleData.videoURL" autoplay></video>
         </div>
     </div>
 
