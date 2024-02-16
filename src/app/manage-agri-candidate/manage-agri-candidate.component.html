@@ -50,8 +50,8 @@
                         <td>
                             <p (click)="CandidateDetailsRoute(data._id)" style="cursor: pointer;">{{"1"}}</p>
                         </td>
-                        <td><a [routerLink]="['/admin/hr-rating']" style="color: black;">{{data.hrRating}}/5</a><sub>({{data.intrest.length}})</sub></td>
-                        <td><a [routerLink]="['/admin/tech-rating']" style="color: black;">{{data.techRating}}/5</a><sub>({{data.techIntrest.length}})</sub></td>
+                        <td><a (click)="hrRating(data._id)" style="color: black; text-decoration: underline; cursor: pointer;">{{data.HrRatting}}/5</a><sub>({{data.hr_review_Count}})</sub></td>
+                        <td><a (click)="techRating(data._id)" style="color: black; text-decoration: underline; cursor: pointer;">{{data.TechRatting}}/5</a><sub>({{data.tech_review_Count}})</sub></td>
                         <td>
                             <p>{{data.active?'Active':'Inactive'}}</p>
                         </td>
@@ -69,7 +69,7 @@
 <div class="popup-2" *ngIf="popup">
     <div class="popup-close-2" (click)="popupClose()"></div>
     <div class="popup-container-2">
-        <div class="close"></div>
+        <button class="btn btn-close" (click)="popupClose()" style="float: right; margin-right: 20px; margin-top: 20px;"></button>
         <div class="content-title">
             <p>{{singleData.name?singleData.name:'Network Error Contact Developer'}}</p>
         </div>

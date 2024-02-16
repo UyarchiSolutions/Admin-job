@@ -258,5 +258,11 @@ export class CommonService {
   active_inactive(id: any) {
     return this.http.get(this.baseurl + '/v1/agriEvent/active/Inactive/candidate/' + id)
   }
+  hr_rating(id:any){
+    return this.http.get(this.baseurl+"/v1/agriEvent/get/hr/review?id="+id);
+  }
+  tech_rating(id:any){
+    return this.http.get(this.baseurl+"/v1/agriEvent/get/tech/review?id="+id);
+  }
   loader: any = false
 }

@@ -1,6 +1,6 @@
 <div class="page-container">
     <div class="page-body">
-        <div class="page-title">
+        <!-- <div class="page-title">
             <div class="filters" style="display: flex;justify-content: center;width: 97%; " [formGroup]="filterForms">
                 <div class="name-mob">
                     <input type="text" placeholder=" Enter Name/Contact" formControlName="name">
@@ -25,28 +25,24 @@
                     <button (click)="filter()">Apply</button>
                 </div>                  
             </div>
-        </div>
+        </div> -->
         <div class="table-content">
-            <table>
+            <table class="table-primary">
                 <thead>
                     <th>Name</th>
                     <th>Date & Time</th>
-                    <th>Duration</th>
                     <th>Ratings</th>
+                    <th></th>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let data of Cand">
-                        <td style="text-decoration: underline; cursor: pointer;" (click)="singleView(data)">{{data.name}}</td>
+                    <tr *ngFor="let data of hr">
+                        <td>{{data.name}}</td>
+                        <td>{{data.startTime|date}} | {{data.startTime|date:"hh:mm a"}}</td>
                         <td>
-                            <p>{{data.mobile}}</p>
+                            <p *ngIf="data.rating!='Rated'" style="margin-bottom: 0;">Pending</p>
+                            <p *ngIf="data.rating=='Rated'" style="margin-bottom: 0;">{{data.HRreview.rating?data.HRreview.rating:"--"}}</p>
                         </td>
-                        <td>
-                            <p>{{data.duration}}</p>
-                        </td>
-                        <td>
-                            <button *ngIf="data.active"  class="inactive-btn" (click)="active_Inactive(data._id)">Inactive</button>
-                            <button *ngIf="!data.active"  class="active-btn" (click)="active_Inactive(data._id)">active</button>
-                        </td>
+                        <td> <button class="btn btn-light" (click)="singleView(data)" [disabled]="data.HRreview==null">View</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -56,56 +52,56 @@
 
 <div class="popup-2" *ngIf="popup">
     <div class="popup-close-2" (click)="popupClose()"></div>
-    <div class="popup-container-2">
-        <div class="close"></div>
+    <div class="popup-container-2" ><!--style="height: fit-content;"-->
+        <button class="btn btn-close" (click)="popupClose()" style="float: right; margin-right: 20px; margin-top: 20px;"></button>
         <div class="content-title">
-            <p>{{singleData.name?singleData.name:'Network Error Contact Developer'}}</p>
+            <!-- <p>{{singleData.name?singleData.name:'--'}}</p> -->
+            <p>HR Ratings</p>
+            <h4 style="text-align: center;">Rating: {{singleData.HRreview.rating?singleData.HRreview.rating:"--"}}/5</h4>
         </div>
-        <div class="user-data">
-            <div class="Fields">
-                <label> Mobile Number :</label>
-                <p> {{singleData.mobile}} </p>
+        <div class="container" *ngIf=" singleData.rating=='Rated'" style="padding: 30px;">
+            <div class="row">
+                <div class="col"><label> Expected CTC :</label></div>
+                <div class="col"><p> {{singleData.HRreview.expCTC}} </p></div>
+            </div>
+            <div class="row">
+                <div class="col"><label> Current CTC :</label></div>
+                <div class="col"><p> {{singleData.HRreview.curCTC}} </p></div>
+            </div>
+            <div class="row">
+                <div class="col"><label> Notice Period :</label></div>
+                <div class="col"><p> {{singleData.HRreview.noticePeriod}} </p></div>
             </div>
             <div class="Fields">
-                <label> E-mail :</label>
-                <p> {{singleData.mail}} </p>
+                <h4>Language</h4>
             </div>
             <div class="Fields">
-                <label> Gender :</label>
-                <p> {{singleData.gender?singleData.gender:"--"}} </p>
+                <!-- <label> DOB :</label> -->
+                <div class="row" *ngFor="let lang of singleData.HRreview.lang">
+                    <div class="col"><p > {{lang.lang}} </p></div>
+                    <div class="col"><p>{{lang.rating}}</p></div>
+                </div>
+                <div class="row" *ngIf="singleData.HRreview.lang==null || singleData.HRreview.lang.length==0">
+                <p>--</p></div>
             </div>
             <div class="Fields">
-                <label> DOB :</label>
-                <p> {{singleData.dob?singleData.dob:"--"}} </p>
+                <h4>Attributes</h4>
             </div>
-            <div class="Fields">
-                <label> Skills :</label>
-                <p>{{singleData.skills?singleData.skills:"--"}}</p>
+            <div class="row">
+                <div class="col"><label> Performance :</label></div>
+                <div class="col"><p>{{singleData.HRreview.performance}}</p></div>
             </div>
-            <div class="Fields">
-                <label>Location :</label>
-                <p> {{singleData.location?singleData.location:"--"}} </p>
+            <div class="row">
+                <div class="col"><label> Attitude :</label></div>
+                <div class="col"><p>{{singleData.HRreview.attitude}}</p></div>
             </div>
-            <div class="Fields">
-                <label> Education Name:</label>
-                <p>{{singleData.Education?singleData.Education:'--'}}</p>
+            <div class="row">
+                <div class="col"><label> Comments:</label></div>
+                <div class="col"><p>{{singleData.HRreview.desc}}</p></div>
             </div>
-            <div class="Fields">
-                <label>Affiliated University:</label>
-                <p> {{singleData.affiliateduniversity?singleData.affiliateduniversity:"--"}} </p>
-            </div>
-            <div class="Fields">
-                <label>Institution:</label>
-                <p>{{singleData.Instituitionname?singleData.Instituitionname:"--"}}</p>
-            </div>
-            <div class="Fields">
-                <label>Hr Ratings:</label>
-                <p>{{singleData.hrRating?singleData.hrRating/5:"--"}}/5</p>
-            </div> 
-            <div class="Fields">
-                <label>Tech Rating:</label>
-                <p>{{singleData.techRating?singleData.techRating/5:"--"}}/5</p>
-            </div>
+        </div>
+        <div *ngIf="singleData.rating!='Rated'">
+            <p style="text-align: center;">--</p>
         </div>
 
     </div>

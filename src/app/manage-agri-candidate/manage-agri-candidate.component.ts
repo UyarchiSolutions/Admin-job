@@ -25,6 +25,15 @@ export class ManageAgriCandidateComponent implements OnInit {
   CandidateDetailsRoute(id: any) {
     this.route.navigateByUrl('/admin/agri-stream-candidate?id=' + id);
   }
+
+  hrRating(id:any){
+    this.route.navigateByUrl('/admin/hr-rating?id='+id);
+  }
+
+  techRating(id:any){
+    this.route.navigateByUrl('/admin/tech-rating?id='+id);
+  }
+
   popup: any = false;
   singleData: any = {};
 

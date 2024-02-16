@@ -1,6 +1,6 @@
 <div class="page-container">
     <div class="page-body">
-        <div class="page-title">
+        <!-- <div class="page-title">
             <div class="filters" style="display: flex;justify-content: center;width: 97%; " [formGroup]="filterForms">
                 <div class="name-mob">
                     <input type="text" placeholder=" Enter Name/Contact" formControlName="name">
@@ -25,28 +25,27 @@
                     <button (click)="filter()">Apply</button>
                 </div>                  
             </div>
-        </div>
+        </div> -->
         <div class="table-content">
-            <table>
+            <table class="table-primary">
                 <thead>
                     <th>Name</th>
                     <th>Date & Time</th>
-                    <th>Duration</th>
                     <th>Ratings</th>
+                    <th></th>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let data of Cand">
-                        <td style="text-decoration: underline; cursor: pointer;" (click)="singleView(data)">{{data.name}}</td>
+                    <tr *ngFor="let data of tech">
+                        <td>{{data.name}}</td>
                         <td>
-                            <p>{{data.mobile}}</p>
+                            {{data.startTime|date}} | {{data.startTime|date:"hh:mm a"}}
                         </td>
+
                         <td>
-                            <p>{{data.duration}}</p>
+                            <p style="margin-bottom: 0;" *ngIf="data.Techreview!=null">{{data.Techreview.rating}}/5</p>
+                            <p style="margin-bottom: 0;" *ngIf="data.Techreview==null">--/5</p>
                         </td>
-                        <td>
-                            <button *ngIf="data.active"  class="inactive-btn" (click)="active_Inactive(data._id)">Inactive</button>
-                            <button *ngIf="!data.active"  class="active-btn" (click)="active_Inactive(data._id)">Active</button>
-                        </td>
+                        <td><button class="btn btn-light" (click)="singleView(data)" [disabled]="data.rating!='Rated'">View</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -55,58 +54,89 @@
 </div>
 
 <div class="popup-2" *ngIf="popup">
-    <div class="popup-close-2" (click)="popupClose()"></div>
-    <div class="popup-container-2">
-        <div class="close"></div>
+    <div class="popup-close-2" (click)="popupClose()">
+    
+    </div>
+    
+    <div class="popup-container-2"><!--style="height: fit-content;"-->
+        <button class="btn btn-close" (click)="popupClose()" style="float: right; margin-right: 20px; margin-top: 20px;"></button>
         <div class="content-title">
-            <p>{{singleData.name?singleData.name:'Network Error Contact Developer'}}</p>
+            <!-- <p>{{singleData.name?singleData.name:'--'}}</p> -->
+            <p>HR Ratings</p>
+            <h4 style="text-align: center;">Rating: {{singleData.Techreview.rating?singleData.Techreview.rating:"--"}}/5
+            </h4>
         </div>
-        <div class="user-data">
+        <div class="container" *ngIf=" singleData.rating=='Rated'" style="padding: 30px;">
             <div class="Fields">
-                <label> Mobile Number:</label>
-                <p> {{singleData.mobile}} </p>
+                <h4>Language</h4>
+            </div>
+            <div class="row" *ngFor="let skill of singleData.Techreview.skillsrated">
+                <div class="col">
+                    <p> {{skill.skills}}:</p>
+                </div>
+                <div class="col">
+                    <p> {{skill.rating}}</p>
+                </div>
             </div>
             <div class="Fields">
-                <label> E-mail:</label>
-                <p> {{singleData.mail}} </p>
+                <h4>Attributes</h4>
             </div>
-            <div class="Fields">
-                <label> Gender:</label>
-                <p> {{singleData.gender?singleData.gender:"--"}} </p>
+            <div class="row">
+                <div class="col">
+                    <label> Understanding :</label>
+                </div>
+                <div class="col">
+                    <p> {{singleData.Techreview.underStating}} </p>
+                </div>
             </div>
-            <div class="Fields">
-                <label> DOB:</label>
-                <p> {{singleData.dob?singleData.dob:"--"}} </p>
+            <div class="row">
+                <div class="col">
+                    <label> Coding :</label>
+                </div>
+                <div class="col">
+                    <p> {{singleData.Techreview.coding}} </p>
+                </div>
             </div>
-            <div class="Fields">
-                <label> Skills:</label>
-                <p>{{singleData.skills?singleData.skills:"--"}}</p>
+            <div class="row">
+                <div class="col">
+                    <label> Communication :</label>
+                </div>
+                <div class="col">
+                    <p> {{singleData.Techreview.communication}} </p>
+                </div>
             </div>
-            <div class="Fields">
-                <label>Locatio :</label>
-                <p> {{singleData.location?singleData.location:"--"}} </p>
+            <div class="row">
+                <div class="col">
+                    <label> Individual Codes :</label>
+                </div>
+                <div class="col">
+                    <p> {{singleData.Techreview.individualCode}} </p>
+                </div>
             </div>
-            <div class="Fields">
-                <label> Education Name:</label>
-                <p>{{singleData.Education?singleData.Education:'--'}}</p>
+            <div class="row">
+                <div class="col">
+                    <label> Logic :</label>
+                </div>
+                <div class="col">
+                    <p> {{singleData.Techreview.logic}} </p>
+                </div>
             </div>
-            <div class="Fields">
-                <label>Affiliated University:</label>
-                <p> {{singleData.affiliateduniversity?singleData.affiliateduniversity:"--"}} </p>
+            <div class="row">
+                <div class="col">
+                    <label> Project Understanding :</label>
+                </div>
+                <div class="col">
+                    <p> {{singleData.Techreview.projectUnderStanding}} </p>
+                </div>
             </div>
-            <div class="Fields">
-                <label>Institution:</label>
-                <p>{{singleData.Instituitionname?singleData.Instituitionname:"--"}}</p>
-            </div>
-            <div class="Fields">
-                <label>Hr Ratings:</label>
-                <p>{{singleData.hrRating?singleData.hrRating/5:"--"}}/5</p>
-            </div> 
-            <div class="Fields">
-                <label>Tech Rating:</label>
-                <p>{{singleData.techRating?singleData.techRating/5:"--"}}/5</p>
+            <div class="row">
+                <div class="col">
+                    <label> Comments :</label>
+                </div>
+                <div class="col">
+                    <p> {{singleData.Techreview.comments}} </p>
+                </div>
             </div>
         </div>
-
     </div>
 </div>

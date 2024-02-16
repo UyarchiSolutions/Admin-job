@@ -37,8 +37,6 @@ export class AgriCandidateComponent implements OnInit {
     );
   }
 
-  // agri-cand-volunteer-view
-
   ApprovedVolunteer(id: any) {
     console.log(id);
     this.route.navigateByUrl(`/admin/agri-cand-volunteer-view?id=${id}`);
