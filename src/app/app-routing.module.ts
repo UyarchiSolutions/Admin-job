@@ -41,8 +41,9 @@ import { SlotWorkshopComponent } from './slot-workshop/slot-workshop.component';
 import { WorkshopBookedCandComponent } from './workshop-booked-cand/workshop-booked-cand.component';
 import { ManageAgriCandidateComponent } from './manage-agri-candidate/manage-agri-candidate.component';
 import { StreamCandidatesComponent } from './stream-candidates/stream-candidates.component';
-import { HrRatingComponent } from './hr-rating/hr-rating.component'; 
-import { TechRatingComponent } from './tech-rating/tech-rating.component'; 
+import { HrRatingComponent } from './hr-rating/hr-rating.component';
+import { TechRatingComponent } from './tech-rating/tech-rating.component';
+import { AgricandidatestreamComponent } from './agri-candidate-stream-view/agri-cand-volunteer.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -88,12 +89,13 @@ const routes: Routes = [
       { path: 'new-test-cand', component: NewTestCandComponent },
       { path: 'agri-cand', component: AgriCandidateComponent },
       { path: 'agri-cand-volunteer', component: AgriCandVolunteerComponent },
+      { path: 'agri-volunteer-view', component: AgricandidatestreamComponent },
       { path: 'agri-cand-volunteer-view', component: AgriCandVolunteerViewComponent },
-      {path:'workshop-cand',component: WorkshopCandComponent},
-      {path:'slot-workshop',component:SlotWorkshopComponent},
-      {path:'workshop-booked-cand',component:WorkshopBookedCandComponent},
-      {path:'manage-agri-cand',component:ManageAgriCandidateComponent},
-      {path:'agri-stream-candidate',component:StreamCandidatesComponent},
+      { path: 'workshop-cand', component: WorkshopCandComponent },
+      { path: 'slot-workshop', component: SlotWorkshopComponent },
+      { path: 'workshop-booked-cand', component: WorkshopBookedCandComponent },
+      { path: 'manage-agri-cand', component: ManageAgriCandidateComponent },
+      { path: 'agri-stream-candidate', component: StreamCandidatesComponent },
       { path: 'hr-rating', component: HrRatingComponent },
       { path: 'tech-rating', component: TechRatingComponent },
 
@@ -105,4 +107,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

@@ -18,7 +18,8 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let stream of Stream">
-                        <td>{{stream.Type}} Stream</td>
+                        <td [routerLink]="['/admin/agri-volunteer-view']" [queryParams]="{id:stream._id}">{{stream.Type}}
+                            Stream</td>
                         <td>{{stream.start|date:"dd-MM-YYYY hh:mm a"}} - {{stream.endTime|date:"hh:mm a"}}</td>
                         <td>{{stream.linkstatus}}</td>
                         <td>{{stream.streamStatus}}</td>
