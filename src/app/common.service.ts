@@ -264,5 +264,11 @@ export class CommonService {
   tech_rating(id:any){
     return this.http.get(this.baseurl+"/v1/agriEvent/get/tech/review?id="+id);
   }
+  postSlotCreation(data:any){
+    return this.http.post(this.baseurl+"/v1/agriEvent/agri/slots", data)
+  }
+  getSlotCreation(page:number=0){
+    return this.http.get(this.baseurl+"/v1/agriEvent/agri/slots?page="+page);
+  }
   loader: any = false
 }

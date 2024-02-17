@@ -57,9 +57,9 @@
                     <th>HR Date & Time</th>
                     <th>Tech</th>
                     <th>HR Data & Time</th>
-                    <th>status</th>
+                    <th>Status</th>
                     <th>Link</th>
-                    <th style="width: 180px; text-align: center;">action</th>
+                    <th style="width: 180px; text-align: center;">Action</th>
                 </thead>
                 <tbody>
                     <tr *ngFor="let can of cand">
@@ -77,7 +77,7 @@
                                 View
                             </a>
                         </td>
-                        <td class="btns">
+                        <td class="btns" style="height: 60px;">
                             <button class="link-btn" *ngIf="can.hrClear ==true && can.hrId !=null "
                                 (click)="copy_now_new(can.hrId)">
                                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none"

@@ -47,6 +47,7 @@ import { ManageAgriCandidateComponent } from './manage-agri-candidate/manage-agr
 import { StreamCandidatesComponent } from './stream-candidates/stream-candidates.component';
 import { HrRatingComponent } from './hr-rating/hr-rating.component';
 import { TechRatingComponent } from './tech-rating/tech-rating.component';
+import { SlotCreationComponent } from './slot-creation/slot-creation.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +93,8 @@ import { TechRatingComponent } from './tech-rating/tech-rating.component';
     ManageAgriCandidateComponent,
     StreamCandidatesComponent,
     HrRatingComponent,
-    TechRatingComponent
+    TechRatingComponent,
+    SlotCreationComponent
   ],
   imports: [
     BrowserModule,
