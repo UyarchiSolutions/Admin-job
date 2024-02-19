@@ -49,6 +49,7 @@ import { HrRatingComponent } from './hr-rating/hr-rating.component';
 import { TechRatingComponent } from './tech-rating/tech-rating.component';
 import { HttpInterceptorService } from './http-interceptor.service';
 import { LoaderComponent } from './loader/loader.component';
+import { SlotCreationComponent } from './slot-creation/slot-creation.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +96,8 @@ import { LoaderComponent } from './loader/loader.component';
     StreamCandidatesComponent,
     HrRatingComponent,
     TechRatingComponent,
-    LoaderComponent
+    LoaderComponent,
+    SlotCreationComponent
   ],
   imports: [
     BrowserModule,

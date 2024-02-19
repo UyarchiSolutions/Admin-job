@@ -50,9 +50,9 @@
                     <th>HR Date & Time</th>
                     <th>Tech</th>
                     <th>HR Data & Time</th>
-                    <th>status</th>
+                    <th>Status</th>
                     <th>Link</th>
-                    <th style="width: 180px; text-align: center;">action</th>
+                    <th style="width: 180px; text-align: center;">Action</th>
                 </thead>
                 <tbody>
                     <tr *ngFor="let can of cand">
@@ -70,7 +70,30 @@
                                 View
                             </a>
                         </td>
+<<<<<<< HEAD
                         <td class="btns">
+=======
+                        <td class="btns" style="height: 60px;">
+                            <button class="link-btn" *ngIf="can.hrClear ==true && can.hrId !=null "
+                                (click)="copy_now_new(can.hrId)">
+                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M3.88889 0V1.11111H1.11111V8.88889H8.88889V6.11111H10V9.44444C10 9.75128 9.75128 10 9.44444 10H0.555556C0.248733 10 0 9.75128 0 9.44444V0.555556C0 0.248733 0.248733 0 0.555556 0H3.88889ZM8.10322 1.11111H5.55556V0H10V4.44444H8.88889V1.89678L5 5.78567L4.21433 5L8.10322 1.11111Z"
+                                        fill="#0A2647" />
+                                </svg>
+                                {{ copy_success && can.hrId == chooseId ? "Copied" : "HR" }}
+                            </button>
+                            <button class="link-btn" style="margin-right: 4px;"
+                                *ngIf="can.clear == true && can.techId != null " (click)="copy_now_new(can.techId)">
+                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M3.88889 0V1.11111H1.11111V8.88889H8.88889V6.11111H10V9.44444C10 9.75128 9.75128 10 9.44444 10H0.555556C0.248733 10 0 9.75128 0 9.44444V0.555556C0 0.248733 0.248733 0 0.555556 0H3.88889ZM8.10322 1.11111H5.55556V0H10V4.44444H8.88889V1.89678L5 5.78567L4.21433 5L8.10322 1.11111Z"
+                                        fill="#0A2647" />
+                                </svg> {{ copy_success && can.techId == chooseId ? "Copied" : "Tech" }}
+                            </button>
+>>>>>>> refs/remotes/origin/master
                             <button class="btn btn-sm clear-button" *ngIf="can.status =='Approved'"
                                 (click)="clear_cand(can)">Clear</button>
                             <button class="btn btn-sm clear-button" *ngIf="can.status =='Cleared'"

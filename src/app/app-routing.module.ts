@@ -44,6 +44,7 @@ import { StreamCandidatesComponent } from './stream-candidates/stream-candidates
 import { HrRatingComponent } from './hr-rating/hr-rating.component';
 import { TechRatingComponent } from './tech-rating/tech-rating.component';
 import { AgricandidatestreamComponent } from './agri-candidate-stream-view/agri-cand-volunteer.component';
+import { SlotCreationComponent } from './slot-creation/slot-creation.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -98,6 +99,7 @@ const routes: Routes = [
       { path: 'agri-stream-candidate', component: StreamCandidatesComponent },
       { path: 'hr-rating', component: HrRatingComponent },
       { path: 'tech-rating', component: TechRatingComponent },
+      { path: 'slot-creation', component: SlotCreationComponent}
 
     ],
   },
