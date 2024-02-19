@@ -3,13 +3,6 @@
         <div class="page-title">
             <form class="filters" [formGroup]="filter">
                 <input type="text" placeholder="Enter Mobile / Name" formControlName="search" (keyup)="search_now()">
-                <!-- <button (click)="getAllEvents()">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M14.9682 8.98408C14.9682 12.289 12.289 14.9682 8.98408 14.9682C5.67916 14.9682 3 12.289 3 8.98408C3 5.67916 5.67916 3 8.98408 3C12.289 3 14.9682 5.67916 14.9682 8.98408ZM17.9682 8.98408C17.9682 13.9458 13.9458 17.9682 8.98408 17.9682C4.02231 17.9682 0 13.9458 0 8.98408C0 4.02231 4.02231 0 8.98408 0C13.9458 0 17.9682 4.02231 17.9682 8.98408ZM18.1497 16.0323C17.565 15.4475 16.6169 15.4475 16.0321 16.0323C15.4474 16.617 15.4474 17.5651 16.0321 18.1498L17.4438 19.5615C18.0286 20.1463 18.9767 20.1463 19.5614 19.5615C20.1462 18.9768 20.1462 18.0287 19.5614 17.444L18.1497 16.0323Z"
-                            fill="#FFFF" />
-                    </svg>
-                </button> -->
                 <div class="dropdown">
 
                     <button type="button" class="btn" data-bs-toggle="dropdown">
@@ -78,27 +71,10 @@
                             </a>
                         </td>
                         <td class="btns">
-                            <button class="link-btn" *ngIf="can.hrClear ==true && can.hrId !=null "
-                                (click)="copy_now_new(can.hrId)">
-                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M3.88889 0V1.11111H1.11111V8.88889H8.88889V6.11111H10V9.44444C10 9.75128 9.75128 10 9.44444 10H0.555556C0.248733 10 0 9.75128 0 9.44444V0.555556C0 0.248733 0.248733 0 0.555556 0H3.88889ZM8.10322 1.11111H5.55556V0H10V4.44444H8.88889V1.89678L5 5.78567L4.21433 5L8.10322 1.11111Z"
-                                        fill="#0A2647" />
-                                </svg>
-                                {{ copy_success && can.hrId == chooseId ? "Copied" : "HR" }}
-                            </button>
-                            <button class="link-btn" style="margin-right: 4px;"
-                                *ngIf="can.clear == true && can.techId != null " (click)="copy_now_new(can.techId)">
-                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M3.88889 0V1.11111H1.11111V8.88889H8.88889V6.11111H10V9.44444C10 9.75128 9.75128 10 9.44444 10H0.555556C0.248733 10 0 9.75128 0 9.44444V0.555556C0 0.248733 0.248733 0 0.555556 0H3.88889ZM8.10322 1.11111H5.55556V0H10V4.44444H8.88889V1.89678L5 5.78567L4.21433 5L8.10322 1.11111Z"
-                                        fill="#0A2647" />
-                                </svg> {{ copy_success && can.techId == chooseId ? "Copied" : "Tech" }}
-                            </button>
                             <button class="btn btn-sm clear-button" *ngIf="can.status =='Approved'"
                                 (click)="clear_cand(can)">Clear</button>
+                            <button class="btn btn-sm clear-button" *ngIf="can.status =='Cleared'"
+                                (click)="link_send(can)">Send Link</button>
                         </td>
                     </tr>
                 </tbody>

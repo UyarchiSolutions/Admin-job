@@ -8,7 +8,7 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./workshop-cand.component.css'],
 })
 export class WorkshopCandComponent implements OnInit {
-  constructor(private api: CommonService) {}
+  constructor(private api: CommonService) { }
   ngOnInit(): void {
     this.getCandidates();
   }
@@ -21,6 +21,7 @@ export class WorkshopCandComponent implements OnInit {
     gender: new FormControl(null),
     user: new FormControl(null),
     coursetime: new FormControl(null),
+    user_type: new FormControl(null),
   });
 
   getCandidates() {
@@ -28,7 +29,8 @@ export class WorkshopCandComponent implements OnInit {
       .getWorkshopCandidate(
         this.filterForm.get('user')?.value,
         this.filterForm.get('gender')?.value,
-        this.filterForm.get('coursetime')?.value
+        this.filterForm.get('coursetime')?.value,
+        this.filterForm.get('user_type')?.value
       )
       .subscribe((e: any) => {
         this.candidates = e;
@@ -41,8 +43,9 @@ export class WorkshopCandComponent implements OnInit {
     this.getCandidates();
   }
 
-  clear(){
-    this.filterForm.reset()
+  clear() {
+    this.filterForm.reset();
+    this.getCandidates();
   }
   popup: any = false;
   singleData: any = {};

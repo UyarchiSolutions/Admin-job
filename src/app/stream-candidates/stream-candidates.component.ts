@@ -27,6 +27,8 @@ export class StreamCandidatesComponent implements OnInit {
     });
   }
 
+  
+
   downloadVideo(urls: any) {
     this.api.loader = true;
     this.http.get(urls, { responseType: 'blob' }).subscribe(
@@ -50,6 +52,19 @@ export class StreamCandidatesComponent implements OnInit {
       }
     );
   }
+
+  chooseId: any;
+  copy_success: any = false;
+  copy_now_new(id: any) {
+    this.copy_success = true;
+    this.chooseId = id;
+    navigator.clipboard.writeText('https://candidate.erai.cloud/demo/' + id);
+    console.log(this.copy_success && id == this.chooseId);
+    setTimeout(() => {
+      this.copy_success = false;
+    }, 1000);
+  }
+
 
   popup: any = false;
   singleData: any = {};

@@ -3,20 +3,22 @@
         <div class="page-title">
             <div class="filters" [formGroup]="filterForm">
                 <input type="text" placeholder="Mobile / E-mail" formControlName="user">
-                <label for="">Gender :</label>
-
                 <select name="" id="" formControlName="gender">
-                    <option [value]="null" selected disabled>Select</option>
+                    <option [value]="null" selected disabled style="display: none;">Gender</option>
                     <option [value]=" 'Male' ">Male</option>
                     <option [value]="'Female'">Female</option>
                 </select>
-                <label for="">Course Time :</label>
-
                 <select name="" id="" formControlName="coursetime">
-                    <option [value]="null" selected disabled>Select</option>
+                    <option [value]="null" selected disabled style="display: none;">Shift</option>
                     <option [value]="'Morning Shift'">Morning Shift</option>
                     <option [value]="'Evening Shift'">Evening Shift</option>
                     <option [value]="'General Shift'">General Shift</option>
+                </select>
+                <select name="" id="" formControlName="user_type">
+                    <option [value]="null" selected disabled style="display: none;"> User Type</option>
+                    <option [value]="'Intern'">Intern</option>
+                    <option [value]="'IT'">IT</option>
+                    <option [value]="'HR'">HR</option>
                 </select>
                 <button (click)="applyFilter()"> Apply Filter</button>
                 <button (click)="clear()">Clear</button>
@@ -28,15 +30,18 @@
                     <th>Name</th>
                     <th>Mobile</th>
                     <th>E-mail</th>
+                    <th>Type</th>
                     <th>Pincode</th>
                     <th>Course Time</th>
                     <th>Passed Year</th>
                 </thead>
                 <tbody>
                     <tr *ngFor="let data of candidates">
-                        <td style="text-decoration: underline; cursor: pointer;" (click)="singleView(data)">{{data.name}}</td>
+                        <td style="text-decoration: underline; cursor: pointer;" (click)="singleView(data)">
+                            {{data.name}}</td>
                         <td>{{data.mobileNumber}}</td>
                         <td>{{data.mail}}</td>
+                        <td>{{data.user_type}}</td>
                         <td>{{data.pincode}}</td>
                         <td>{{data.courseTiming}}</td>
                         <td>{{data.year_of_passedout}}</td>

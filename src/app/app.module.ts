@@ -11,7 +11,7 @@ import { ManagePlanUsageComponent } from './manage-plan-usage/manage-plan-usage.
 import { ManagePlanComponent } from './manage-plan/manage-plan.component';
 import { ManageemployerComponent } from './manageemployer/manageemployer.component';
 import { AddfaqComponent } from './addfaq/addfaq.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { EnquiryPopupComponent } from './enquiry-popup/enquiry-popup.component';
 import { ManageJobPostComponent } from './manage-job-post/manage-job-post.component';
 import { ReportedJobpostComponent } from './reported-jobpost/reported-jobpost.component';
@@ -47,6 +47,8 @@ import { ManageAgriCandidateComponent } from './manage-agri-candidate/manage-agr
 import { StreamCandidatesComponent } from './stream-candidates/stream-candidates.component';
 import { HrRatingComponent } from './hr-rating/hr-rating.component';
 import { TechRatingComponent } from './tech-rating/tech-rating.component';
+import { HttpInterceptorService } from './http-interceptor.service';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +94,8 @@ import { TechRatingComponent } from './tech-rating/tech-rating.component';
     ManageAgriCandidateComponent,
     StreamCandidatesComponent,
     HrRatingComponent,
-    TechRatingComponent
+    TechRatingComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -103,8 +106,11 @@ import { TechRatingComponent } from './tech-rating/tech-rating.component';
     GooglePlaceModule,
     CommonModule,
     BsDatepickerModule.forRoot(),
+
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

@@ -107,4 +107,10 @@ export class AgriCandidateComponent implements OnInit {
     this.popup = false;
   }
 
+  link_send(item: any) {
+    this.api.link_send(item._id).subscribe((res: any) => {
+        item.status = res.status;
+    })
+  }
+
 }

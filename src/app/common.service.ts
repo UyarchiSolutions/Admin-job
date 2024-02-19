@@ -240,8 +240,8 @@ export class CommonService {
     );
   }
 
-  getWorkshopCandidate(user: any, gender: any, coursetime: any) {
-    return this.http.get(this.baseurl + `/v1/climbevent/getWorkShopCand?user=${user}&gender=${gender}&coursetime=${coursetime}`)
+  getWorkshopCandidate(user: any, gender: any, coursetime: any, user_type: any) {
+    return this.http.get(this.baseurl + `/v1/climbevent/getWorkShopCand?user=${user}&gender=${gender}&coursetime=${coursetime}&user_type=${user_type}`)
   }
   getSlotsWorkshop() {
     return this.http.get(this.baseurl + `/v1/climbevent/getInternSlots`)
@@ -258,11 +258,21 @@ export class CommonService {
   active_inactive(id: any) {
     return this.http.get(this.baseurl + '/v1/agriEvent/active/Inactive/candidate/' + id)
   }
-  hr_rating(id:any){
-    return this.http.get(this.baseurl+"/v1/agriEvent/get/hr/review?id="+id);
+  hr_rating(id: any) {
+    return this.http.get(this.baseurl + "/v1/agriEvent/get/hr/review?id=" + id);
   }
-  tech_rating(id:any){
-    return this.http.get(this.baseurl+"/v1/agriEvent/get/tech/review?id="+id);
+  tech_rating(id: any) {
+    return this.http.get(this.baseurl + "/v1/agriEvent/get/tech/review?id=" + id);
   }
-  loader: any = false
+  loader: any = false;
+
+  loading: any = false;
+  change_header(type: any) {
+    this.loading = type;
+  }
+
+
+  link_send(id: any) {
+    return this.http.get(this.baseurl + '/v1/agriEvent/linksend/' + id);
+  }
 }
